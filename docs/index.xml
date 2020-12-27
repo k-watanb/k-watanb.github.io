@@ -5,7 +5,7 @@
     <link>https://k-watanb.github.io/</link>
     <description>Recent content on 技術たまに日常ぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 04 Mar 2019 16:01:23 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://k-watanb.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,26 +22,13 @@
     </item>
     
     <item>
-      <title>Math Preview</title>
-      <link>https://k-watanb.github.io/post/math-preview/</link>
-      <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
+      <title>Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る</title>
+      <link>https://k-watanb.github.io/post/new-homepage/</link>
+      <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://k-watanb.github.io/post/math-preview/</guid>
+      <guid>https://k-watanb.github.io/post/new-homepage/</guid>
       
-        <description>&lt;p&gt;&lt;a href=&#34;https://www.intmath.com/cg5/katex-mathjax-comparison.php&#34;&gt;KaTeX and MathJax Comparison Demo, currently processed as KaTex&lt;/a&gt;&lt;/p&gt;</description>
-      
-    </item>
-    
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://k-watanb.github.io/post/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/post/migrate-from-jekyll/</guid>
-      
-        <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+        <description>何番煎じかわかりませんが、Windows10 + GitHub Pages + Hugoで簡単無料ホームページを作りましょう。 GitHubアカウントの作成 GitHubア</description>
       
     </item>
     

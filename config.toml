@@ -48,6 +48,8 @@ defaultContentLanguage = "ja-jp"           # Default language to use
   url = "/categories/"
 
 [params]
+  toc = true
+  
   since = "2020"            # Site creation time
   homeFullContent = false   # if false, show post summaries on home page. Otherwise show full content.
   rssFullContent = false     # if false, Rss feed instead of the summary
@@ -89,3 +91,9 @@ defaultContentLanguage = "ja-jp"           # Default language to use
     # q-bilibili = "http://localhost:1313"
     # r-codeforces = "http://localhost:1313"
     # s-mastodon = "http://localhost:1313"
+
+[markup]
+    [markup.tableOfContents]
+        endLevel = 2
+        ordered = true
+        startLevel = 2

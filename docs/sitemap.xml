@@ -10,140 +10,63 @@
   
   <url>
     <loc>https://k-watanb.github.io/categories/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/docs/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <loc>https://k-watanb.github.io/tags/css/</loc>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/index/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <loc>https://k-watanb.github.io/tags/github/</loc>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/tags/math/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <loc>https://k-watanb.github.io/tags/hugo/</loc>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/math/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/post/math-preview/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <loc>https://k-watanb.github.io/categories/hugo/</loc>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/post/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/preview/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/tag-6/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/post/new-homepage/</loc>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/</loc>
-    <lastmod>2019-03-05T16:01:23+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/categories/development/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/development/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/go/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/golang/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/categories/golang/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/post/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/templates/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/themes/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
