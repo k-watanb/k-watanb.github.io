@@ -59,6 +59,8 @@
 
 <link rel="stylesheet" href="/css/custom.css">
 
+<link rel="stylesheet" href="/css/monokai.css">
+
 
 <meta property="og:title" content="Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る" />
 <meta property="og:description" content="何番煎じかわかりませんが、Windows10 &#43; GitHub Pages &#43; Hugoで簡単無料ホームページを作りましょう。 GitHubアカウントの作成 GitHubア" />
@@ -70,7 +72,7 @@
 <meta itemprop="description" content="何番煎じかわかりませんが、Windows10 &#43; GitHub Pages &#43; Hugoで簡単無料ホームページを作りましょう。 GitHubアカウントの作成 GitHubア">
 <meta itemprop="datePublished" content="2020-12-27T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-12-27T00:00:00+00:00" />
-<meta itemprop="wordCount" content="490">
+<meta itemprop="wordCount" content="515">
 
 
 
@@ -265,13 +267,13 @@
   <h2 class="post-toc-title"></h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#githubアカウントの作成">GitHubアカウントの作成</a></li>
     <li><a href="#github-desktopのインストール">GitHub Desktopのインストール</a></li>
     <li><a href="#hugoのインストール">Hugoのインストール</a></li>
     <li><a href="#hello-hugo">Hello! Hugo!</a></li>
     <li><a href="#github-にプッシュ">GitHub にプッシュ</a></li>
-  </ol>
+  </ul>
 </nav>
   </div>
 </div>
@@ -288,9 +290,22 @@
 <h2 id="hugoのインストール">Hugoのインストール</h2>
 <p>Hugoをインストールしましょう。<a href="https://gohugo.io/getting-started/installing/">公式ページ</a> によると、Windowsの場合は chocolatey/scoopでインストールできるようです。私はchocolateyでインストールしました。</p>
 <p>PowerShellを管理者権限で開き、以下のコマンドを入力してください。ここでは必ず <code>hugo-extended</code> を指定してください。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ choco install hugo-extended
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ choco install hugo-extended
 </code></pre></div><p>正しくインストールできたか確認しましょう。バージョン情報が表示されたらOKです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo version
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">from</span> <span class="nn">engine</span> <span class="kn">import</span> <span class="n">RunForrestRun</span>
+
+<span class="s2">&#34;&#34;&#34;Test code for syntax highlighting!&#34;&#34;&#34;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">var</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">RunForrestRun</span><span class="p">()</span>  <span class="c1"># run along!</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo version
 Hugo Static Site Generator v0.79.1/extended windows/amd64 BuildDate: unknown
 </code></pre></div><h2 id="hello-hugo">Hello! Hugo!</h2>
 <h2 id="github-にプッシュ">GitHub にプッシュ</h2>

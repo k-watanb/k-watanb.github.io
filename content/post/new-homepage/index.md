@@ -31,6 +31,24 @@ $ choco install hugo-extended
 
 正しくインストールできたか確認しましょう。バージョン情報が表示されたらOKです。
 
+```python
+#!/usr/bin/python3
+
+from engine import RunForrestRun
+
+"""Test code for syntax highlighting!"""
+
+class Foo:
+	def __init__(self, var):
+		self.var = var
+		self.run()
+
+	def run(self):
+		RunForrestRun()  # run along!
+```
+
+
+
 ```bash
 $ hugo version
 Hugo Static Site Generator v0.79.1/extended windows/amd64 BuildDate: unknown

@@ -18,6 +18,9 @@ googleAnalytics = ""      # UA-XXXXXXXX-X
 # language support # en / zh-cn / other... translations present in i18n/
 defaultContentLanguage = "ja-jp"           # Default language to use
 
+pygmentscodefences = true
+pygmentsUseClasses = true
+
 [author]
   name = "k-watanb"
 
@@ -67,7 +70,7 @@ defaultContentLanguage = "ja-jp"           # Default language to use
   #   (relative to /static/css and /static/js respectively)
   # if ['custom.css'], load '/static/css/custom.css' file
   # if ['custom.js'], load '/static/js/custom.js' file
-  customCSS = ['custom.css']
+  customCSS = ['custom.css', 'monokai.css']
   customJS = []             
 
   # SNS
@@ -91,9 +94,3 @@ defaultContentLanguage = "ja-jp"           # Default language to use
     # q-bilibili = "http://localhost:1313"
     # r-codeforces = "http://localhost:1313"
     # s-mastodon = "http://localhost:1313"
-
-[markup]
-    [markup.tableOfContents]
-        endLevel = 2
-        ordered = true
-        startLevel = 2
