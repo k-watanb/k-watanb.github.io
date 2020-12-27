@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 技術たまに日常ぶろぐ</title>
+    <link>https://k-watanb.github.io/tags/</link>
+    <description>Recent content in Tags on 技術たまに日常ぶろぐ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 04 Mar 2019 16:01:23 +0800</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>math</title>
+      <link>https://k-watanb.github.io/tags/math/</link>
+      <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>preview</title>
+      <link>https://k-watanb.github.io/tags/preview/</link>
+      <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/preview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tag-6</title>
+      <link>https://k-watanb.github.io/tags/tag-6/</link>
+      <pubDate>Mon, 04 Mar 2019 16:01:23 +0800</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/tag-6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>development</title>
+      <link>https://k-watanb.github.io/tags/development/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://k-watanb.github.io/tags/go/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://k-watanb.github.io/tags/golang/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jekyll</title>
+      <link>https://k-watanb.github.io/tags/jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>templates</title>
+      <link>https://k-watanb.github.io/tags/templates/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/templates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>themes</title>
+      <link>https://k-watanb.github.io/tags/themes/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/themes/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
