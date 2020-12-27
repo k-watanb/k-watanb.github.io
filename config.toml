@@ -4,18 +4,16 @@
 
 baseURL = "https://k-watanb.github.io/"
 title = "技術たまに日常ぶろぐ"
+theme = "jane"
+publishDir = "docs"
 enableRobotsTXT = true
 enableEmoji = true
-theme = "jane"
 
-publishDir = "docs"
-
-hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 3              # Number of articles displayed on the homepage  # 首页每页显示的文章数
-rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
-disqusShortname = ""      # disqus_shortname
+hasCJKLanguage = true     # has chinese/japanese/korean
+paginate = 3              # Number of articles displayed on the homepage
+rssLimit = 20             # Limit Entry Count to Rss file
+# disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
-copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
 # language support # en / zh-cn / other... translations present in i18n/
 defaultContentLanguage = "ja-jp"           # Default language to use
@@ -62,25 +60,23 @@ defaultContentLanguage = "ja-jp"           # Default language to use
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
 
-  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-  # toc = true
-  photoswipe = true         # see https://github.com/dimsemenov/PhotoSwipe
-  contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
-  customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
-  customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
+  # if ['custom.css'], load '/static/css/custom.css' file
+  # if ['custom.js'], load '/static/js/custom.js' file
+  customCSS = ['custom.css']
+  customJS = []             
 
   # SNS
   [params.social]
-    a-email = "mailto:your@email.com"
+    a-email = "mailto:k.watanb.axd@gmail.com"
     # b-stack-overflow = "http://localhost:1313"
     # c-twitter = "http://localhost:1313"
     # d-facebook = "http://localhost:1313"
-    e-linkedin = "http://localhost:1313"
+    e-linkedin = "https://www.linkedin.com/in/kohei-watanabe-1a5014129/"
     # f-google = "http://localhost:1313"
-    g-github = "http://localhost:1313"
+    g-github = "https://github.com/k-watanb/"
     # h-weibo = "http://localhost:1313"
     # i-zhihu = "http://localhost:1313"
     # j-douban = "http://localhost:1313"
