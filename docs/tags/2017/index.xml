@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2017 on 機械学習に人生賭けて28年（28）</title>
+    <link>https://k-watanb.github.io/tags/2017/</link>
+    <description>Recent content in 2017 on 機械学習に人生賭けて28年（28）</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/2017/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2017] Densely Connected Convolutional Networks</title>
+      <link>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</guid>
+      <description>ResNetsにインスパイアされた、新しいCNNアーキテクチャである &lt;strong&gt;DenseNet&lt;/strong&gt; を提案しました。ResNetよりもパラメータ数が約7割になり、CIFAR10で1.5%の改善ができました。</description>
+    </item>
+    
+  </channel>
+</rss>

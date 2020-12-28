@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Architecture on 機械学習に人生賭けて28年（28）</title>
+    <link>https://k-watanb.github.io/tags/network-architecture/</link>
+    <description>Recent content in Network Architecture on 機械学習に人生賭けて28年（28）</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/network-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2017] Densely Connected Convolutional Networks</title>
+      <link>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</guid>
+      <description>ResNetsにインスパイアされた、新しいCNNアーキテクチャである &lt;strong&gt;DenseNet&lt;/strong&gt; を提案しました。ResNetよりもパラメータ数が約7割になり、CIFAR10で1.5%の改善ができました。</description>
+    </item>
+    
+    <item>
+      <title>[2018] Convolutional Neural Networks with Alternately Updated Clique</title>
+      <link>https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/</guid>
+      <description>DNNにおいて情報の流れ（information flow）を改善し、学習の安定性を向上させ、パラメータの効率化を図ったCliqueNetを提唱しました。</description>
+    </item>
+    
+    <item>
+      <title>[2018] Deep Layer Aggregation</title>
+      <link>https://k-watanb.github.io/paper-summary/2018-deep-layer-aggregation/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2018-deep-layer-aggregation/</guid>
+      <description>物体位置認識の精度向上のために、従来より「深い」skip connectionを導入したネットワーク構造 &lt;strong&gt;Deep Layer Aggregation&lt;/strong&gt; を提案しました。ResNet/ResNext/DenseNetよりも、メモリ使用量とパフォーマンスが向上しました。</description>
+    </item>
+    
+  </channel>
+</rss>

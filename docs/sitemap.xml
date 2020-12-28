@@ -1,74 +1,255 @@
-<?xml-stylesheet type="text/xsl" href="https://k-watanb.github.io/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://k-watanb.github.io/about/</loc>
-    <lastmod>2020-12-27T17:38:52+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://k-watanb.github.io/tags/2017/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/2018/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/2019/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/2020/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2018-deep-layer-aggregation/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2019-regularized-learning-for-domain-adaptation-under-label-shifts/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2020-deep-semi-supervised-anomaly-detection/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/anomaly-detection/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/attention/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/autoencoder/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/categories/</loc>
-    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/covariate-shift/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/cvpr/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/domain-adaptation/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/embodies-question-answering/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/end-to-end/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/gan/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/generative-model/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/iclr/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/image-anomaly-detection/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/image-classification/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/latent-regularizer/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/network-architecture/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/novelty-detection/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/one-class/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/out-of-distribution/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/paper-summary/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/regularization/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/reinforcement-learning/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/rnn/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/robot/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/semi-supervised/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/skip-connection/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/transfer-learning/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/u-net/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/css/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/github/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/hugo/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/categories/hugo/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/post/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/</loc>
-    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/post/new-homepage/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/</loc>
-    <lastmod>2020-12-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://k-watanb.github.io/about/</loc>
+    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>

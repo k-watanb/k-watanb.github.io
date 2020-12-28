@@ -1,2 +1,0 @@
-User-agent: *
-Sitemap: https://k-watanb.github.io/sitemap.xml

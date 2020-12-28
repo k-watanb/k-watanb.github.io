@@ -1,0 +1,96 @@
+# This is a simple configuration.
+# If you want to see the full configuration, please check `full-config.toml` .
+# And see https://gohugo.io/getting-started/configuration/ .
+
+baseURL = "https://k-watanb.github.io/"
+title = "技術たまに日常ぶろぐ"
+theme = "jane"
+publishDir = "docs"
+enableRobotsTXT = true
+enableEmoji = true
+
+hasCJKLanguage = true     # has chinese/japanese/korean
+paginate = 3              # Number of articles displayed on the homepage
+rssLimit = 20             # Limit Entry Count to Rss file
+# disqusShortname = ""      # disqus_shortname
+googleAnalytics = ""      # UA-XXXXXXXX-X
+
+# language support # en / zh-cn / other... translations present in i18n/
+defaultContentLanguage = "ja-jp"           # Default language to use
+
+pygmentscodefences = true
+pygmentsUseClasses = true
+
+[author]
+  name = "k-watanb"
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "Archives"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+[[menu.main]]
+  name = "Categories"
+  weight = 40
+  identifier = "categories"
+  url = "/categories/"
+
+[params]
+  toc = true
+  
+  since = "2020"            # Site creation time
+  homeFullContent = false   # if false, show post summaries on home page. Otherwise show full content.
+  rssFullContent = false     # if false, Rss feed instead of the summary
+
+  # site info (optional) 
+  # logoTitle = "技術たまに日常ぶろぐ" 
+  # keywords = ["Hugo", "theme","jane"]
+  # description = ""
+
+  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
+  dateFormatToUse = "2006-01-02"
+
+
+  # Link custom CSS and JS assets
+  #   (relative to /static/css and /static/js respectively)
+  # if ['custom.css'], load '/static/css/custom.css' file
+  # if ['custom.js'], load '/static/js/custom.js' file
+  customCSS = ['custom.css', 'monokai.css']
+  customJS = []             
+
+  # SNS
+  [params.social]
+    a-email = "mailto:k.watanb.axd@gmail.com"
+    # b-stack-overflow = "http://localhost:1313"
+    # c-twitter = "http://localhost:1313"
+    # d-facebook = "http://localhost:1313"
+    e-linkedin = "https://www.linkedin.com/in/kohei-watanabe-1a5014129/"
+    # f-google = "http://localhost:1313"
+    g-github = "https://github.com/k-watanb/"
+    # h-weibo = "http://localhost:1313"
+    # i-zhihu = "http://localhost:1313"
+    # j-douban = "http://localhost:1313"
+    # k-pocket = "http://localhost:1313"
+    # l-tumblr = "http://localhost:1313"
+    # m-instagram = "http://localhost:1313"
+    # n-gitlab = "http://localhost:1313"
+    # o-goodreads = "http://localhost:1313"
+    # p-coding = "http://localhost:1313"
+    # q-bilibili = "http://localhost:1313"
+    # r-codeforces = "http://localhost:1313"
+    # s-mastodon = "http://localhost:1313"

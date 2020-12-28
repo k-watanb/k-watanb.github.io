@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>[2019] OCGAN: One-class novelty detection using gans with constrained latent representations - 機械学習に人生賭けて28年（28）</title>
+    <meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#263238">
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+<link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
+
+
+<link rel="amphtml" type="text/html" href="https://k-watanb.github.io/amp/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/" title="機械学習に人生賭けて28年（28）">
+
+
+
+    
+<meta name="description" content="Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。">
+
+<meta property="og:title" content="[2019] OCGAN: One-class novelty detection using gans with constrained latent representations - 機械学習に人生賭けて28年（28）">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/">
+<meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png">
+<meta property="og:site_name" content="機械学習に人生賭けて28年（28）">
+<meta property="og:description" content="Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="機械学習に人生賭けて28年（28）">
+<meta name="twitter:url" content="https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/">
+<meta name="twitter:title" content="[2019] OCGAN: One-class novelty detection using gans with constrained latent representations - 機械学習に人生賭けて28年（28）">
+<meta name="twitter:description" content="Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。">
+<meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/k-watanb.github.io\/"
+    },
+    "headline": "[2019] OCGAN: One-class novelty detection using gans with constrained latent representations-機械学習に人生賭けて28年（28）",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-12-28T00:00:00JST",
+    "dateModified": "2020-12-28T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "機械学習に人生賭けて28年（28）"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "機械学習に人生賭けて28年（28）",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/k-watanb.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。"
+  }
+</script>
+
+
+
+    <link rel="canonical" href="https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto&#43;Sans&#43;JP:wght@400;500;700&amp;family=Raleway:wght@400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <style>
+
+  
+html {
+  font-size: 18px;
+  background-color: rgba(236, 239, 241, 0.5); }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px; } }
+
+body {
+  color: #333;
+  font-family: 'Roboto Slab','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',メイリオ,Meiryo,sans-serif;
+  font-feature-settings: "palt";
+  font-size: inherit;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1rem;
+  margin: 0; }
+
+hr {
+  border: 0;
+  border-top: 1px dashed #cfd8dc;
+  margin: 1rem 0; }
+
+p {
+  margin: 0;
+  line-height: 1rem; }
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+  transition-duration: .3s; }
+
+ul, ol {
+  margin: 0;
+  padding: 0; }
+
+table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto; }
+
+th, td {
+  font-size: .8rem;
+  padding: .5rem; }
+
+tr {
+  border-bottom: 1px dashed #ddd; }
+
+/* Layouts */
+main, aside {
+  display: block; }
+
+main {
+  padding: 1rem 0 3rem 0; }
+
+.l-container {
+  position: relative;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1rem; }
+  .l-container.thin {
+    max-width: 44rem; }
+
+.l-header {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0;
+  text-align: center; }
+  .l-header .description {
+    margin-top: .5rem;
+    font-size: .8rem; }
+
+.l-footer {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: .6rem;
+  font-weight: 700;
+  padding: 1rem 0; }
+
+.l-sidebar {
+  margin: -1rem 0; }
+
+@media (max-width: 768px) {
+  .l-sidebar {
+    margin-top: 4rem; } }
+
+.mrow {
+  margin: 0 -1rem;
+  overflow: hidden; }
+
+.mcol {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 1rem; }
+
+.c6 {
+  width: 50%; }
+
+.c4 {
+  width: 33.26323833%; }
+
+.c8 {
+  width: 66.66666%; }
+
+@media (max-width: 768px) {
+  .mcol {
+    width: 100%;
+    float: none; } }
+
+.logo a {
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  color: #333; }
+
+.articles {
+  margin: -1rem 0;
+  margin-bottom: 1rem; }
+
+.articles.sm {
+  margin: -.5rem 0;
+  margin-bottom: 0; }
+
+article {
+  border-radius: 4px;
+  overflow: hidden; }
+
+article.li {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  height: 20rem;
+  overflow: hidden;
+  margin: 1rem 0; }
+
+article.li > a {
+  display: block;
+  color: #333; }
+
+article.li .inner {
+  padding: 1rem; }
+
+article.li .thumb {
+  height: 8rem; }
+
+article.li .title {
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin-bottom: .5rem; }
+
+article.li .summary {
+  font-size: .8rem;
+  height: 6rem;
+  overflow: hidden;
+  margin-top: 1rem; }
+
+article.li .summary::after {
+  content: '...'; }
+
+article.lism {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin: .5rem 0; }
+
+article.lism::after {
+  content: '';
+  display: block;
+  clear: both; }
+
+article.lism > a {
+  display: block;
+  color: #333; }
+
+article.lism .inner {
+  display: table-cell;
+  vertical-align: middle;
+  height: 5rem;
+  padding: 0 .75rem; }
+
+article.lism .thumb {
+  width: 5rem;
+  height: 5rem;
+  float: left; }
+
+article.lism .title {
+  font-weight: 700;
+  font-size: .8rem;
+  margin-bottom: .25rem; }
+
+article.sn {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem; }
+
+article.sn .thumb {
+  height: 20rem; }
+
+@media (max-width: 768px) {
+  article.sn .thumb {
+    height: 10rem; } }
+
+article.sn > .article-header,
+article.sn > .article-body,
+article.sn .article-footer {
+  padding: 2rem; }
+
+article.sn > .article-body {
+  padding: 0 2rem; }
+
+@media (max-width: 768px) {
+  article.sn > .article-header,
+  article.sn > .article-body,
+  article.sn .article-footer {
+    padding: 1rem; }
+  article.sn > .article-body {
+    padding: 0 1rem; } }
+
+article.sn > .article-header .title {
+  font-size: 1.8rem;
+  line-height: 2rem;
+  margin-bottom: .5rem; }
+
+@media (max-width: 768px) {
+  article.sn > .article-header .title {
+    font-size: 1.4rem;
+    line-height: 1.5rem; } }
+
+article.sn > .article-header .facts {
+  margin-bottom: 1rem; }
+
+article.sn > .article-body {
+  margin-bottom: 1.5rem; }
+
+article.sn > .article-body h2 {
+  border-bottom: .25rem solid #333;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  margin: 1.5rem 0;
+  padding: .5rem 0; }
+
+article.sn > .article-body h3 {
+  border-left: .5rem solid #333;
+  line-height: 1.5rem;
+  margin: 1.5rem 0;
+  padding: .125rem .5rem; }
+
+article.sn > .article-body ul,
+article.sn > .article-body ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem; }
+
+article.sn > .article-body li {
+  padding-bottom: .5rem;
+  line-height: 1.5rem; }
+
+article.sn > .article-body li:last-child {
+  padding-bottom: 0; }
+
+article.sn > .article-body p {
+  margin: 1rem 0;
+  line-height: 1.5rem; }
+
+article.sn > .article-body strong,
+article.sn > .article-body em {
+  font-style: normal;
+  font-weight: 700; }
+
+article.sn > .article-body strong {
+  box-shadow: 0 -.5rem 0 0 #ffc107 inset; }
+
+article.sn > .article-body em {
+  color: #8bc34a; }
+
+article.sn > .article-body code,
+article.sn > .article-body pre {
+  font-family: Menlo, Consolas, monospace;
+  font-size: .7rem; }
+
+article.sn > .article-body pre {
+  background-color: #333;
+  color: #fff;
+  line-height: 1rem;
+  margin: 1.5rem -2rem;
+  overflow: auto; }
+
+@media (max-width: 768px) {
+  article.sn > .article-body pre {
+    margin: 1.5rem -1rem; } }
+
+article.sn > .article-body pre > code {
+  display: block;
+  padding: 1rem 2rem; }
+
+@media (max-width: 768px) {
+  article.sn > .article-body pre > code {
+    padding: 1rem; } }
+
+article.sn > .article-body p code {
+  background-color: #eceff1;
+  color: #333;
+  border-radius: 4px;
+  margin: 0 .25rem;
+  padding: .375rem;
+  white-space: nowrap; }
+
+article.sn > .article-body blockquote {
+  position: relative;
+  border-left: .25rem solid #333;
+  font-size: .8rem;
+  padding: .125rem 1rem;
+  margin: 1.5rem 0; }
+
+@media (max-width: 768px) {
+  article.sn > .article-body blockquote {
+    font-size: 1rem; } }
+
+article.sn > .article-body blockquote p {
+  margin: .5rem 0;
+  line-height: 1rem; }
+
+article.sn > .article-body figure {
+  margin: 1.5rem 0; }
+
+article.sn > .article-body img,
+article.sn > .article-body figure img,
+article.sn > .article-body figure amp-img {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  max-width: 100%; }
+
+article.sn > .article-body figcaption {
+  color: #cfd8dc;
+  font-size: .8rem;
+  font-weight: 700;
+  margin-top: .5rem; }
+
+.facts li {
+  display: inline;
+  font-size: .8rem;
+  margin-right: 1rem; }
+
+.facts i {
+  color: #cfd8dc;
+  margin-right: .5em; }
+
+.facts.sm li {
+  font-size: .7rem; }
+
+section.sidebar {
+  margin: 2rem 0; }
+  section.sidebar > header {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 1.5rem 0; }
+
+section.footer {
+  margin: 1rem 0; }
+  section.footer > header {
+    font-size: .8rem;
+    margin: .5rem 0; }
+    section.footer > header::before {
+      content: "- "; }
+    section.footer > header a {
+      font-weight: 700;
+      color: #333;
+      text-decoration: underline; }
+
+.terms {
+  margin: -.25rem; }
+  .terms li {
+    display: inline-block; }
+  .terms a {
+    display: block;
+    float: left;
+    background-color: #333;
+    border-radius: 4px;
+    color: #fff;
+    font-size: .7rem;
+    margin: .25rem;
+    padding: 0 .75rem;
+    line-height: 1.75rem; }
+
+.paging {
+  text-align: center;
+  padding: 1rem 0; }
+  .paging a {
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    color: #333;
+    padding: 0 1rem;
+    line-height: 3rem; }
+
+.page-title {
+  text-align: center;
+  margin: 1rem 0; }
+  .page-title::after {
+    content: '';
+    display: block;
+    border-bottom: .25rem solid #333;
+    width: 3rem;
+    margin: 1.5rem auto; }
+  .page-title > .title {
+    font-size: 1.2rem;
+    line-height: 1.5rem; }
+
+.share {
+  padding: 0; }
+  .share a {
+    display: inline-block;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    color: #333;
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: center;
+    padding: 0 .5rem; }
+
+.adj article.lism {
+  margin-bottom: 1rem; }
+
+.adj header {
+  font-weight: 700;
+  font-size: .8rem; }
+
+.toc {
+  padding: 0 2rem;
+  margin: 1rem 0; }
+  .toc nav > ul {
+    background-color: #eceff1;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    word-break: break-all;
+    list-style: none; }
+  .toc ul {
+    padding: 0; }
+    .toc ul ul {
+      padding-left: 1rem; }
+      .toc ul ul > li {
+        font-weight: 700;
+        margin: .5rem 0;
+        list-style-type: decimal; }
+      .toc ul ul ul {
+        padding-left: 1rem; }
+        .toc ul ul ul > li {
+          list-style-type: disc;
+          font-weight: 500; }
+  .toc li {
+    color: #90a4ae; }
+
+@media (max-width: 768px) {
+  .toc {
+    padding: 0 1rem; } }
+
+
+
+  
+    .author {
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center; }
+  .author .author-thumb {
+    margin: 0 auto 1rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background-color: #eceff1;
+    background-size: cover;
+    background-position: center; }
+  .author .author-name {
+    margin-bottom: .5rem;
+    font-weight: 700; }
+  .author .author-facts {
+    margin-bottom: 1rem; }
+    .author .author-facts li {
+      display: inline; }
+      .author .author-facts li a {
+        display: inline-block;
+        background-color: #eceff1;
+        width: 1.75rem;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        text-align: center;
+        color: #333;
+        font-size: .8rem;
+        border-radius: 2px; }
+        .author .author-facts li a:hover {
+          color: #fff;
+          background-color: #333; }
+  .author .author-description {
+    text-align: left;
+    font-size: .8rem; }
+    .author .author-description p {
+      margin: .5rem 0; }
+
+  
+
+
+.thumb {
+  background-image: url("https://k-watanb.github.io/images/default.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+  
+.thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+}
+  
+
+  
+.thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+}
+  
+
+  
+.thumb-e96a4abb7c5be237e2b68218276d70b2 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+}
+  
+
+  
+.thumb-888ace4333ea5d33626b5651ab4a5668 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+}
+  
+
+  
+.thumb-21e7dd78c5b80a7310284266edb2c89b {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+}
+  
+
+  
+.thumb-92bdee60ff963f675b658e9bda4fb314 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+}
+  
+
+  
+.thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+}
+  
+
+  
+.thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+  background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+}
+  
+
+  
+
+  
+
+
+ body { font-family: Roboto, 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif; } 
+ .h-logo { font-family: Raleway, 'Noto Sans JP'; } 
+
+    </style>
+
+  </head>
+  <body>
+    <header class="l-header">
+        <h1 class="logo">
+          <a href="https://k-watanb.github.io/">機械学習に人生賭けて28年（28）</a>
+        </h1>
+        
+        <span class="description">
+          ML関係の論文紹介やその他技術
+        </span>
+        
+    </header>
+
+    <main>
+      <div class="l-container">
+        <div class="mrow">
+        <div class="mcol c8">
+          
+<article class="sn">
+
+  <div class="thumb thumb-21e7dd78c5b80a7310284266edb2c89b"></div>
+
+  <header class="article-header">
+    <h1 class="title">[2019] OCGAN: One-class novelty detection using gans with constrained latent representations</h1>
+
+    <ul class="facts">
+      <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T00:00:00JST">2020-12-28</time></li>
+      
+      
+      <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+      
+      
+      
+    </ul>
+
+    <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&title=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&text=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&t=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&title=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+  </header>
+
+  
+
+  <div class="article-body"><p><a href="https://arxiv.org/abs/1903.08550">arxiv</a>, <a href="https://github.com/PramuPerera/OCGAN">github</a></p>
+<h2 id="どんなもの">どんなもの？</h2>
+<p>Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。提案手法（下段）の方が、普通のAutoencoder（中段）より上手に再構成できており、入力画像と再構成画像との差分（MSE）を大きく取れています。</p>
+<p><img src="image-49-1024x285.png" alt="img"></p>
+<h2 id="先行研究と比べてどこがすごい">先行研究と比べてどこがすごい？</h2>
+<p>train dataから得られた潜在空間を全探索するというネットワーク構造 <strong>Latent Discriminator</strong>, <strong>Visual Discriminator</strong>, <strong>Informative-negative Mining</strong> を提唱しました。</p>
+<h2 id="技術や手法のキモはどこにある">技術や手法のキモはどこにある？</h2>
+<h3 id="overview">Overview</h3>
+<p><img src="image-50.png" alt="img"></p>
+<p>OCGANは4つのサブネットワークから構成されます。</p>
+<ul>
+<li>Denoising Autoencoder</li>
+<li>Latent Discriminator</li>
+<li>Visual Discriminator</li>
+<li>Informative-negative Mining</li>
+</ul>
+<h3 id="denoising-autoencoder">Denoising Autoencoder</h3>
+<p><img src="image-51.png" alt="img"></p>
+<p>いつものやつです。入力画像を再構成できるように潜在空間への写像を学習します。</p>
+<p>本研究では、Denoising Autoencoder（DAE）を採用しています（なぜ？）。入力画像に対し、$\mathcal{N}(0, 0.2)$ のホワイトノイズを加えた画像を再構成します。また、出力の飽和を防ぐために（潜在空間が有界になるように）、最終層はtanhを使用しています。</p>
+<p>lossは以下の式で表され、いたって普通のMSEです。$n$ はノイズを表します。
+$$
+l_{MSE} = ||x-De(En(x+n))||^2_2
+$$</p>
+<h3 id="latent-discriminator">Latent Discriminator</h3>
+<p><img src="image-52.png" alt="img"></p>
+<p><strong>Latent Discriminator</strong> では、潜在空間上の全サンプルから、所定クラス画像を生成できるような潜在空間の構築を目指します。そのために、「train dataのlatent space」と「fake input」とを見分けるDiscriminatorを導入しました。</p>
+<p>fake inputには、d次元の一様分布 $U(-1, 1)^d$ からランダムサンプリングしました。一様分布というのがミソであり、隅々まで均等に分布するような潜在表現のマッピングをエンコーダが学習するようになることが期待できます。</p>
+<p>lossは以下の式です。こちらもGAN系でおなじみのlossですね。</p>
+<p>$$
+l_{latent} = -(\mathbb{E}_{s \sim \mathbb{U}(-1, 1)}[\log D_l(s)] + \mathbb{E}_{x \sim p_x}[1-D_l(En(x+n))])
+$$</p>
+<h3 id="visual-discriminator">Visual Discriminator</h3>
+<p><img src="image-53.png" alt="img"></p>
+<p>Latent DiscriminatorがEncoderの敵対的学習ならば、Visual DiscriminatorはDecoderの敵対的学習です。</p>
+<p>与えたクラス以外のサンプルを生成しないように、「train data」と「Generatorによってランダム生成された画像」とを区別するためのVisual Discriminatorを導入しました。</p>
+<p>$$
+l_{visual} = -(\mathbb{E}_{s \sim \mathbb{U}(-1, 1)}[\log D_v(De(s))] + \mathbb{E}_{x \sim p_l}[1-D_v(x)])
+$$</p>
+<h3 id="informative-negative-mining">Informative-negative Mining</h3>
+<p><img src="image-55.png" alt="img"></p>
+<p>Informative-negative sampleとは、与えたクラスの画像を再構成できていないサンプルと定義します（9を再構成するはずが、0のような画像になってしまったり）。これらInformative-negative sampleを効率よく検出する識別機 Classifier を導入した。生成後の画像がどのクラスに当てはまるのかを学習する。</p>
+<p><img src="image-54.png" alt="img"></p>
+<h3 id="疑似コード">疑似コード</h3>
+<p><img src="image-56.png" alt="img"></p>
+<h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
+<h3 id="実験">実験①</h3>
+<ul>
+<li>train data：正常クラスの80%</li>
+<li>test data：正常クラスの20% ＋ 異常クラスの各50%</li>
+</ul>
+<p>提案手法がいずれも最も高いAUCを達成。</p>
+<p><img src="image-57.png" alt="img"></p>
+<h3 id="実験-1">実験②</h3>
+<ul>
+<li>train data：正常クラスのtrain data全部</li>
+<li>test data：全クラスの test data</li>
+</ul>
+<p><img src="image-58-1024x343.png" alt="img"></p>
+<p><img src="image-59-1024x341.png" alt="img"></p>
+<h2 id="議論はあるか">議論はあるか？</h2>
+<p>アイディアは非常に面白いですし、手が凝っていますが、その割に結果がビミョーですね。</p>
+<p>MNISTのような補正済みのシンプルなデータセットには有効ですが、CIFAR10のような多種多様なデータ、ないしは現実の不良品データにはまだまだ発展途上だと思います（実データは論文中で試してはいませんが）。<del>普通にVAEに劣っているときもありますし…。</del></p>
+<p>ラベル付与済みデータが限られている環境では有効に働くのでは？という疑問。提案しているClassifierの構造上、どのようなラベルが来るのかわからない環境では不適切かと思います。</p>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1703.05921">Thomas Schlegl, et al., &ldquo;Unsupervised Anomaly Detection with Generative Adversarial Networks to Guide Marker Discovery, &quot; IPMI 2017</a>
+<ul>
+<li>AnoGAN。同じGANを用いた異常検知手法。</li>
+</ul>
+</li>
+<li><a href="/paper-summary/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks/">[2020] Anomaly Detection by Latent Regularized Dual Adversarial Networks</a>
+<ul>
+<li>分布外検知におけるGANベースの異常検知手法です。本手法の上位互換。</li>
+</ul>
+</li>
+</ul>
+</div>
+
+  <footer class="article-footer">
+
+    <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&title=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&text=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&t=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f&title=%5b2019%5d%20OCGAN%3a%20One-class%20novelty%20detection%20using%20gans%20with%20constrained%20latent%20representations" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+    
+    
+    
+    <section class="footer">
+      <header>
+        <a href="https://k-watanb.github.io/categories/">CATEGORIES</a>
+      </header>
+      <ul class="terms">
+        
+        <li><a href="https://k-watanb.github.io/categories/paper-summary/">Paper Summary</a></li>
+        
+      </ul>
+    </section>
+    
+    
+    
+    <section class="footer">
+      <header>
+        <a href="https://k-watanb.github.io/tags/">TAGS</a>
+      </header>
+      <ul class="terms">
+        
+        <li><a href="https://k-watanb.github.io/tags/2019/">2019</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/cvpr/">CVPR</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/anomaly-detection/">Anomaly Detection</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/autoencoder/">Autoencoder</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/gan/">GAN</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/image-anomaly-detection/">Image Anomaly Detection</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/novelty-detection/">Novelty Detection</a></li>
+        
+        <li><a href="https://k-watanb.github.io/tags/one-class/">One-Class</a></li>
+        
+      </ul>
+    </section>
+    
+    
+  </footer>
+
+</article>
+
+
+<div class="adj mrow">
+  <div class="mcol c6">
+    <header>Next Article</header>
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/">
+    <div class="thumb thumb-888ace4333ea5d33626b5651ab4a5668"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Embodied Question Answering</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+  <div class="mcol c6">
+    <header>Previous Article</header>
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2019-regularized-learning-for-domain-adaptation-under-label-shifts/">
+    <div class="thumb thumb-92bdee60ff963f675b658e9bda4fb314"></div>
+
+    <div class="inner">
+      <div class="title">[2019] Regularized Learning for Domain Adaptation under Label Shifts</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "XYW" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+        <div class="mcol c4">
+          <aside class="l-sidebar">
+            
+<section class="sidebar">
+  <header>AUTHOR</header>
+  <div class="author">
+    
+    <div class="author-thumb" style="background-image: url(https://k-watanb.github.io/images/author.jpg);"></div>
+    
+    <div class="author-name">k-watanb</div>
+    <ul class="author-facts">
+      
+      
+      <li><a href="https://github.com/k-watanb" rel="noopener nofollow" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+    </ul>
+    <div class="author-description"><p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p></div>
+  </div>
+</section>
+
+
+            <section class="sidebar">
+  <header>LATESTS</header>
+  <div class="articles sm">
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/">
+    <div class="thumb thumb-d6350ae9d3002a2b1c441067a8c46a23"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Densely Connected Convolutional Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/">
+    <div class="thumb thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Convolutional Neural Networks with Alternately Updated Clique</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-deep-layer-aggregation/">
+    <div class="thumb thumb-e96a4abb7c5be237e2b68218276d70b2"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Deep Layer Aggregation</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/">
+    <div class="thumb thumb-888ace4333ea5d33626b5651ab4a5668"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Embodied Question Answering</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/">
+    <div class="thumb thumb-21e7dd78c5b80a7310284266edb2c89b"></div>
+
+    <div class="inner">
+      <div class="title">[2019] OCGAN: One-class novelty detection using gans with constrained latent representations</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2019-regularized-learning-for-domain-adaptation-under-label-shifts/">
+    <div class="thumb thumb-92bdee60ff963f675b658e9bda4fb314"></div>
+
+    <div class="inner">
+      <div class="title">[2019] Regularized Learning for Domain Adaptation under Label Shifts</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks/">
+    <div class="thumb thumb-aa6fc3d59b20b400a6c29bf60042bfc1"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Anomaly Detection by Latent Regularized Dual Adversarial Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-deep-semi-supervised-anomaly-detection/">
+    <div class="thumb thumb-c7810337cbf82f29fd9bc45c958bdb0e"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Deep Semi-Supervised Anomaly Detection</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/post/new-homepage/">
+    <div class="thumb thumb-30093a65331d739f56d61088821bb42f"></div>
+
+    <div class="inner">
+      <div class="title">Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="27007-12-27T00:00:00JST">2020-12-27</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>POST</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/about/">
+    <div class="thumb thumb-6083a88ee3411b0d17ce02d738f69d47"></div>
+
+    <div class="inner">
+      <div class="title">About</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="25007-12-25T00:00:00JST">2020-12-25</time></li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</section>
+
+            
+<section class="sidebar">
+  <header>CATEGORIES</header>
+  <ul class="terms">
+    
+    <li><a href="https://k-watanb.github.io/categories/paper-summary">paper-summary <span class="count">(8)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/categories/hugo">hugo <span class="count">(1)</span></a></li>
+    
+  </ul>
+</section>
+
+
+
+            
+<section class="sidebar">
+  <header>TAGS</header>
+  <ul class="terms">
+    
+    <li><a href="https://k-watanb.github.io/tags/cvpr">cvpr <span class="count">(5)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2018">2018 <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/anomaly-detection">anomaly-detection <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/image-anomaly-detection">image-anomaly-detection <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/image-classification">image-classification <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/network-architecture">network-architecture <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2019">2019 <span class="count">(2)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2020">2020 <span class="count">(2)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/autoencoder">autoencoder <span class="count">(2)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/gan">gan <span class="count">(2)</span></a></li>
+    
+  </ul>
+</section>
+
+
+
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="l-container">
+        <p><span class="h-logo">&copy; 機械学習に人生賭けて28年（28）</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_robust">Robust</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </body>
+</html>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reinforcement Learning on 機械学習に人生賭けて28年（28）</title>
+    <link>https://k-watanb.github.io/tags/reinforcement-learning/</link>
+    <description>Recent content in Reinforcement Learning on 機械学習に人生賭けて28年（28）</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2018] Embodied Question Answering</title>
+      <link>https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/</guid>
+      <description>ロボットが環境内を動き回りながら探索し、質問に対する答えの文を生成する &lt;strong&gt;Embodied QA&lt;/strong&gt; というタスクを提唱しました。強化学習ベースのend-to-endな手法でEQAロボットを学習させました。</description>
+    </item>
+    
+  </channel>
+</rss>

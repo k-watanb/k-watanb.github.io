@@ -1,11 +1,281 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 技術たまに日常ぶろぐ</title>
+    <title>Tags on 機械学習に人生賭けて28年（28）</title>
     <link>https://k-watanb.github.io/tags/</link>
-    <description>Recent content in Tags on 技術たまに日常ぶろぐ</description>
+    <description>Recent content in Tags on 機械学習に人生賭けて28年（28）</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 27 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2017</title>
+      <link>https://k-watanb.github.io/tags/2017/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2018</title>
+      <link>https://k-watanb.github.io/tags/2018/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2019</title>
+      <link>https://k-watanb.github.io/tags/2019/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2020</title>
+      <link>https://k-watanb.github.io/tags/2020/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Anomaly Detection</title>
+      <link>https://k-watanb.github.io/tags/anomaly-detection/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/anomaly-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Attention</title>
+      <link>https://k-watanb.github.io/tags/attention/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/attention/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Autoencoder</title>
+      <link>https://k-watanb.github.io/tags/autoencoder/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/autoencoder/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Covariate Shift</title>
+      <link>https://k-watanb.github.io/tags/covariate-shift/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/covariate-shift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CVPR</title>
+      <link>https://k-watanb.github.io/tags/cvpr/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/cvpr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Domain Adaptation</title>
+      <link>https://k-watanb.github.io/tags/domain-adaptation/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/domain-adaptation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embodies Question Answering</title>
+      <link>https://k-watanb.github.io/tags/embodies-question-answering/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/embodies-question-answering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>End-to-End</title>
+      <link>https://k-watanb.github.io/tags/end-to-end/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/end-to-end/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GAN</title>
+      <link>https://k-watanb.github.io/tags/gan/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/gan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Generative Model</title>
+      <link>https://k-watanb.github.io/tags/generative-model/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/generative-model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ICLR</title>
+      <link>https://k-watanb.github.io/tags/iclr/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/iclr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Anomaly Detection</title>
+      <link>https://k-watanb.github.io/tags/image-anomaly-detection/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-anomaly-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Classification</title>
+      <link>https://k-watanb.github.io/tags/image-classification/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Latent Regularizer</title>
+      <link>https://k-watanb.github.io/tags/latent-regularizer/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/latent-regularizer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Architecture</title>
+      <link>https://k-watanb.github.io/tags/network-architecture/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/network-architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Novelty Detection</title>
+      <link>https://k-watanb.github.io/tags/novelty-detection/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/novelty-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>One-Class</title>
+      <link>https://k-watanb.github.io/tags/one-class/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/one-class/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Out of Distribution</title>
+      <link>https://k-watanb.github.io/tags/out-of-distribution/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/out-of-distribution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularization</title>
+      <link>https://k-watanb.github.io/tags/regularization/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/regularization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>https://k-watanb.github.io/tags/reinforcement-learning/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RNN</title>
+      <link>https://k-watanb.github.io/tags/rnn/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/rnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robot</title>
+      <link>https://k-watanb.github.io/tags/robot/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/robot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Semi-Supervised</title>
+      <link>https://k-watanb.github.io/tags/semi-supervised/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/semi-supervised/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skip Connection</title>
+      <link>https://k-watanb.github.io/tags/skip-connection/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/skip-connection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transfer Learning</title>
+      <link>https://k-watanb.github.io/tags/transfer-learning/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/transfer-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>U-Net</title>
+      <link>https://k-watanb.github.io/tags/u-net/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/u-net/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>css</title>
       <link>https://k-watanb.github.io/tags/css/</link>

@@ -1,0 +1,24 @@
+<meta name="description" content="{{ .Description | default .Summary }}">
+
+<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ .Description | default .Summary }}">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ .Site.Title }}">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ .Description | default .Summary }}">
+<meta name="twitter:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>

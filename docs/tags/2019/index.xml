@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2019 on 機械学習に人生賭けて28年（28）</title>
+    <link>https://k-watanb.github.io/tags/2019/</link>
+    <description>Recent content in 2019 on 機械学習に人生賭けて28年（28）</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/2019/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2019] OCGAN: One-class novelty detection using gans with constrained latent representations</title>
+      <link>https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/</guid>
+      <description>Denoising Autoencoder＋GANでワンクラス分類を行うために、排他的な潜在表現を学習するような制約を提案しました。</description>
+    </item>
+    
+    <item>
+      <title>[2019] Regularized Learning for Domain Adaptation under Label Shifts</title>
+      <link>https://k-watanb.github.io/paper-summary/2019-regularized-learning-for-domain-adaptation-under-label-shifts/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2019-regularized-learning-for-domain-adaptation-under-label-shifts/</guid>
+      <description>ソースドメインで分類器を学習するとき、どのクラスを優先すれば、ターゲットドメインで最高のパフォーマンスを出せるかを調査しました。ソースドメインPとターゲットドメインQとで、クラスごとのサンプル割合が異なる条件を想定しています。</description>
+    </item>
+    
+  </channel>
+</rss>
