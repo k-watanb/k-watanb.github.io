@@ -1,0 +1,25 @@
+
+/* ヘッダー回り */
+h1.logo {
+    /*font-size: 3em !important;*/
+}
+
+.l-header {
+    /*height: 73px;*/
+}
+
+span.description{
+    /*font-size: 1em !important;*/
+}
+
+body, p, html{
+    /*color: #353535;*/
+    /*line-height: 1.7em;*/
+}
+
+
+ul, ol{
+    /*margin-block-start: 0.2em !important;*/
+    /*margin-block-end: 0.2em !important;*/
+    /*padding-bottom: 0.1rem !important;*/
+}

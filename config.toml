@@ -15,10 +15,10 @@ dateformat = "2006-01-02" # Optional
 
 # Fonts settings.
 # googlefonts = "https://fonts.googleapis.com/css?family=Lobster|Lato:400,700" # Optional, Include google fonts.
-googlefonts = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+# googlefonts = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
 # fontfamily = "Lato,YuGothic,'Hiragino Kaku Gothic Pro',Meiryo,sans-serif" # Optional, Override body font family.
-fontfamily = "Roboto, 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif"
-logofontfamily = "Raleway, 'Noto Sans JP'" # Optional, Override logo font.
+# fontfamily = "Roboto, 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif"
+# logofontfamily = "Raleway, 'Noto Sans JP'" # Optional, Override logo font.
 
 enableHighlight = true # highlight.js option
 

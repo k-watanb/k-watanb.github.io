@@ -17,6 +17,7 @@ summary: "分布外検知におけるGANベースの異常検知手法です。A
 
 -   CIFAR-10において、AUC0.9以上を達成
     -   他手法の追随を許さない圧倒的精度
+    -   hoge
 -   2つのAEを用いることによる、**Dual Autoencoder Lossの**概念を提唱（後述）
 
 ## 技術や手法のキモはどこにある？
@@ -101,6 +102,11 @@ MNISTとCIFAR10について、１クラスを正常、残りの9クラスを異�
 ## 次に読むべき論文はあるか？
 
 -   [I. Golan, R. El-Yaniv, “Deep Anomaly Detection Using Geometric Transformations”, NIPS 2018](https://arxiv.org/abs/1805.10917)
-    -   本研究が出る前の最も精度が良いであろう研究
--   [[2020] Deep Semi-Supervised Anomaly Detection](/paper-summary/2020-deep-semi-supervised-anomaly-detection/)
-    -   小数のtraining data＋多数のunlabeled data＋少数の分布外データを利用して、見たことのない分布外データに対しての汎化能力を高める手法 **DeepSAD** を提案しました。
+
+本研究が出る前の最も精度が良いであろう研究
+
+[[2020] Deep Semi-Supervised Anomaly Detection](/paper-summary/2020-deep-semi-supervised-anomaly-detection/)
+
+{{< blogcard url="https://k-watanb.github.io/paper-summary/2020-deep-semi-supervised-anomaly-detection/">}}
+
+小数のtraining data＋多数のunlabeled data＋少数の分布外データを利用して、見たことのない分布外データに対しての汎化能力を高める手法 **DeepSAD** を提案しました。
