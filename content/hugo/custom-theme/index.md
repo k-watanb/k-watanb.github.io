@@ -1,5 +1,5 @@
 ---
-title: （執筆中）Hugoのテーマ「Robust」を今風にカスタム
+title: Hugoのテーマ「Robust」を今風にカスタム
 date: 2020-12-31
 categories: ["Hugo"]
 tags: ["Hugo", "css", "HTML"]
@@ -11,7 +11,7 @@ summary: "本ブログでは Hugo の [Robust](https://github.com/dim0627/hugo_t
 
 ## フォントをユニバーサルデザインに
 
-和文フォントには **"BIZ UDGothic"**, 欧文フォントの本文に **"Roboto"**, 欧文フォントのヘッダには **"Raleway"** を採用しました。
+和文フォントには **"BIZ UDGothic"**, **"BIZ UDPGothic"**, 欧文フォントの本文に **"Roboto"**, 欧文フォントのヘッダには **"Raleway"** を採用しました。
 
 現在の Windows 10 にはユニバーサルデザインのフォントである "BIZ UDGothic" が標準搭載されています。視認性・可読性に優れており、大変すばらしいフォントです。
 
@@ -26,11 +26,12 @@ summary: "本ブログでは Hugo の [Robust](https://github.com/dim0627/hugo_t
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 
 body, p, html, ul, ol, ul > li, ol > li {
-  font-family: "Roboto", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif !important;
+  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", sans-serif !important;
+  font-weight: 400;
 }
 
 h1, h2, h3, h4, h5 ,h6 {
-  font-family: "Raleway", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  font-family: "Raleway", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif;
   font-weight: 700;
 }
 
@@ -208,29 +209,29 @@ show_thumb_post = false
 
 ![image-20201231172414333](image-20201231172414333.png)
 
-固定ヘッダとページナビゲーションを追加しました。```/hugo_theme_robust/layouts/_default/baseof.html``` のヘッダー部を以下のように修正しました。
+固定ヘッダとページナビゲーションを追加しました。```/hugo_theme_robust/layouts/_default/baseof.html``` のヘッダ部を以下のように修正しました。
 
 ```html
-    <header class="l-header">
-      <div class="title-logo-wrapper">
-          
-        <!-- ロゴ画像 -->
-        <h1 class="logo">
-          <a href="{{ .Site.BaseURL }}"><img src="/images/logo.png"></a>
-        </h1>
+<header class="l-header">
+  <div class="title-logo-wrapper">
+  
+  <!-- ロゴ画像 -->
+  <h1 class="logo">
+    <a href="{{ .Site.BaseURL }}"><img src="/images/logo.png"></a>
+  </h1>
 
-        <!-- ナビゲーション -->
-        <nav class="topnav">
-          <ul class="topnav_menu">
+  <!-- ナビゲーション -->
+  <nav class="topnav">
+    <ul class="topnav_menu">
 
-            <li class="topnav_menu_item"><a href="/">Home</a></li>
-            <li class="topnav_menu_item"><a href="/categories">Categories</a></li>
-            <li class="topnav_menu_item"><a href="/tags">Tags</a></li>
-            <li class="topnav_menu_item"><a href="/about">About</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+  <li class="topnav_menu_item"><a href="/">Home</a></li>
+  <li class="topnav_menu_item"><a href="/categories">Categories</a></li>
+  <li class="topnav_menu_item"><a href="/tags">Tags</a></li>
+  <li class="topnav_menu_item"><a href="/about">About</a></li>
+    </ul>
+  </nav>
+    </div>
+</header>
 ```
 
 css は以下のようにしました。
@@ -300,20 +301,38 @@ css は以下のようにしました。
 
 ```
 
+## Google Analytics で Global Site Tag の設定に変更
 
+[HugoのテーマにGlobal Site Tag (gtag.js) の設定を追加した](https://m1yam0t0.com/posts/2020/03/setting-google-analytics/) を参考に、Google Analytics の設定を導入しました。Robust のバニラでは旧バージョンの Google Analytics （"UA-" で始まる番号）しか対応していなかったため、新バージョン（"G-" で始まる番号）に対応させました。
 
+```/hugo_theme_robust/layouts/_default/baseof.html``` 内の ```<head>~</head>``` の "google-analytics うんたら" という部分を修正しました。
 
+```html
+<!-- Google Analysis (gtag.js版) -->
+{{ if not .Site.IsServer }}
+{{ if and .Site.GoogleAnalytics (ne (getenv "HUGO_ENV") "DEV") }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-## トップページ記事にホバーアクションを追加
+    gtag('config', '{{ .Site.GoogleAnalytics }}');
+  </script>
+{{ end }}
+{{ end }}
+```
 
+## その他
 
+細かいところもいくつかカスタマイズしています。
 
-## カテゴリとタグのデザインを柔らかく
+- トップページ記事にホバーアクションを追加
+- カテゴリとタグのデザインの背景を白に変更/ホバーアクションを追加
+- ページナビゲーションにホバーアクションを追加
+- Copyright の文章を変更
+- CSS を直接 HTML に書かないように変更
 
+## さいごに
 
-
-## ページナビゲーションにホバーアクションを追加
-
-
-
-## Copyright を変更
+CSS/HTML/デザインの専門家ではないので、未熟な箇所があるかと思いますが、ご容赦ください 笑

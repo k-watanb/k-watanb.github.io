@@ -2,8 +2,9 @@ baseurl = "https://k-watanb.github.io/"
 title = "ML戦記"
 theme = "hugo_theme_robust"
 
-googleAnalytics = "G-MY2L6T281E" # Optional
+googleAnalytics = "G-Q8JBWP2QFH" # Optional
 disqusShortname = "XYW"
+defaultContentLanguage = "ja-jp"
 
 hasCJKLanguage = true
 publishDir = "docs"

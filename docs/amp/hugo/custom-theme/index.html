@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <title>（執筆中）Hugoのテーマ「Robust」を今風にカスタム - ML戦記</title>
+    <title>Hugoのテーマ「Robust」を今風にカスタム - ML戦記</title>
     <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
@@ -22,7 +22,7 @@
     
 <meta name="description" content="本ブログでは Hugo の Robust というテーマを拝借しています。バニラ状態でも十分素晴らしいデザインですが、個人的にカスタマイズしたところをメモしておきます。">
 
-<meta property="og:title" content="（執筆中）Hugoのテーマ「Robust」を今風にカスタム - ML戦記">
+<meta property="og:title" content="Hugoのテーマ「Robust」を今風にカスタム - ML戦記">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://k-watanb.github.io/amp/hugo/custom-theme/">
 <meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/custom-theme.png">
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="ML戦記">
 <meta name="twitter:url" content="https://k-watanb.github.io/amp/hugo/custom-theme/">
-<meta name="twitter:title" content="（執筆中）Hugoのテーマ「Robust」を今風にカスタム - ML戦記">
+<meta name="twitter:title" content="Hugoのテーマ「Robust」を今風にカスタム - ML戦記">
 <meta name="twitter:description" content="本ブログでは Hugo の Robust というテーマを拝借しています。バニラ状態でも十分素晴らしいデザインですが、個人的にカスタマイズしたところをメモしておきます。">
 <meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/custom-theme.png">
 
@@ -51,8 +51,6 @@
 
 
 <link href="https://k-watanb.github.io/css/syntax.css" rel="stylesheet">
-
-
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -61,7 +59,7 @@
       "@type": "WebPage",
       "@id":"https:\/\/k-watanb.github.io\/"
     },
-    "headline": "（執筆中）Hugoのテーマ「Robust」を今風にカスタム-ML戦記",
+    "headline": "Hugoのテーマ「Robust」を今風にカスタム-ML戦記",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/custom-theme.png",
@@ -91,6 +89,9 @@
 
 
     
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <meta name="amp-google-client-id-api" content="googleanalytics">
+    
 
     
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
@@ -101,21 +102,22 @@
 
   
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
-body, p, html, ul, ol, ul > li, ol > li {
-  font-family: "Roboto", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif !important;
+html, body, p, ul, ol, ul > li, ol > li {
+  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", sans-serif !important;
   font-weight: 400;
   color: #454545; }
 
 html {
-  font-size: 1.1rem;
+  font-size: 16px;
   background-color: rgba(236, 239, 241, 0.5); }
 
 body {
+  font-size: inherit;
   line-height: 1rem;
   margin: 0 !important; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  font-family: "Raleway", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1rem;
@@ -178,17 +180,19 @@ main {
 
 .title-logo-wrapper {
   position: relative;
-  max-width: 30rem;
+  width: 30rem;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   margin: 0 auto; }
   .title-logo-wrapper .logo a img {
-    max-width: 30rem; }
+    width: 30rem;
+    max-width: 100%; }
   .title-logo-wrapper .topnav .topnav_menu_item {
-    display: inline;
-    margin: 0 0.3rem; }
+    display: inline-block;
+    margin: 0rem 0.3rem 2rem 0rem; }
   .title-logo-wrapper .topnav a {
-    font-family: "Raleway", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+    font-family: "Raleway", "Hiragino Kaku Gothic Pro", sans-serif;
     color: #fff;
     padding: 0.7rem 1.3rem;
     border-radius: 2rem;
@@ -391,7 +395,7 @@ article.sn > .article-body {
 
 article.sn > .article-header .title {
   font-size: 1.8rem;
-  line-height: 2rem;
+  line-height: 2.3rem;
   margin-bottom: .5rem; }
 
 @media (max-width: 66rem) {
@@ -783,6 +787,11 @@ section.footer {
 
   <body>
     
+    <amp-analytics type="googleanalytics" id="analytics1">
+      <script type="application/json"> { "vars": { "account": "G-Q8JBWP2QFH"}, "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } } }
+      </script>
+    </amp-analytics>
+    
 
     <header class="l-header">
         <h1 class="logo">
@@ -799,7 +808,7 @@ section.footer {
     
 
     <header class="article-header">
-        <h1 class="title">（執筆中）Hugoのテーマ「Robust」を今風にカスタム</h1>
+        <h1 class="title">Hugoのテーマ「Robust」を今風にカスタム</h1>
 
         <ul class="facts">
 
@@ -835,10 +844,10 @@ section.footer {
 
         
         <aside class="share">
-  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
-  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&text=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&t=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&text=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&t=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
   <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
 </aside>
 
@@ -849,7 +858,7 @@ section.footer {
 
     <div class="article-body"><p>本ブログでは Hugo の <a href="https://github.com/dim0627/hugo_theme_robust">Robust</a> というテーマを拝借しています。バニラ状態でも十分素晴らしいデザインですが、個人的にカスタマイズしたところをメモしておきます。</p>
 <h2 id="フォントをユニバーサルデザインに">フォントをユニバーサルデザインに</h2>
-<p>和文フォントには <strong>&ldquo;BIZ UDGothic&rdquo;</strong>, 欧文フォントの本文に <strong>&ldquo;Roboto&rdquo;</strong>, 欧文フォントのヘッダには <strong>&ldquo;Raleway&rdquo;</strong> を採用しました。</p>
+<p>和文フォントには <strong>&ldquo;BIZ UDGothic&rdquo;</strong>, <strong>&ldquo;BIZ UDPGothic&rdquo;</strong>, 欧文フォントの本文に <strong>&ldquo;Roboto&rdquo;</strong>, 欧文フォントのヘッダには <strong>&ldquo;Raleway&rdquo;</strong> を採用しました。</p>
 <p>現在の Windows 10 にはユニバーサルデザインのフォントである &ldquo;BIZ UDGothic&rdquo; が標準搭載されています。視認性・可読性に優れており、大変すばらしいフォントです。</p>
 <p>ただ欧文には少し癖があるので、欧文フォント本文は Google Font より &ldquo;Roboto&rdquo;、ヘッダ部にはより映える  &ldquo;Raleway&rdquo; を採用しました。</p>
 <p><img src="image-20201231164111018.png" alt="">
@@ -858,11 +867,12 @@ section.footer {
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="k">@import</span> <span class="sx">url(&#34;https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap&#34;)</span><span class="p">;</span>
 
 <span class="nt">body</span><span class="o">,</span> <span class="nt">p</span><span class="o">,</span> <span class="nt">html</span><span class="o">,</span> <span class="nt">ul</span><span class="o">,</span> <span class="nt">ol</span><span class="o">,</span> <span class="nt">ul</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="o">,</span> <span class="nt">ol</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
-  <span class="nt">font-family</span><span class="nd">:</span> <span class="s2">&#34;Roboto&#34;</span><span class="o">,</span> <span class="s2">&#34;BIZ UDGothic&#34;</span><span class="o">,</span> <span class="s2">&#34;Hiragino Kaku Gothic Pro&#34;</span><span class="o">,</span> <span class="s2">&#34;Meiryo&#34;</span><span class="o">,</span> <span class="nt">sans-serif</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="nt">font-family</span><span class="nd">:</span> <span class="s2">&#34;Roboto&#34;</span><span class="o">,</span> <span class="s2">&#34;Hiragino Kaku Gothic ProN&#34;</span><span class="o">,</span> <span class="s2">&#34;BIZ UDPGothic&#34;</span><span class="o">,</span> <span class="nt">sans-serif</span> <span class="o">!</span><span class="nt">important</span><span class="p">;</span>
+  <span class="nt">font-weight</span><span class="nd">:</span> <span class="nt">400</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span> <span class="o">,</span><span class="nt">h6</span> <span class="p">{</span>
-  <span class="nt">font-family</span><span class="nd">:</span> <span class="s2">&#34;Raleway&#34;</span><span class="o">,</span> <span class="s2">&#34;BIZ UDGothic&#34;</span><span class="o">,</span> <span class="s2">&#34;Hiragino Kaku Gothic Pro&#34;</span><span class="o">,</span> <span class="s2">&#34;Meiryo&#34;</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="p">;</span>
+  <span class="nt">font-family</span><span class="nd">:</span> <span class="s2">&#34;Raleway&#34;</span><span class="o">,</span> <span class="s2">&#34;Hiragino Kaku Gothic ProN&#34;</span><span class="o">,</span> <span class="s2">&#34;BIZ UDGothic&#34;</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="p">;</span>
   <span class="nt">font-weight</span><span class="nd">:</span> <span class="nt">700</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -1006,27 +1016,27 @@ section.footer {
 <span class="nx">show_thumb_post</span> <span class="p">=</span> <span class="kc">false</span>
 </code></pre></div><h2 id="固定ヘッダナビゲーションを追加">固定ヘッダ/ナビゲーションを追加</h2>
 <p><img src="image-20201231172414333.png" alt="image-20201231172414333"></p>
-<p>固定ヘッダとページナビゲーションを追加しました。<code>/hugo_theme_robust/layouts/_default/baseof.html</code> のヘッダー部を以下のように修正しました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">    <span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;l-header&#34;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;title-logo-wrapper&#34;</span><span class="p">&gt;</span>
-          
-        <span class="c">&lt;!-- ロゴ画像 --&gt;</span>
-        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;logo&#34;</span><span class="p">&gt;</span>
-          <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Site.BaseURL }}&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/logo.png&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<p>固定ヘッダとページナビゲーションを追加しました。<code>/hugo_theme_robust/layouts/_default/baseof.html</code> のヘッダ部を以下のように修正しました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;l-header&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;title-logo-wrapper&#34;</span><span class="p">&gt;</span>
+  
+  <span class="c">&lt;!-- ロゴ画像 --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;logo&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Site.BaseURL }}&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/logo.png&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
-        <span class="c">&lt;!-- ナビゲーション --&gt;</span>
-        <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav&#34;</span><span class="p">&gt;</span>
-          <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu&#34;</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- ナビゲーション --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu&#34;</span><span class="p">&gt;</span>
 
-            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/categories&#34;</span><span class="p">&gt;</span>Categories<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/tags&#34;</span><span class="p">&gt;</span>Tags<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/about&#34;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-          <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
-      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/categories&#34;</span><span class="p">&gt;</span>Categories<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/tags&#34;</span><span class="p">&gt;</span>Tags<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;topnav_menu_item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/about&#34;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
 </code></pre></div><p>css は以下のようにしました。</p>
 <div class="highlight"><pre class="chroma"><code class="language-scss" data-lang="scss"><span class="c1">// ヘッダー
 </span><span class="c1"></span><span class="nc">.l-header</span><span class="p">{</span>
@@ -1090,10 +1100,33 @@ section.footer {
   <span class="p">}</span>
 <span class="p">}</span>
 
-</code></pre></div><h2 id="トップページ記事にホバーアクションを追加">トップページ記事にホバーアクションを追加</h2>
-<h2 id="カテゴリとタグのデザインを柔らかく">カテゴリとタグのデザインを柔らかく</h2>
-<h2 id="ページナビゲーションにホバーアクションを追加">ページナビゲーションにホバーアクションを追加</h2>
-<h2 id="copyright-を変更">Copyright を変更</h2>
+</code></pre></div><h2 id="google-analytics-で-global-site-tag-の設定に変更">Google Analytics で Global Site Tag の設定に変更</h2>
+<p><a href="https://m1yam0t0.com/posts/2020/03/setting-google-analytics/">HugoのテーマにGlobal Site Tag (gtag.js) の設定を追加した</a> を参考に、Google Analytics の設定を導入しました。Robust のバニラでは旧バージョンの Google Analytics （&ldquo;UA-&rdquo; で始まる番号）しか対応していなかったため、新バージョン（&ldquo;G-&rdquo; で始まる番号）に対応させました。</p>
+<p><code>/hugo_theme_robust/layouts/_default/baseof.html</code> 内の <code>&lt;head&gt;~&lt;/head&gt;</code> の &ldquo;google-analytics うんたら&rdquo; という部分を修正しました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- Google Analysis (gtag.js版) --&gt;</span>
+{{ if not .Site.IsServer }}
+{{ if and .Site.GoogleAnalytics (ne (getenv &#34;HUGO_ENV&#34;) &#34;DEV&#34;) }}
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">||</span> <span class="p">[];</span>
+    <span class="kd">function</span> <span class="nx">gtag</span><span class="p">(){</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">);}</span>
+    <span class="nx">gtag</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+
+    <span class="nx">gtag</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;{{ .Site.GoogleAnalytics }}&#39;</span><span class="p">);</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+{{ end }}
+{{ end }}
+</code></pre></div><h2 id="その他">その他</h2>
+<p>細かいところもいくつかカスタマイズしています。</p>
+<ul>
+<li>トップページ記事にホバーアクションを追加</li>
+<li>カテゴリとタグのデザインの背景を白に変更/ホバーアクションを追加</li>
+<li>ページナビゲーションにホバーアクションを追加</li>
+<li>Copyright の文章を変更</li>
+<li>CSS を直接 HTML に書かないように変更</li>
+</ul>
+<h2 id="さいごに">さいごに</h2>
+<p>CSS/HTML/デザインの専門家ではないので、未熟な箇所があるかと思いますが、ご容赦ください 笑</p>
 </div>
 
     <footer class="article-footer">
@@ -1117,10 +1150,10 @@ section.footer {
         </ul>
 
         <aside class="share">
-  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
-  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&text=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&t=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=%ef%bc%88%e5%9f%b7%e7%ad%86%e4%b8%ad%ef%bc%89Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&text=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&t=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f&title=Hugo%e3%81%ae%e3%83%86%e3%83%bc%e3%83%9e%e3%80%8cRobust%e3%80%8d%e3%82%92%e4%bb%8a%e9%a2%a8%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
   <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fhugo%2fcustom-theme%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
 </aside>
 
