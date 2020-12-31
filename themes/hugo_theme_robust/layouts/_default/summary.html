@@ -1,56 +1,79 @@
+<!-- ブログポスト -->
 <article class="sn">
 
-  <div class="thumb thumb-{{ .File.UniqueID }}"></div>
-
-  <header class="article-header">
-    <h1 class="title">{{ .Title }}</h1>
-
-    <ul class="facts">
-      <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
-      {{ if ne .Date .Lastmod }}
-      <li><i class="fas fa-sync" aria-hidden="true"></i><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
-      {{ end }}
-      {{ with .Section }}
-      <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . | upper }}</a></li>
-      {{ end }}
-      {{ if eq (getenv "HUGO_ENV") "DEV" }}
-      <li>{{ .WordCount }} Words</li>
-      {{ end }}
-      {{ if .Draft }}
-      <li style="color: #2196f3;">DRAFT</li>
-      {{ end }}
-    </ul>
-
-    {{ partial "share.html" . }}
-  </header>
-
-  {{ if .Params.toc }}
-  <div class="toc">
-    {{ .TableOfContents }}
-  </div>
-  {{ end }}
-
-  <div class="article-body">{{ .Content }}</div>
-
-  <footer class="article-footer">
-
-    {{ partial "share.html" . }}
-
-    {{ $params := .Params }}
-    {{ range $key, $value := $.Site.Taxonomies }}
-    {{ if isset $params $key }}
-    <section class="footer">
-      <header>
-        <a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/">{{ $key | upper }}</a>
-      </header>
-      <ul class="terms">
-        {{ range (index $params $key) }}
-        <li><a href="{{ $.Site.BaseURL }}{{ $key | urlize }}/{{ . | urlize }}/">{{ . }}</a></li>
-        {{ end }}
-      </ul>
-    </section>
+    {{ if .Site.Params.Posts.show_thumb_post | default false}}
+        <div class="thumb thumb-{{ .File.UniqueID }}"></div>
     {{ end }}
+
+    <header class="article-header">
+        <h1 class="title">{{ .Title }}</h1>
+
+        <ul class="facts">
+
+            <!-- 投稿日 -->
+                <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="{{ .Date.Format "2006-01-02T15:04:05JST" }}">{{ .Date.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+
+            <!-- 更新日 -->
+            {{ if ne .Date .Lastmod }}
+                <li><i class="fas fa-sync" aria-hidden="true"></i><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
+            {{ end }}
+
+            <!-- セクション（ディレクトリ） -->
+            {{ with .Section }}
+                <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . | upper }}</a></li>
+            {{ end }}
+
+            {{ if eq (getenv "HUGO_ENV") "DEV" }}
+                <li>{{ .WordCount }} Words</li>
+            {{ end }}
+
+            {{ if .Draft }}
+                <li style="color: #2196f3;">DRAFT</li>
+            {{ end }}
+            <!-- <br> -->
+        </ul>
+
+        <!-- タグ -->
+        <ul class="facts_tags">
+
+            {{ range .Params.tags }}
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a> </li>
+            {{ end }}
+
+        </ul>
+
+        <!-- SNSシェアボタン -->
+        {{ partial "share.html" . }}
+
+    </header>
+
+    {{ if .Site.Params.Posts.toc | default false }}
+    <div class="toc">
+        {{ .TableOfContents }}
+    </div>
     {{ end }}
-  </footer>
+
+    <div class="article-body">{{ .Content }}</div>
+
+    <footer class="article-footer">
+
+        <ul class="facts_tags">
+
+            <!-- カテゴリ -->
+            {{ with .Section }}
+            <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . | upper }}</a></li>
+            {{ end }}
+
+            <!-- タグ -->
+            {{ range .Params.tags }}
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a> </li>
+            {{ end }}
+
+        </ul>
+
+        {{ partial "share.html" . }}
+
+
+    </footer>
 
 </article>

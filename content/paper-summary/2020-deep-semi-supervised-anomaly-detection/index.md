@@ -13,14 +13,15 @@ summary: "小数のtraining data＋多数のunlabeled data＋少数の分布外�
 
 ## どんなもの？
 
-小数のtraining data＋多数のunlabeled data＋少数の分布外データを利用して、見たことのない分布外データに対しての汎化能力を高める手法**DeepSAD**を提案しました。
+小数のtraining data＋多数のunlabeled data＋少数の分布外データを利用して、見たことのない分布外データに対しての汎化能力を高める手法 **DeepSAD** を提案しました。
 
 ## 先行研究と比べてどこがすごい？
+
 **分布外検知（OOD; out-of-distribution）** とは、訓練分布と異なるデータを検知するタスクです。本研究と先行研究との相違点を以下に示します。
 
 |             | クラスラベルを利用                                           | クラスラベルを非利用                                         |
 | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OODを利用   | ・Confidence-calibrated ・ODIN ・Prioe Networks ・Outlier exposure | **Deep SAD（提案手法）**                                     |
+| OODを利用   | ・Confidence-calibrated ・ODIN ・Prioe Networks ・Outlier exposure |**Deep SAD（提案手法）**                                    |
 | OODを非利用 | ・Learning Confidence ・OOD detection by MCD                 | ・DAGMM ・Geometric ・Deep SVDD ・OCGAN ・Multiple-Hypotheses ・Liklihood Ratios |
 
 分布外のサンプルはそれぞれ異なる分布、つまりエントロピーが高くなるという正則化を利用して学習しました。

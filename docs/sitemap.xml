@@ -3,6 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://k-watanb.github.io/categories/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/setup/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/ubuntu/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/vim/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/windows/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/wsl/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/wsl/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/wsl/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/wsl/vim-monokai/</loc>
+    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://k-watanb.github.io/tags/2017/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
@@ -74,11 +129,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/tags/autoencoder/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/categories/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -198,22 +248,12 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/tags/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/transfer-learning/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/u-net/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -238,12 +278,12 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/post/</loc>
+    <loc>https://k-watanb.github.io/hugo/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/post/new-homepage/</loc>
+    <loc>https://k-watanb.github.io/hugo/new-homepage/</loc>
     <lastmod>2020-12-27T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,56 +1,94 @@
+$gray: #454545;
+$blue: #2196f3;
+$skyblue: #e8f4ff;
+$white: #FFF;
+$article-border-color: #ddd;
+
 .author {
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  padding: 1rem;
-  border-radius: 4px;
-  text-align: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
 
-  .author-thumb {
-    margin: 0 auto 1rem;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    background-color: #eceff1;
-    background-size: cover;
-    background-position: center;
-  }
+    outline: 1px solid;
+    outline-color: #CCCCCC;
+    outline-offset: 0px;
 
-  .author-name {
-    margin-bottom: .5rem;
-    font-weight: 700;
-  }
+    .author-thumb {
+        margin: 0 auto 1rem;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        /*background-color: #eceff1;*/
+        background-size: cover;
+        background-position: center;
+    }
 
-  .author-facts {
-    margin-bottom: 1rem;
+    .author-name {
+        font-family: "Raleway";
+        margin-bottom: .5rem;
+        font-weight: 700;
+            a {
+                position: relative;
+                display: inline-block;
+                transition: .3s;
 
-    li {
-      display: inline;
+                // リンク中央下から線を出す
+                &:after{
+                    position: absolute;
+                    bottom: -0.2rem;
+                    left: 50%;
+                    content: '';
+                    width: 0;
+                    height: 1px;
+                    background-color: $blue;
+                    transition: .3s;
+                    -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);
+                }
 
-      a {
-        display: inline-block;
-        background-color: #eceff1;
-        width: 1.75rem;
-        height: 1.75rem;
-        line-height: 1.75rem;
-        text-align: center;
-        color: #333;
-        font-size: .8rem;
-        border-radius: 2px;
+                &:hover::after{
+                    width: 100%;      
+                }
 
-        &:hover {
-          color: #fff;
-          background-color: #333;
+            }
+    }
+
+    /* github等のアイコン */
+    .author-facts {
+
+        padding-inline-start: 0; // 書かないと40px左からマージンあり
+
+        li {
+            display: inline;
+
+            a {
+                display: inline-block;
+                background-color: #eceff1;
+                width: 1.75rem;
+                height: 1.75rem;
+                line-height: 1.75rem;
+                text-align: center;
+                color: #333;
+                font-size: .9rem;
+                border-radius: 5px;
+
+                &:hover {
+                    color: #fff;
+                    background-color: #333;
+                }
+            }
         }
-      }
     }
-  }
 
-  .author-description {
-    text-align: left;
-    font-size: .8rem;
+    .author-description {
+        text-align: left;
+        font-size: .8rem;
+        /*line-height: .7rem;*/
 
-    p {
-      margin: .5rem 0;
+        p {
+            margin: .5rem 0;
+            line-height: 1.2rem;
+        }
     }
-  }
 }

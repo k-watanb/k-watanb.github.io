@@ -1,34 +1,31 @@
 baseurl = "https://k-watanb.github.io/"
-title = "機械学習に人生賭けて28年（28）"
+title = "ML戦記"
 theme = "hugo_theme_robust"
 
 # googleAnalytics = "UA-XXXXXXXX-XX" # Optional
 disqusShortname = "XYW"
 
-hasCJKLanguage = true # 追記
-publishDir = "docs" # 追記
+hasCJKLanguage = true
+publishDir = "docs"
 
+pygmentsCodefences = true
+pygmentsUseClasses = true
 
 [params]
-description = "ML関係の論文紹介やその他技術"
-dateformat = "2006-01-02" # Optional
+    dateformat = "2006-01-02"
+    copyrightYear = "2020-2021"
 
-# Fonts settings.
-# googlefonts = "https://fonts.googleapis.com/css?family=Lobster|Lato:400,700" # Optional, Include google fonts.
-# googlefonts = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
-# fontfamily = "Lato,YuGothic,'Hiragino Kaku Gothic Pro',Meiryo,sans-serif" # Optional, Override body font family.
-# fontfamily = "Roboto, 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif"
-# logofontfamily = "Raleway, 'Noto Sans JP'" # Optional, Override logo font.
-
-enableHighlight = true # highlight.js option
+[params.posts]
+    show_thumb_post = false
+    toc = false
 
 [params.author]
-thumbnail = "images/author.jpg"
-name = "k-watanb"
-description = "<p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p>"
-# facebook = ""
-# twitter = ""
-github = "https://github.com/k-watanb"
+    thumbnail = "images/author.jpg"
+    name = "<a href ='/about/'>k-watanb</a>"
+    description = "<p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p>"
+    # facebook = ""
+    # twitter = "https://www.google.co.jp/"
+    github = "https://github.com/k-watanb"
 
 [outputs]
-page = [ "HTML", "AMP" ] # if you want AMP enable.
+    page = [ "HTML", "AMP" ] # if you want AMP enable.

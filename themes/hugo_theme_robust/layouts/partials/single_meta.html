@@ -15,10 +15,18 @@
 <meta name="twitter:description" content="{{ .Description | default .Summary }}">
 <meta name="twitter:image" content="{{ absURL (.Params.thumbnail | default "images/default.png") }}">
 
-
+<!-- 数式 -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$', '$$']], 
+            processEscapes: true,
+        },
     });
 </script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- コードハイライト -->
+<link href="{{ "css/syntax.css" | absURL }}" rel="stylesheet">
+

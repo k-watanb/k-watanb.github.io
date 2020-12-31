@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on 機械学習に人生賭けて28年（28）</title>
+    <title>Hugo on ML戦記</title>
     <link>https://k-watanb.github.io/categories/hugo/</link>
-    <description>Recent content in Hugo on 機械学習に人生賭けて28年（28）</description>
+    <description>Recent content in Hugo on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 27 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る</title>
-      <link>https://k-watanb.github.io/post/new-homepage/</link>
+      <link>https://k-watanb.github.io/hugo/new-homepage/</link>
       <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://k-watanb.github.io/post/new-homepage/</guid>
+      <guid>https://k-watanb.github.io/hugo/new-homepage/</guid>
       <description>何番煎じかわかりませんが、Windows10 + GitHub Pages + Hugoで簡単無料ホームページを作りましょう。 GitHubアカウントの作成 GitHubア</description>
     </item>
     

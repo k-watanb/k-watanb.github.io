@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>GitHub - 機械学習に人生賭けて28年（28）</title>
-    <meta name="pinterest" content="nopin">
+    <head>
+        <meta charset="utf-8">
+        <title>GitHub - ML戦記</title>
+        <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
 <link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
@@ -14,49 +14,37 @@
 <link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
 
 
-<link rel="alternate" type="application/rss+xml" href="https://k-watanb.github.io/tags/github/index.xml" title="機械学習に人生賭けて28年（28）">
+<link rel="alternate" type="application/rss+xml" href="https://k-watanb.github.io/tags/github/index.xml" title="ML戦記">
 
 
 
-    
+        
 
-    <link rel="canonical" href="https://k-watanb.github.io/tags/github/">
+        <link rel="canonical" href="https://k-watanb.github.io/tags/github/">
 
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
-    
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
-    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
-    <style>
 
-  
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
-body, p, html, ul, ol {
-  font-family: "Roboto", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif !important;
-  font-weight: 400; }
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+        <style>
+
+        
+            
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
+body, p, html, ul, ol, ul > li, ol > li {
+  font-family: "Roboto", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif !important;
+  font-weight: 400;
+  color: #454545; }
 
 html {
-  font-size: 18px;
+  font-size: 1.1rem;
   background-color: rgba(236, 239, 241, 0.5); }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 15px; } }
-
 body {
-  color: #454545;
-  /*font-family: 'Roboto Slab','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',メイリオ,Meiryo,sans-serif;*/
-  font-feature-settings: "palt";
-  font-size: inherit;
   line-height: 1rem;
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*padding: 0.4em, 0.4em;*/ }
+  margin: 0 !important; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", "Noto Sans JP", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  font-family: "Raleway", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1rem;
@@ -73,12 +61,7 @@ p {
 
 a {
   color: #2196f3;
-  text-decoration: none;
-  transition-duration: .3s; }
-
-ul, ol {
-  margin: 0;
-  padding: 0; }
+  text-decoration: none; }
 
 table {
   border-collapse: collapse;
@@ -101,33 +84,57 @@ main {
 
 .l-container {
   position: relative;
-  max-width: 68rem;
+  max-width: 66rem;
   margin: 0 auto;
   padding: 0 1rem; }
   .l-container.thin {
     max-width: 44rem; }
 
 .l-header {
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  padding: 1rem 0;
-  text-align: center; }
-  .l-header .description {
-    /*margin-top: .5rem;*/
-    /*margin-bottom: .5rem;*/
-    font-size: 1.2rem; }
+  padding-top: 2rem;
+  height: 20rem;
+  background: url("/images/tobias-keller-73F4pKoUkM0-unsplash.jpg") no-repeat center;
+  background-size: cover;
+  position: relative; }
+  .l-header:before {
+    content: ' ';
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.title-logo-wrapper {
+  position: relative;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; }
+  .title-logo-wrapper .logo a img {
+    max-width: 30rem; }
+  .title-logo-wrapper .topnav .topnav_menu_item {
+    display: inline;
+    margin: 0 0.3rem; }
+  .title-logo-wrapper .topnav a {
+    font-family: "Raleway", "BIZ UDGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+    color: #fff;
+    padding: 0.7rem 1.3rem;
+    border-radius: 2rem;
+    transition: all .3s; }
+    .title-logo-wrapper .topnav a:hover {
+      background-color: #2196f3; }
 
 .l-footer {
+  font-size: .9rem;
   background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  font-size: .6rem;
-  font-weight: 700;
-  padding: 1rem 0; }
+  text-align: center;
+  padding: 2rem 0; }
 
 .l-sidebar {
   margin: -1rem 0; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   .l-sidebar {
     margin-top: 4rem; } }
 
@@ -149,17 +156,10 @@ main {
 .c8 {
   width: 66.66666%; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   .mcol {
     width: 100%;
     float: none; } }
-
-.logo a {
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  font-weight: 700;
-  color: #454545;
-  /*margin: 1em;*/ }
 
 .articles {
   margin: -1rem 0;
@@ -173,14 +173,30 @@ article {
   border-radius: 4px;
   overflow: hidden; }
 
-/* 【重要】トップの記事矩形 */
+/********************************************************************************************************************/
+/* トップページ 左側記事矩形 */
+/********************************************************************************************************************/
 article.li {
-  background-color: #FFFFFF;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  /*height: 20rem;*/
-  height: 22rem;
-  overflow: hidden;
-  margin: 1rem 0; }
+  background-color: #fff;
+  height: 26rem;
+  margin: 1rem 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+  article.li:hover {
+    border-color: #FFF;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: transparent;
+    outline-offset: 12px;
+    cursor: pointer;
+    background-color: #e8f4ff; }
+    article.li:hover .thumb {
+      opacity: 0.7; }
 
 /* 記事矩形内のリンク */
 article.li > a {
@@ -191,40 +207,49 @@ article.li .inner {
   padding: 1rem; }
 
 article.li .thumb {
-  /*margin: 1rem 1rem 0rem 1rem;*/
-  /*height: 8rem;*/
-  height: 8rem; }
+  height: 10rem; }
 
+/* 記事タイトル */
 article.li .title {
-  /*color: #454545;*/
   font-size: 1.1rem;
   line-height: 1.5rem;
-  margin-bottom: .5rem; }
+  margin-bottom: .5rem;
+  transition: 0.1s; }
+  article.li .title:hover {
+    color: #2196f3; }
 
 article.li .summary {
   font-size: .9rem;
-  /*height: 8rem;*/
+  height: 8rem;
   overflow: hidden;
-  margin-top: 1rem;
-  line-height: 1.3rem; }
+  line-height: 1.3rem;
+  margin-top: 0.8rem; }
 
-/*article.li .summary::after {
-  content: '...';
-}
-*/
+/********************************************************************************************************************/
+/* トップページ 右側矩形 */
+/********************************************************************************************************************/
 article.lism {
   background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  margin: .5rem 0; }
+  margin: .5rem 0;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px; }
+  article.lism:after {
+    content: '';
+    display: block;
+    clear: both; }
+  article.lism:hover {
+    transition: 0.3s; }
+    article.lism:hover .thumb {
+      opacity: 0.7; }
 
-article.lism::after {
-  content: '';
-  display: block;
-  clear: both; }
-
+/* Latestリンク全体 */
 article.lism > a {
   display: block;
-  color: #454545; }
+  color: #454545;
+  transition: 0.1s; }
+  article.lism > a:hover {
+    background-color: #e8f4ff; }
 
 article.lism .inner {
   display: table-cell;
@@ -240,8 +265,14 @@ article.lism .thumb {
 article.lism .title {
   font-weight: 700;
   font-size: .8rem;
-  margin-bottom: .25rem; }
+  margin-bottom: .25rem;
+  transition: 0.2s; }
+  article.lism .title:hover {
+    color: #2196f3; }
 
+/********************************************************************************************************************/
+/* post記事内   */
+/********************************************************************************************************************/
 article.sn {
   background-color: #fff;
   box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -250,19 +281,36 @@ article.sn {
 article.sn .thumb {
   height: 20rem; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   article.sn .thumb {
     height: 10rem; } }
 
 article.sn > .article-header,
-article.sn > .article-body,
 article.sn .article-footer {
   padding: 2rem; }
+
+article.sn .article-body a, article.sn .terms a {
+  position: relative;
+  display: inline-block;
+  transition: .3s; }
+  article.sn .article-body a:after, article.sn .terms a:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: '';
+    width: 0;
+    height: 1px;
+    background-color: #2196f3;
+    transition: .3s;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  article.sn .article-body a:hover::after, article.sn .terms a:hover::after {
+    width: 100%; }
 
 article.sn > .article-body {
   padding: 0 2rem; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   article.sn > .article-header,
   article.sn > .article-body,
   article.sn .article-footer {
@@ -275,13 +323,13 @@ article.sn > .article-header .title {
   line-height: 2rem;
   margin-bottom: .5rem; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   article.sn > .article-header .title {
     font-size: 1.4rem;
     line-height: 1.5rem; } }
 
 article.sn > .article-header .facts {
-  margin-bottom: 1rem; }
+  line-height: 1.5rem; }
 
 article.sn > .article-body {
   margin-bottom: 1.5rem; }
@@ -291,7 +339,7 @@ article.sn > .article-body h2 {
   line-height: 1.5rem;
   margin: 1.5rem 0;
   padding: 1.0rem 1.2rem;
-  border-left: .5rem solid #454545;
+  border-left: 0.5rem solid #454545;
   background: #f4f4f4; }
 
 article.sn > .article-body h3 {
@@ -308,16 +356,16 @@ article.sn > .article-body h4 {
   /*margin: 0.5rem 0;*/
   padding: .5rem .1rem;
   font-weight: 700; }
+  article.sn > .article-body h4:before {
+    content: '■ '; }
 
-article.sn > .article-body h4:before {
-  content: '■ '; }
+article.sn > .article-body ul, .article-body ol {
+  line-height: 1.8em;
+  padding: 0.25em 0.5em 0.25em 2em; }
 
-article.sn > .article-body ul {
-  padding: 0.5em 1em 0.1em 2.3em;
-  position: relative; }
-
-article.sn > .article-body ul li {
-  padding: 0.4em 0; }
+article.sn > .article-body ul li, .article-body ol li {
+  line-height: 1.4em;
+  padding: 0.2em 0; }
 
 article.sn > .article-body p {
   margin: 1rem 0;
@@ -325,11 +373,10 @@ article.sn > .article-body p {
 
 article.sn > .article-body strong,
 article.sn > .article-body em {
-  font-style: normal;
   font-weight: 700; }
 
 article.sn > .article-body strong {
-  box-shadow: 0 -.5rem 0 0 #ffc107 inset; }
+  background: linear-gradient(transparent 60%, #ff99ff 60%); }
 
 article.sn > .article-body em {
   color: #8bc34a; }
@@ -337,43 +384,53 @@ article.sn > .article-body em {
 article.sn > .article-body code,
 article.sn > .article-body pre {
   font-family: Menlo, Consolas, monospace;
-  font-size: .7rem; }
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  padding: 0.5rem; }
 
 article.sn > .article-body pre {
-  background-color: #454545;
-  color: #fff;
   line-height: 1rem;
-  margin: 1.5rem -2rem;
+  /*margin: 1.5rem -2rem;*/
+  margin: 1.5rem 0rem;
   overflow: auto; }
 
-@media (max-width: 768px) {
+article.sn > .article-body .MJXc-display {
+  margin: 1.5rem 0 !important;
+  padding: 0.2rem !important;
+  overflow-x: auto !important; }
+
+/********************************************************************************************************************/
+/*    */
+/********************************************************************************************************************/
+@media (max-width: 66rem) {
   article.sn > .article-body pre {
     margin: 1.5rem -1rem; } }
 
 article.sn > .article-body pre > code {
   display: block;
-  padding: 1rem 2rem; }
+  padding: 0.5rem 1rem; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   article.sn > .article-body pre > code {
     padding: 1rem; } }
 
+/* インラインコード */
 article.sn > .article-body p code {
   background-color: #eceff1;
   color: #454545;
   border-radius: 4px;
-  margin: 0 .25rem;
+  margin: 0 .5rem;
   padding: .375rem;
   white-space: nowrap; }
 
 article.sn > .article-body blockquote {
   position: relative;
-  border-left: .25rem solid #454545;
+  border-left: 0.25rem solid #454545;
   font-size: .8rem;
   padding: .125rem 1rem;
   margin: 1.5rem 0; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   article.sn > .article-body blockquote {
     font-size: 1rem; } }
 
@@ -387,8 +444,9 @@ article.sn > .article-body figure {
 article.sn > .article-body img,
 article.sn > .article-body figure img,
 article.sn > .article-body figure amp-img {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  max-width: 100%; }
+  display: table-cell;
+  max-width: 100%;
+  margin: 0 auto; }
 
 article.sn > .article-body figcaption {
   color: #cfd8dc;
@@ -396,18 +454,52 @@ article.sn > .article-body figcaption {
   font-weight: 700;
   margin-top: .5rem; }
 
-.facts li {
-  display: inline;
-  font-size: .8rem;
+/********************************************************************************************************************/
+/*    */
+/********************************************************************************************************************/
+/* 記事矩形内の日付・フォルダ */
+ul.facts, ul.facts_tags {
+  margin: 0;
+  padding: 0;
+  /*text-align: left;*/
+  /* アイコン */ }
+  ul.facts li, ul.facts_tags li {
+    display: inline;
+    /* 横に並べる */
+    font-size: .8rem; }
+  ul.facts i, ul.facts_tags i {
+    color: #cfd8dc;
+    margin-right: .5em; }
+  ul.facts.sm li, ul.facts_tags.sm li {
+    font-size: .7rem; }
+  ul.facts a, ul.facts_tags a {
+    position: relative;
+    display: inline-block;
+    transition: .3s; }
+    ul.facts a:after, ul.facts_tags a:after {
+      position: absolute;
+      bottom: -0.05rem;
+      left: 50%;
+      content: '';
+      width: 0;
+      height: 1px;
+      background-color: #2196f3;
+      transition: .3s;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
+    ul.facts a:hover::after, ul.facts_tags a:hover::after {
+      width: 100%; }
+
+ul.facts > li {
   margin-right: 1rem; }
 
-.facts i {
-  color: #cfd8dc;
-  margin-right: .5em; }
+ul.facts_tags {
+  margin: 0.5rem 0rem 1.3rem 0rem;
+  line-height: 1.3rem; }
+  ul.facts_tags li {
+    margin-right: .2rem; }
 
-.facts.sm li {
-  font-size: .7rem; }
-
+/* トップページ categories & tag wrapper */
 section.sidebar {
   margin: 2rem 0; }
   section.sidebar > header {
@@ -429,6 +521,7 @@ section.footer {
       color: #454545;
       text-decoration: underline; }
 
+/* トップページ categories & tag リンク */
 .terms {
   margin: -.25rem; }
   .terms li {
@@ -436,13 +529,18 @@ section.footer {
   .terms a {
     display: block;
     float: left;
-    background-color: #454545;
-    border-radius: 4px;
-    color: #fff;
-    font-size: .7rem;
+    background-color: #fff;
+    border-radius: 20px;
+    color: #454545;
+    font-size: .8rem;
     margin: .25rem;
     padding: 0 .75rem;
-    line-height: 1.75rem; }
+    line-height: 1.75rem;
+    transition: 0.3s; }
+    .terms a:before {
+      content: "# "; }
+    .terms a:hover {
+      background-color: #e8f4ff; }
 
 .paging {
   text-align: center;
@@ -450,11 +548,26 @@ section.footer {
   .paging a {
     display: inline-block;
     background-color: #fff;
-    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
     color: #454545;
-    padding: 0 1rem;
-    line-height: 3rem; }
+    padding: 0 3rem;
+    line-height: 3rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: #CCCCCC;
+    outline-offset: 0px;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+    .paging a:hover {
+      border-color: #FFF;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+      outline-color: transparent;
+      outline-offset: 12px;
+      cursor: pointer;
+      background-color: #e8f4ff;
+      color: #2196f3; }
 
 .page-title {
   text-align: center;
@@ -462,7 +575,7 @@ section.footer {
   .page-title::after {
     content: '';
     display: block;
-    border-bottom: .25rem solid #454545;
+    border-bottom: 0.25rem solid #454545;
     width: 3rem;
     margin: 1.5rem auto; }
   .page-title > .title {
@@ -518,32 +631,55 @@ section.footer {
   .toc li {
     color: #90a4ae; }
 
-@media (max-width: 768px) {
+@media (max-width: 66rem) {
   .toc {
     padding: 0 1rem; } }
 
+        
 
-
-  
-    .author {
+        
+            
+                
+.author {
   background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
   padding: 1rem;
   border-radius: 4px;
-  text-align: center; }
+  text-align: center;
+  outline: 1px solid;
+  outline-color: #CCCCCC;
+  outline-offset: 0px;
+  /* github等のアイコン */ }
   .author .author-thumb {
     margin: 0 auto 1rem;
-    width: 6rem;
-    height: 6rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
-    background-color: #eceff1;
+    /*background-color: #eceff1;*/
     background-size: cover;
     background-position: center; }
   .author .author-name {
+    font-family: "Raleway";
     margin-bottom: .5rem;
     font-weight: 700; }
+    .author .author-name a {
+      position: relative;
+      display: inline-block;
+      transition: .3s; }
+      .author .author-name a:after {
+        position: absolute;
+        bottom: -0.2rem;
+        left: 50%;
+        content: '';
+        width: 0;
+        height: 1px;
+        background-color: #2196f3;
+        transition: .3s;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%); }
+      .author .author-name a:hover::after {
+        width: 100%; }
   .author .author-facts {
-    margin-bottom: 1rem; }
+    padding-inline-start: 0; }
     .author .author-facts li {
       display: inline; }
       .author .author-facts li a {
@@ -554,126 +690,122 @@ section.footer {
         line-height: 1.75rem;
         text-align: center;
         color: #333;
-        font-size: .8rem;
-        border-radius: 2px; }
+        font-size: .9rem;
+        border-radius: 5px; }
         .author .author-facts li a:hover {
           color: #fff;
           background-color: #333; }
   .author .author-description {
     text-align: left;
-    font-size: .8rem; }
+    font-size: .8rem;
+    /*line-height: .7rem;*/ }
     .author .author-description p {
-      margin: .5rem 0; }
+      margin: .5rem 0;
+      line-height: 1.2rem; }
 
-  
-
-
-.thumb {
-  background-image: url("https://k-watanb.github.io/images/default.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-  
-.thumb-d6350ae9d3002a2b1c441067a8c46a23 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
-}
-  
-
-  
-.thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
-}
-  
-
-  
-.thumb-e96a4abb7c5be237e2b68218276d70b2 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
-}
-  
-
-  
-.thumb-888ace4333ea5d33626b5651ab4a5668 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
-}
-  
-
-  
-.thumb-21e7dd78c5b80a7310284266edb2c89b {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
-}
-  
-
-  
-.thumb-92bdee60ff963f675b658e9bda4fb314 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
-}
-  
-
-  
-.thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
-}
-  
-
-  
-.thumb-c7810337cbf82f29fd9bc45c958bdb0e {
-  background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
-}
-  
-
-  
-
-  
-
-
-
-
-
-/* ヘッダー回り */
-h1.logo {
-    /*font-size: 3em !important;*/
-}
-
-.l-header {
-    /*height: 73px;*/
-}
-
-span.description{
-    /*font-size: 1em !important;*/
-}
-
-body, p, html{
-    /*color: #353535;*/
-    /*line-height: 1.7em;*/
-}
-
-
-ul, ol{
-    /*margin-block-start: 0.2em !important;*/
-    /*margin-block-end: 0.2em !important;*/
-    /*padding-bottom: 0.1rem !important;*/
-}
-    </style>
-
-  </head>
-  <body>
-    <header class="l-header">
-        <h1 class="logo">
-          <a href="https://k-watanb.github.io/">機械学習に人生賭けて28年（28）</a>
-        </h1>
+            
         
-        <span class="description">
-          ML関係の論文紹介やその他技術
-        </span>
-        
-    </header>
 
-    <main>
-      <div class="l-container">
-        <div class="mrow">
-        <div class="mcol c8">
-          
+        .thumb {
+            background-image: url("https://k-watanb.github.io/images/default.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        
+            
+        .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/vim-monokai.png");
+        }
+            
+        
+            
+        .thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+        }
+            
+        
+            
+        .thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+        }
+            
+        
+            
+        .thumb-e96a4abb7c5be237e2b68218276d70b2 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+        }
+            
+        
+            
+        .thumb-888ace4333ea5d33626b5651ab4a5668 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+        }
+            
+        
+            
+        .thumb-21e7dd78c5b80a7310284266edb2c89b {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+        }
+            
+        
+            
+        .thumb-92bdee60ff963f675b658e9bda4fb314 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+        }
+            
+        
+            
+        .thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+        }
+            
+        
+            
+        .thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+            background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+        }
+            
+        
+            
+        
+            
+        
+
+         
+         
+        
+                </style>
+        
+
+        
+        
+        
+    </head>
+
+    <body>
+
+        <header class="l-header">
+            <div class="title-logo-wrapper">
+                <h1 class="logo">
+                    <a href="https://k-watanb.github.io/"><img src="/images/logo.png"></a>
+                </h1>
+                <nav class="topnav">
+                    <ul class="topnav_menu">
+
+                        <li class="topnav_menu_item"><a href="/">Home</a></li>
+                        <li class="topnav_menu_item"><a href="/categories">Categories</a></li>
+                        <li class="topnav_menu_item"><a href="/tags">Tags</a></li>
+                        <li class="topnav_menu_item"><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="l-container">
+                <div class="mrow">
+                <div class="mcol c8">
+                    
 
 <header class="page-title">
   <h1 class="title">GitHub</h1>
@@ -689,15 +821,15 @@ ul, ol{
     
     <div class="mcol c6">
       <article class="li">
-        <a href="https://k-watanb.github.io/post/new-homepage/">
-          <div class="thumb thumb-30093a65331d739f56d61088821bb42f"></div>
+        <a href="https://k-watanb.github.io/hugo/new-homepage/">
+          <div class="thumb thumb-3fb2e77ee8a0fbd130a30154ef20eecb"></div>
 
           <div class="inner">
             <h2 class="title">Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る</h2>
 
             <ul class="facts">
               <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2020-12-27T00:00:00JST">2020-12-27</time></li>
-              <li><i class="fas fa-bookmark" aria-hidden="true"></i>POST</li>
+              <li><i class="fas fa-bookmark" aria-hidden="true"></i>HUGO</li>
               
               
             </ul>
@@ -714,30 +846,62 @@ ul, ol{
 
 
 
-        </div>
-        <div class="mcol c4">
-          <aside class="l-sidebar">
-            
+                </div>
+                <div class="mcol c4">
+                    <aside class="l-sidebar">
+                        
 <section class="sidebar">
   <header>AUTHOR</header>
   <div class="author">
+
     
     <div class="author-thumb" style="background-image: url(https://k-watanb.github.io/images/author.jpg);"></div>
     
-    <div class="author-name">k-watanb</div>
+
+    <div class="author-name"><a href ='/about/'>k-watanb</a></div>
+
     <ul class="author-facts">
+
       
+
+      
+
       
       <li><a href="https://github.com/k-watanb" rel="noopener nofollow" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+      
+
     </ul>
+
     <div class="author-description"><p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p></div>
+
   </div>
 </section>
 
 
-            <section class="sidebar">
+                        <section class="sidebar">
   <header>LATESTS</header>
   <div class="articles sm">
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/wsl/vim-monokai/">
+    <div class="thumb thumb-55624cbbfa83c65e44d0d43ae54bb6f0"></div>
+
+    <div class="inner">
+      <div class="title">WSLのカラースキーム設定</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="29007-12-29T00:00:00JST">2020-12-29</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>WSL</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
     
     <article class="lism">
   <a href="https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/">
@@ -908,8 +1072,8 @@ ul, ol{
 
     
     <article class="lism">
-  <a href="https://k-watanb.github.io/post/new-homepage/">
-    <div class="thumb thumb-30093a65331d739f56d61088821bb42f"></div>
+  <a href="https://k-watanb.github.io/hugo/new-homepage/">
+    <div class="thumb thumb-3fb2e77ee8a0fbd130a30154ef20eecb"></div>
 
     <div class="inner">
       <div class="title">Win10 &#43; GitHub Pages &#43; Hugoで無料ホームページを作る</div>
@@ -917,26 +1081,7 @@ ul, ol{
       <ul class="facts sm">
         <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="27007-12-27T00:00:00JST">2020-12-27</time></li>
         
-        <li><i class="fas fa-bookmark" aria-hidden="true"></i>POST</li>
-        
-        
-        
-      </ul>
-
-    </div>
-  </a>
-</article>
-
-    
-    <article class="lism">
-  <a href="https://k-watanb.github.io/about/">
-    <div class="thumb thumb-6083a88ee3411b0d17ce02d738f69d47"></div>
-
-    <div class="inner">
-      <div class="title">About</div>
-
-      <ul class="facts sm">
-        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="25007-12-25T00:00:00JST">2020-12-25</time></li>
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>HUGO</li>
         
         
         
@@ -950,7 +1095,7 @@ ul, ol{
   </div>
 </section>
 
-            
+                        
 <section class="sidebar">
   <header>CATEGORIES</header>
   <ul class="terms">
@@ -959,12 +1104,14 @@ ul, ol{
     
     <li><a href="https://k-watanb.github.io/categories/hugo">hugo <span class="count">(1)</span></a></li>
     
+    <li><a href="https://k-watanb.github.io/categories/wsl">wsl <span class="count">(1)</span></a></li>
+    
   </ul>
 </section>
 
 
 
-            
+                        
 <section class="sidebar">
   <header>TAGS</header>
   <ul class="terms">
@@ -994,25 +1141,14 @@ ul, ol{
 
 
 
-          </aside>
-        </div>
-      </div>
-    </main>
+                    </aside>
+                </div>
+            </div>
+        </main>
 
-    <footer class="l-footer">
-      <div class="l-container">
-        <p><span class="h-logo">&copy; 機械学習に人生賭けて28年（28）</span></p>
-        <aside>
-          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
-          <p><a href="https://github.com/dim0627/hugo_theme_robust">Robust</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
-        </aside>
-      </div>
-    </footer>
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js" crossorigin="anonymous"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    
-  </body>
+        <footer class="l-footer">
+            <p>&copy; 2020-2021 ML戦記 </p>
+        </footer>
+    </body>
 </html>
 

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 機械学習に人生賭けて28年（28）</title>
+    <title>Categories on ML戦記</title>
     <link>https://k-watanb.github.io/categories/</link>
-    <description>Recent content in Categories on 機械学習に人生賭けて28年（28）</description>
+    <description>Recent content in Categories on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL</title>
+      <link>https://k-watanb.github.io/categories/wsl/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/categories/wsl/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Paper Summary</title>
       <link>https://k-watanb.github.io/categories/paper-summary/</link>
