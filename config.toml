@@ -20,7 +20,7 @@ pygmentsUseClasses = true
     toc = false
 
 [params.author]
-    thumbnail = "images/author.jpg"
+    thumbnail = "/images/author.jpg"
     name = "<a href ='/about/'>k-watanb</a>"
     description = "<p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p>"
     # facebook = ""
