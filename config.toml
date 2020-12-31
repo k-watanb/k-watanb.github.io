@@ -2,7 +2,7 @@ baseurl = "https://k-watanb.github.io/"
 title = "ML戦記"
 theme = "hugo_theme_robust"
 
-# googleAnalytics = "UA-XXXXXXXX-XX" # Optional
+googleAnalytics = "G-MY2L6T281E" # Optional
 disqusShortname = "XYW"
 
 hasCJKLanguage = true
