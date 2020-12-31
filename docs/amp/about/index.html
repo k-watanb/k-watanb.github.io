@@ -432,25 +432,19 @@ article.sn > .article-body h4 {
 
 article.sn > .article-body ul, .article-body ol {
   line-height: 1.8em;
-  padding: 0.25em 0.5em 0.25em 2em; }
+  padding: 0.2em 0.5em 0.2em 2em; }
 
 article.sn > .article-body ul li, .article-body ol li {
-  line-height: 1.4em;
-  padding: 0.2em 0; }
+  padding: 0.1em 0; }
 
 article.sn > .article-body p {
   margin: 1rem 0;
   line-height: 1.8rem; }
 
-article.sn > .article-body strong,
-article.sn > .article-body em {
-  font-weight: 700; }
-
 article.sn > .article-body strong {
-  background: linear-gradient(transparent 60%, #ff99ff 60%); }
-
-article.sn > .article-body em {
-  color: #8bc34a; }
+  font-weight: 700;
+  background: linear-gradient(transparent 60%, #ff99ff 60%);
+  border-radius: 6px; }
 
 article.sn > .article-body code,
 article.sn > .article-body pre {
@@ -515,15 +509,16 @@ article.sn > .article-body figure {
 article.sn > .article-body img,
 article.sn > .article-body figure img,
 article.sn > .article-body figure amp-img {
+  border: solid 1px #DDD;
   display: table-cell;
   max-width: 100%;
   margin: 0 auto; }
 
-article.sn > .article-body figcaption {
-  color: #cfd8dc;
-  font-size: .8rem;
-  font-weight: 700;
-  margin-top: .5rem; }
+img + em {
+  display: block;
+  font-size: .9rem;
+  color: #959595;
+  text-align: center; }
 
 /********************************************************************************************************************/
 /*    */
@@ -713,6 +708,12 @@ section.footer {
   background-size: cover;
   background-position: center;
 }
+
+  
+  .thumb-ccc524a040191d79e43b34b54ce37b4a {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/custom-theme.png");
+  }
+  
 
   
   .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {

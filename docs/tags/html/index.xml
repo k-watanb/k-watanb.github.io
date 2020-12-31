@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on ML戦記</title>
+    <link>https://k-watanb.github.io/tags/html/</link>
+    <description>Recent content in HTML on ML戦記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>（執筆中）Hugoのテーマ「Robust」を今風にカスタム</title>
+      <link>https://k-watanb.github.io/hugo/custom-theme/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/hugo/custom-theme/</guid>
+      <description>本ブログでは Hugo の &lt;a href=&#34;https://github.com/dim0627/hugo_theme_robust&#34;&gt;Robust&lt;/a&gt; というテーマを拝借しています。バニラ状態でも十分素晴らしいデザインですが、個人的にカスタマイズしたところをメモしておきます。</description>
+    </item>
+    
+  </channel>
+</rss>
