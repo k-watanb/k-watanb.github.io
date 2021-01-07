@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence - ML戦記</title>
+
+        <meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#263238">
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+<link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
+
+
+<link rel="amphtml" type="text/html" href="https://k-watanb.github.io/amp/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/" title="ML戦記">
+
+
+
+        
+<meta name="description" content="半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案しました。">
+
+<meta property="og:title" content="[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence - ML戦記">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+<meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png">
+<meta property="og:site_name" content="ML戦記">
+<meta property="og:description" content="半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案しました。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="ML戦記">
+<meta name="twitter:url" content="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+<meta name="twitter:title" content="[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence - ML戦記">
+<meta name="twitter:description" content="半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案しました。">
+<meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$', '$$']], 
+            processEscapes: true,
+        },
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<link href="https://k-watanb.github.io/css/syntax.css" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/k-watanb.github.io\/"
+    },
+    "headline": "[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence-ML戦記",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-01-07T00:00:00JST",
+    "dateModified": "2021-01-07T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "ML戦記"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ML戦記",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/k-watanb.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案しました。"
+  }
+</script>
+
+
+
+        <link rel="canonical" href="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/styles.min.aaad9ef7185530365928024edc24f2507fa4e644d26180132e5bddae092848ed.css">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/author.min.f03ba4f685923b07b1fe06bcecc27e938752076607a04cb720357324f35b1c40.css">
+
+        <style>
+            .thumb {
+                background-image: url("https://k-watanb.github.io/images/default.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+            
+                
+            .thumb-c465b21de885ae7d2ea2b99cab0aaeb1 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks.png");
+            }
+                
+            
+                
+            .thumb-79c1da4f79c07f8affdfaa8d56ed7e70 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png");
+            }
+                
+            
+                
+            .thumb-8d6b14303020673bd7bfa2756380b69b {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-instance-aware-image-colorization.png");
+            }
+                
+            
+                
+            .thumb-ccc524a040191d79e43b34b54ce37b4a {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/custom-theme.png");
+            }
+                
+            
+                
+            .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/vim-monokai.png");
+            }
+                
+            
+                
+            .thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+            }
+                
+            
+                
+            .thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+            }
+                
+            
+                
+            .thumb-e96a4abb7c5be237e2b68218276d70b2 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+            }
+                
+            
+                
+            .thumb-888ace4333ea5d33626b5651ab4a5668 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+            }
+                
+            
+                
+            .thumb-21e7dd78c5b80a7310284266edb2c89b {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+            }
+                
+            
+                
+            .thumb-92bdee60ff963f675b658e9bda4fb314 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+            }
+                
+            
+                
+            .thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+            }
+                
+            
+                
+            .thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+            }
+                
+            
+                
+            
+                
+            
+
+            
+        </style>
+
+        
+        
+        
+
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8JBWP2QFH"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-Q8JBWP2QFH');
+            </script>
+        
+        
+
+    </head>
+
+    <body>
+
+        <header class="l-header">
+            <div class="title-logo-wrapper">
+                <h1 class="logo">
+                    <a href="https://k-watanb.github.io/"><img src="/images/logo.png"></a>
+                </h1>
+                <nav class="topnav">
+                    <ul class="topnav_menu">
+
+                        <li class="topnav_menu_item"><a href="/">Home</a></li>
+                        <li class="topnav_menu_item"><a href="/categories">Categories</a></li>
+                        <li class="topnav_menu_item"><a href="/tags">Tags</a></li>
+                        <li class="topnav_menu_item"><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="l-container">
+                <div class="mrow">
+                <div class="mcol c8">
+                    
+
+<article class="sn">
+
+    
+
+    <header class="article-header">
+        <h1 class="title">[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</h1>
+
+        <ul class="facts">
+
+            
+                <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2021-01-07T00:00:00JST">2021-01-07</time></li>
+
+            
+            
+
+            
+            
+                <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+
+            
+            
+        </ul>
+
+        
+        <ul class="facts_tags">
+
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/data-augmentation">Data Augmentation</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-classification">Image Classification</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/nips">NIPS</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/semi-supervised">Semi-Supervised</a> </li>
+            
+
+        </ul>
+
+        
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&title=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&text=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&t=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&title=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+    </header>
+
+    
+
+    <div class="article-body"><p><a href="http://arxiv.org/abs/2001.07685">arxiv</a>, <a href="https://github.com/google-research/fixmatch">github</a></p>
+<h2 id="どんなもの">どんなもの？</h2>
+<p>半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案。CIFAR-10において250個のラベルありデータから正解率94.94%を達成（先行研究は93.73%）。</p>
+<h2 id="先行研究と比べてどこがすごい">先行研究と比べてどこがすごい？</h2>
+<ul>
+<li>CIFAR-10においては、先行研究（ReMix Match）に圧勝</li>
+</ul>
+<h2 id="技術や手法のキモはどこにある">技術や手法のキモはどこにある？</h2>
+<ul>
+<li>最初は弱いデータ拡張で予測し、疑似ラベルを作成</li>
+<li>次に、強いデータ拡張をしたデータでも、予測結果を崩さないように学習</li>
+</ul>
+<p><img src="image.png" alt="img"></p>
+<h3 id="他手法との比較">他手法との比較</h3>
+<p><img src="image-3-1024x265.png" alt="img">
+<em>UDAとReMixMatchは本著者グループの先行研究。</em></p>
+<h3 id="weakly-augmentation">weakly augmentation</h3>
+<p>最初に通常通り、左右反転等の弱いデータ拡張を与えたラベルなし画像に対して予測します。</p>
+<p>次に <strong>疑似ラベル（pseudo-label）</strong> を作成します。一番確信度が高いラベルの予測値が閾値を超えたラベルのみを1, その他のラベルを0とするように one-hot vector 化します。</p>
+<h3 id="strongly-augmentation">strongly augmentation</h3>
+<p>強いデータ拡張には、<strong>RandAugment</strong> か <strong>CTAugment</strong> の適切な方を用います。 ２つとも <strong>AutoAugment</strong> の一種であり、 最適なデータ拡張を探索する分野の技術です。どちらが良いかは明記されておらず、予測結果で判断するようです（要はどっちもやれということ）。</p>
+<p>強いデータ拡張をしたデータセットに対し、通常通り教師あり image classification を行い、cross-entropy loss を導出します。強いデータ拡張の一種として <a href="https://arxiv.org/abs/1708.04552">Cutout</a> を用いました。ランダムに矩形で塗りつぶすようなデータ拡張手法です。</p>
+<p><img src="image-4.png" alt="img">
+<em>Cutout とほぼ同一の成果として Random Erasing があります。Random Erasing の方が名前がわかりやすい。</em></p>
+<h3 id="training">Training</h3>
+<p>weak/strong dataaugmentation のそれぞれで出した loss を係数付きで合算し、全体 loss として最適化します。全体の疑似コードは以下になります。</p>
+<p><img src="image-2-1024x321.png" alt="img"></p>
+<h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
+<h3 id="定量評価">定量評価</h3>
+<p>先行研究（ReMixMatch）に辛勝しました。とはいっても、ReMixMatchはこの著者グループの2カ月前の手法です。ラベル付与割合が高いとReMixMatchよりエラー率が高くなる場合があるようです。</p>
+<p><img src="image-5-1024x218.png" alt="img">
+<em>他手法とのエラー率の比較。RA; Random Augmentation, CTA; ReMixMatchで用いていたデータ拡張手法です。また、例えばCIFAR10において40labelsとは、10クラスで40枚なので1クラスあたり4枚のラベル付けをしたという意味です。</em></p>
+<h3 id="各クラス１枚のラベルだけで学習させる">各クラス１枚のラベルだけで学習させる</h3>
+<p>半教師あり学習の極限設定として、各クラス１枚のみ学習させる状況を考えてみます。CIFAR-10でランダムに10枚のみラベル付与をしたデータセットを4つ作成し、各4回学習させました （少なっ！）。結果、48.58%~85.32%のtest accuracyが得られ、中央値が64.28%でした。ただ、データセットごとの精度ばらつきは小さく、１つ目のデータセットでは61%~67%、2つ目では68%~75%でした。</p>
+<p><img src="image-6-1024x147.png" alt="img"></p>
+<p>データセットごとに精度ばらつきが出る原因として、各ラベルサンプル1枚の画像の質が大きく関係していると仮説を立てました。仮説検証のために、距離学習を用いて、そのクラスを最も代表するデータから最も代表しないデータの順に８グループに分け、そのグループ内でデータセットを作ったときの精度を検証しました。</p>
+<p>結果、最も代表するグループでは中央値78%（最高84%）、中位のものでは65%、外れ値では10%となり、データセットの質が大きく影響することがわかります。考えれば当たり前のことで、各クラス１枚しかないのですから、その１枚がビミョーだったらモデルが特徴を捉え切れるはずもありませんね。</p>
+<h2 id="議論はあるか">議論はあるか？</h2>
+<ul>
+<li>データセットのごく少数（1%以下）にしかラベルがない場合に、本手法は特に有効に働く？</li>
+<li>非常に単純だが強力な手法</li>
+</ul>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
+<ul>
+<li>D. Berthelot et al., &ldquo;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&rdquo;, 2019 Nov.
+<ul>
+<li>先行研究その①：ReMixMatch（Google Research）</li>
+<li>CTAugment は ReMixMatch で追加された要素</li>
+</ul>
+</li>
+<li>Q. Xie et al., &ldquo;Unsupervised Data Augmentation for Consistency Training&rdquo;, 2019 Sep.
+<ul>
+<li>先行研究その②：UDA（Google Research）</li>
+</ul>
+</li>
+<li><a href="https://arxiv.org/abs/1909.13719">Ekin D. Cubuk et al., &ldquo;RandAugment: Practical automated data augmentation with a reduced search space,&rdquo; 2019</a></li>
+<li><a href="https://qiita.com/koshian2/items/f4a458466b15bb91c7cb">CIFAR-10を疑似ラベル（Pseudo-Label）を使った半教師あり学習で分類する</a></li>
+</ul>
+</div>
+
+    <footer class="article-footer">
+
+        <ul class="facts_tags">
+
+            
+            
+            <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/data-augmentation">Data Augmentation</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-classification">Image Classification</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/nips">NIPS</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/semi-supervised">Semi-Supervised</a> </li>
+            
+
+        </ul>
+
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&title=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&text=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&t=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f&title=%5b2020%5d%20FixMatch%3a%20Simplifying%20Semi-Supervised%20Learning%20with%20Consistency%20and%20Confidence" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+
+    </footer>
+
+</article>
+
+
+<div class="adj mrow">
+  <div class="mcol c6">
+    <header>Next Article</header>
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/">
+    <div class="thumb thumb-c465b21de885ae7d2ea2b99cab0aaeb1"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+  <div class="mcol c6">
+    <header>Previous Article</header>
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "XYW" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+                <div class="mcol c4">
+                    <aside class="l-sidebar">
+                        
+<section class="sidebar">
+  <header>AUTHOR</header>
+  <div class="author">
+
+    
+    <div class="author-thumb" style="background-image: url(https://k-watanb.github.io/images/author.jpg);"></div>
+    
+
+    <div class="author-name"><a href ='/about/'>k-watanb</a></div>
+
+    <ul class="author-facts">
+
+      
+
+      
+
+      
+      <li><a href="https://github.com/k-watanb" rel="noopener nofollow" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+      
+
+    </ul>
+
+    <div class="author-description"><p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p></div>
+
+  </div>
+</section>
+
+
+                        <section class="sidebar">
+  <header>LATESTS</header>
+  <div class="articles sm">
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/">
+    <div class="thumb thumb-c465b21de885ae7d2ea2b99cab0aaeb1"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+    <div class="thumb thumb-79c1da4f79c07f8affdfaa8d56ed7e70"></div>
+
+    <div class="inner">
+      <div class="title">[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/hugo/custom-theme/">
+    <div class="thumb thumb-ccc524a040191d79e43b34b54ce37b4a"></div>
+
+    <div class="inner">
+      <div class="title">Hugoのテーマ「Robust」を今風にカスタム</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="31007-12-31T00:00:00JST">2020-12-31</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>HUGO</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/wsl/vim-monokai/">
+    <div class="thumb thumb-55624cbbfa83c65e44d0d43ae54bb6f0"></div>
+
+    <div class="inner">
+      <div class="title">WSLのカラースキーム設定</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="29007-12-29T00:00:00JST">2020-12-29</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>WSL</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/">
+    <div class="thumb thumb-d6350ae9d3002a2b1c441067a8c46a23"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Densely Connected Convolutional Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/">
+    <div class="thumb thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Convolutional Neural Networks with Alternately Updated Clique</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-deep-layer-aggregation/">
+    <div class="thumb thumb-e96a4abb7c5be237e2b68218276d70b2"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Deep Layer Aggregation</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-embodies-question-answering/">
+    <div class="thumb thumb-888ace4333ea5d33626b5651ab4a5668"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Embodied Question Answering</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations/">
+    <div class="thumb thumb-21e7dd78c5b80a7310284266edb2c89b"></div>
+
+    <div class="inner">
+      <div class="title">[2019] OCGAN: One-class novelty detection using gans with constrained latent representations</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</section>
+
+                        
+<section class="sidebar">
+  <header>CATEGORIES</header>
+  <ul class="terms">
+    
+    <li><a href="https://k-watanb.github.io/categories/paper-summary">paper-summary <span class="count">(11)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/categories/hugo">hugo <span class="count">(2)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/categories/wsl">wsl <span class="count">(1)</span></a></li>
+    
+  </ul>
+</section>
+
+
+
+                        
+<section class="sidebar">
+  <header>TAGS</header>
+  <ul class="terms">
+    
+    <li><a href="https://k-watanb.github.io/tags/cvpr">cvpr <span class="count">(6)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/image-classification">image-classification <span class="count">(5)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2018">2018 <span class="count">(4)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2020">2020 <span class="count">(4)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/anomaly-detection">anomaly-detection <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/image-anomaly-detection">image-anomaly-detection <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/network-architecture">network-architecture <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/out-of-distribution">out-of-distribution <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/semi-supervised">semi-supervised <span class="count">(3)</span></a></li>
+    
+    <li><a href="https://k-watanb.github.io/tags/2019">2019 <span class="count">(2)</span></a></li>
+    
+  </ul>
+</section>
+
+
+
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <footer class="l-footer">
+            <p>&copy; 2020-2021 ML戦記 </p>
+        </footer>
+    </body>
+</html>
+

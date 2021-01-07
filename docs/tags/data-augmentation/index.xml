@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Augmentation on ML戦記</title>
+    <link>https://k-watanb.github.io/tags/data-augmentation/</link>
+    <description>Recent content in Data Augmentation on ML戦記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/data-augmentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</title>
+      <link>https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/</guid>
+      <description>半教師あり学習において、ラベルなし画像に「弱い」データ拡張を与えた画像の one-hot 疑似ラベルと、「強い」データ拡張を与えた画像の予測とのクロスエントロピーロスをとるように学習させる手法を提案しました。</description>
+    </item>
+    
+  </channel>
+</rss>

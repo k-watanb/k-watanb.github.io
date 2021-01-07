@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Explanation on ML戦記</title>
+    <link>https://k-watanb.github.io/tags/explanation/</link>
+    <description>Recent content in Explanation on ML戦記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/explanation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</title>
+      <link>https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/</guid>
+      <description>softmaxの出力ベクトルpとともに、確信度スカラーcを別途出力する手法の提案。モデルの想定外データに対し、予測の確信度が低いことを伝えられます。</description>
+    </item>
+    
+  </channel>
+</rss>

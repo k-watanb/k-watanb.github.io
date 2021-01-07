@@ -5,7 +5,124 @@
     <link>https://k-watanb.github.io/tags/</link>
     <description>Recent content in Tags on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2018</title>
+      <link>https://k-watanb.github.io/tags/2018/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2020</title>
+      <link>https://k-watanb.github.io/tags/2020/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CVPR</title>
+      <link>https://k-watanb.github.io/tags/cvpr/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/cvpr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Augmentation</title>
+      <link>https://k-watanb.github.io/tags/data-augmentation/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/data-augmentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Explanation</title>
+      <link>https://k-watanb.github.io/tags/explanation/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/explanation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Classification</title>
+      <link>https://k-watanb.github.io/tags/image-classification/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Colorization</title>
+      <link>https://k-watanb.github.io/tags/image-colorization/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-colorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instance Segmentation</title>
+      <link>https://k-watanb.github.io/tags/instance-segmentation/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/instance-segmentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mask R-CNN</title>
+      <link>https://k-watanb.github.io/tags/mask-r-cnn/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/mask-r-cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NIPS</title>
+      <link>https://k-watanb.github.io/tags/nips/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/nips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Object Detection</title>
+      <link>https://k-watanb.github.io/tags/object-detection/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/object-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Out of Distribution</title>
+      <link>https://k-watanb.github.io/tags/out-of-distribution/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/out-of-distribution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Semi-Supervised</title>
+      <link>https://k-watanb.github.io/tags/semi-supervised/</link>
+      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/semi-supervised/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>css</title>
       <link>https://k-watanb.github.io/tags/css/</link>
@@ -88,29 +205,11 @@
     </item>
     
     <item>
-      <title>2018</title>
-      <link>https://k-watanb.github.io/tags/2018/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>2019</title>
       <link>https://k-watanb.github.io/tags/2019/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/2019/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2020</title>
-      <link>https://k-watanb.github.io/tags/2020/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/2020/</guid>
       <description></description>
     </item>
     
@@ -147,15 +246,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/covariate-shift/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CVPR</title>
-      <link>https://k-watanb.github.io/tags/cvpr/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/cvpr/</guid>
       <description></description>
     </item>
     
@@ -223,15 +313,6 @@
     </item>
     
     <item>
-      <title>Image Classification</title>
-      <link>https://k-watanb.github.io/tags/image-classification/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/image-classification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Latent Regularizer</title>
       <link>https://k-watanb.github.io/tags/latent-regularizer/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
@@ -268,15 +349,6 @@
     </item>
     
     <item>
-      <title>Out of Distribution</title>
-      <link>https://k-watanb.github.io/tags/out-of-distribution/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/out-of-distribution/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Regularization</title>
       <link>https://k-watanb.github.io/tags/regularization/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
@@ -309,15 +381,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/robot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Semi-Supervised</title>
-      <link>https://k-watanb.github.io/tags/semi-supervised/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/semi-supervised/</guid>
       <description></description>
     </item>
     
