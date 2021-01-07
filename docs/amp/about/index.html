@@ -305,6 +305,7 @@ article.li .summary {
 /********************************************************************************************************************/
 article.lism {
   background-color: #fff;
+  height: auto;
   margin: .5rem 0;
   outline: 1px solid;
   outline-color: #ddd;
@@ -333,8 +334,8 @@ article.lism .inner {
   padding: 0 .75rem; }
 
 article.lism .thumb {
-  width: 5rem;
-  height: 5rem;
+  width: 5rem !important;
+  height: 5rem !important;
   float: left; }
 
 article.lism .title {
@@ -419,17 +420,15 @@ section.footer {
     display: inline-block; }
   .terms a {
     display: block;
-    float: left;
+    color: #454545;
+    font-size: .9rem;
+    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
+    font-weight: 500;
     background-color: #fff;
     border-radius: 20px;
-    color: #454545;
-    font-size: .8rem;
-    margin: .25rem;
-    padding: 0 .75rem;
-    line-height: 1.75rem;
+    margin: .3rem;
+    padding: 0.5rem 0.8rem;
     transition: 0.3s; }
-    .terms a:before {
-      content: "# "; }
     .terms a:hover {
       background-color: #e8f4ff; }
 
@@ -728,6 +727,7 @@ section.footer {
   <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fabout%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
 </aside>
 
+        
 
 
     </footer>

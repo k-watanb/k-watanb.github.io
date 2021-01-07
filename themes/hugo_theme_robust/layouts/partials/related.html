@@ -1,0 +1,13 @@
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ with $related }}
+<div class="see-also">
+<header><i class="fas fa-eye" aria-hidden="true"></i> See Also</header>
+<ul>
+    <div class="articles sm">
+        {{ range . }}
+        {{ .Render "li_sm" }}
+        {{ end }}
+    </div>
+</ul>
+</div>
+{{ end }}
