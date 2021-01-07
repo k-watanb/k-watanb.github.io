@@ -103,7 +103,7 @@
   
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
 html, body, p, ul, ol, ul > li, ol > li {
-  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", sans-serif !important;
+  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
   font-weight: 400;
   color: #454545; }
 
@@ -236,6 +236,9 @@ main {
     width: 100%;
     float: none; } }
 
+/********************************************************************************************************************/
+/* トップページ 左側記事矩形 */
+/********************************************************************************************************************/
 .articles {
   margin: -1rem 0;
   margin-bottom: 1rem; }
@@ -248,9 +251,6 @@ article {
   border-radius: 4px;
   overflow: hidden; }
 
-/********************************************************************************************************************/
-/* トップページ 左側記事矩形 */
-/********************************************************************************************************************/
 article.li {
   background-color: #fff;
   height: 26rem;
@@ -344,185 +344,6 @@ article.lism .title {
   transition: 0.2s; }
   article.lism .title:hover {
     color: #2196f3; }
-
-/********************************************************************************************************************/
-/* post記事内   */
-/********************************************************************************************************************/
-article.sn {
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1rem; }
-
-article.sn .thumb {
-  height: 20rem; }
-
-@media (max-width: 66rem) {
-  article.sn .thumb {
-    height: 10rem; } }
-
-article.sn > .article-header,
-article.sn .article-footer {
-  padding: 2rem; }
-
-article.sn .article-body a, article.sn .terms a {
-  position: relative;
-  display: inline-block;
-  transition: .3s; }
-  article.sn .article-body a:after, article.sn .terms a:after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    content: '';
-    width: 0;
-    height: 1px;
-    background-color: #2196f3;
-    transition: .3s;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%); }
-  article.sn .article-body a:hover::after, article.sn .terms a:hover::after {
-    width: 100%; }
-
-article.sn > .article-body {
-  padding: 0 2rem; }
-
-@media (max-width: 66rem) {
-  article.sn > .article-header,
-  article.sn > .article-body,
-  article.sn .article-footer {
-    padding: 1rem; }
-  article.sn > .article-body {
-    padding: 0 1rem; } }
-
-article.sn > .article-header .title {
-  font-size: 1.8rem;
-  line-height: 2.3rem;
-  margin-bottom: .5rem; }
-
-@media (max-width: 66rem) {
-  article.sn > .article-header .title {
-    font-size: 1.4rem;
-    line-height: 1.5rem; } }
-
-article.sn > .article-header .facts {
-  line-height: 1.5rem; }
-
-article.sn > .article-body {
-  margin-bottom: 1.5rem; }
-
-article.sn > .article-body h2 {
-  font-size: 1.4rem;
-  line-height: 1.5rem;
-  margin: 1.5rem 0;
-  padding: 1.0rem 1.2rem;
-  border-left: 0.5rem solid #454545;
-  background: #f4f4f4; }
-
-article.sn > .article-body h3 {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  margin: 1.5rem 0;
-  padding: .5rem .1rem;
-  border-bottom: 3px dashed #454545;
-  font-weight: 700; }
-
-article.sn > .article-body h4 {
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-  /*margin: 0.5rem 0;*/
-  padding: .5rem .1rem;
-  font-weight: 700; }
-  article.sn > .article-body h4:before {
-    content: '■ '; }
-
-article.sn > .article-body ul, .article-body ol {
-  line-height: 1.8em;
-  padding: 0.2em 0.5em 0.2em 2em; }
-
-article.sn > .article-body ul li, .article-body ol li {
-  padding: 0.1em 0; }
-
-article.sn > .article-body p {
-  margin: 1rem 0;
-  line-height: 1.8rem; }
-
-article.sn > .article-body strong {
-  font-weight: 700;
-  background: linear-gradient(transparent 60%, #ff99ff 60%);
-  border-radius: 6px; }
-
-article.sn > .article-body code,
-article.sn > .article-body pre {
-  font-family: Menlo, Consolas, monospace;
-  font-size: 0.9rem;
-  line-height: 1.3rem;
-  padding: 0.5rem; }
-
-article.sn > .article-body pre {
-  line-height: 1rem;
-  /*margin: 1.5rem -2rem;*/
-  margin: 1.5rem 0rem;
-  overflow: auto; }
-
-article.sn > .article-body .MJXc-display {
-  margin: 1.5rem 0 !important;
-  padding: 0.2rem !important;
-  overflow-x: auto !important; }
-
-/********************************************************************************************************************/
-/*    */
-/********************************************************************************************************************/
-@media (max-width: 66rem) {
-  article.sn > .article-body pre {
-    margin: 1.5rem -1rem; } }
-
-article.sn > .article-body pre > code {
-  display: block;
-  padding: 0.5rem 1rem; }
-
-@media (max-width: 66rem) {
-  article.sn > .article-body pre > code {
-    padding: 1rem; } }
-
-/* インラインコード */
-article.sn > .article-body p code {
-  background-color: #eceff1;
-  color: #454545;
-  border-radius: 4px;
-  margin: 0 .5rem;
-  padding: .375rem;
-  white-space: nowrap; }
-
-article.sn > .article-body blockquote {
-  position: relative;
-  border-left: 0.25rem solid #454545;
-  font-size: .8rem;
-  padding: .125rem 1rem;
-  margin: 1.5rem 0; }
-
-@media (max-width: 66rem) {
-  article.sn > .article-body blockquote {
-    font-size: 1rem; } }
-
-article.sn > .article-body blockquote p {
-  margin: .5rem 0;
-  line-height: 1rem; }
-
-article.sn > .article-body figure {
-  margin: 1.5rem 0; }
-
-article.sn > .article-body img,
-article.sn > .article-body figure img,
-article.sn > .article-body figure amp-img {
-  border: solid 1px #DDD;
-  display: table-cell;
-  max-width: 100%;
-  margin: 0 auto; }
-
-img + em {
-  display: block;
-  font-size: .9rem;
-  color: #959595;
-  text-align: center; }
 
 /********************************************************************************************************************/
 /*    */
@@ -893,7 +714,7 @@ section.footer {
 <p><img src="image.png" alt="img"></p>
 <h3 id="他手法との比較">他手法との比較</h3>
 <p><img src="image-3-1024x265.png" alt="img">
-<em>UDAとReMixMatchは本著者グループの先行研究。</em></p>
+<em>UDAとReMixMatchは本著者グループの先行研究です。</em></p>
 <h3 id="weakly-augmentation">weakly augmentation</h3>
 <p>最初に通常通り、左右反転等の弱いデータ拡張を与えたラベルなし画像に対して予測します。</p>
 <p>次に <strong>疑似ラベル（pseudo-label）</strong> を作成します。一番確信度が高いラベルの予測値が閾値を超えたラベルのみを1, その他のラベルを0とするように one-hot vector 化します。</p>
@@ -901,7 +722,7 @@ section.footer {
 <p>強いデータ拡張には、<strong>RandAugment</strong> か <strong>CTAugment</strong> の適切な方を用います。 ２つとも <strong>AutoAugment</strong> の一種であり、 最適なデータ拡張を探索する分野の技術です。どちらが良いかは明記されておらず、予測結果で判断するようです（要はどっちもやれということ）。</p>
 <p>強いデータ拡張をしたデータセットに対し、通常通り教師あり image classification を行い、cross-entropy loss を導出します。強いデータ拡張の一種として <a href="https://arxiv.org/abs/1708.04552">Cutout</a> を用いました。ランダムに矩形で塗りつぶすようなデータ拡張手法です。</p>
 <p><img src="image-4.png" alt="img">
-<em>Cutout とほぼ同一の成果として Random Erasing があります。Random Erasing の方が名前がわかりやすい。</em></p>
+<em>Cutout とほぼ同一の成果として Random Erasing があります。Random Erasing の方が名前がわかりやすいですね。</em></p>
 <h3 id="training">Training</h3>
 <p>weak/strong dataaugmentation のそれぞれで出した loss を係数付きで合算し、全体 loss として最適化します。全体の疑似コードは以下になります。</p>
 <p><img src="image-2-1024x321.png" alt="img"></p>
@@ -924,16 +745,22 @@ section.footer {
 <ul>
 <li>D. Berthelot et al., &ldquo;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&rdquo;, 2019 Nov.
 <ul>
+<li><a href="https://arxiv.org/abs/1911.09785">arxiv</a></li>
 <li>先行研究その①：ReMixMatch（Google Research）</li>
 <li>CTAugment は ReMixMatch で追加された要素</li>
 </ul>
 </li>
 <li>Q. Xie et al., &ldquo;Unsupervised Data Augmentation for Consistency Training&rdquo;, 2019 Sep.
 <ul>
+<li><a href="https://arxiv.org/abs/1904.12848">arxiv</a></li>
 <li>先行研究その②：UDA（Google Research）</li>
 </ul>
 </li>
-<li><a href="https://arxiv.org/abs/1909.13719">Ekin D. Cubuk et al., &ldquo;RandAugment: Practical automated data augmentation with a reduced search space,&rdquo; 2019</a></li>
+<li>Ekin D. Cubuk et al., &ldquo;RandAugment: Practical automated data augmentation with a reduced search space,&rdquo; 2019
+<ul>
+<li><a href="https://arxiv.org/abs/1909.13719">arxiv</a></li>
+</ul>
+</li>
 <li><a href="https://qiita.com/koshian2/items/f4a458466b15bb91c7cb">CIFAR-10を疑似ラベル（Pseudo-Label）を使った半教師あり学習で分類する</a></li>
 </ul>
 </div>

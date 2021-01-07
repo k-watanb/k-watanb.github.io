@@ -2,7 +2,7 @@
 @import "color.scss";
 
 html, body, p, ul, ol, ul > li, ol > li{
-    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", sans-serif !important;
+    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
     font-weight: 400;
     color: $gray;
 }
@@ -197,6 +197,9 @@ main {
     }
 }
 
+/********************************************************************************************************************/
+/* トップページ 左側記事矩形 */
+/********************************************************************************************************************/
 
 
 .articles {
@@ -213,10 +216,6 @@ article {
     border-radius: 4px;
     overflow: hidden;
 }
-
-/********************************************************************************************************************/
-/* トップページ 左側記事矩形 */
-/********************************************************************************************************************/
 
 article.li {
     background-color: $white;
@@ -345,249 +344,6 @@ article.lism .title {
     }
 }
 
-/********************************************************************************************************************/
-/* post記事内   */
-/********************************************************************************************************************/
-
-article.sn {
-    background-color: $white;
-    box-shadow: 0 0 0 1px rgba(63,63,68,.05), 0 1px 3px rgba(63,63,68,.1), 0 1px 2px rgba(0,0,0,.05);
-    margin-bottom: 1rem;
-}
-
-article.sn .thumb {
-    height: 20rem;
-}
-
-@media (max-width: $max-width) {
-    article.sn .thumb {
-        height: 10rem;
-    }
-}
-
-article.sn > .article-header,
-article.sn .article-footer {
-    padding: 2rem;
-}
-
-article.sn .article-body a, article.sn .terms a {
-    position: relative;
-    display: inline-block;
-    transition: .3s;
-
-    // リンク中央下から線を出す
-    &:after{
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        content: '';
-        width: 0;
-        height: 1px;
-        background-color: $blue;
-        transition: .3s;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-    }
-
-    &:hover::after{
-        width: 100%;      
-    }
-
-}
-
-article.sn > .article-body {
-    padding: 0 2rem;
-}
-
-@media (max-width: $max-width) {
-    article.sn > .article-header,
-    article.sn > .article-body,
-    article.sn .article-footer {
-        padding: 1rem;
-    }
-
-    article.sn > .article-body {
-        padding: 0 1rem;
-    }
-}
-
-// 記事タイトル
-article.sn > .article-header .title {
-
-    font-size: 1.8rem;
-    line-height: 2.3rem;
-    margin-bottom: .5rem;
-
-}
-
-@media (max-width: $max-width) {
-    article.sn > .article-header .title {
-        font-size: 1.4rem;
-        line-height: 1.5rem;
-    }
-}
-
-article.sn > .article-header .facts {
-    line-height: 1.5rem;
-
-}
-
-article.sn > .article-body {
-    margin-bottom: 1.5rem;
-}
-
-article.sn > .article-body h2 {
-    font-size: 1.4rem;
-    line-height: 1.5rem;
-    margin: 1.5rem 0;
-    padding: 1.0rem 1.2rem;
-    border-left: .5rem solid $gray;
-    background: #f4f4f4;
-}
-
-article.sn > .article-body h3 {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
-    margin: 1.5rem 0;
-    padding: .5rem .1rem;
-    border-bottom: 3px dashed $gray;
-    font-weight: 700;
-}
-
-article.sn > .article-body h4 {
-    font-size: 1.1rem;
-    line-height: 1.5rem;
-    /*margin: 0.5rem 0;*/
-    padding: .5rem .1rem;
-    font-weight: 700;
-
-    &:before{
-        content: '■ ';
-    }
-}
-
-article.sn > .article-body ul, .article-body ol {
-    line-height: 1.8em;
-    padding: 0.2em 0.5em 0.2em 2em;
-}
-
-article.sn > .article-body ul li, .article-body ol li {
-    // line-height: 1.4em;
-    padding: 0.1em 0;
-
-}
-
-article.sn > .article-body p {
-    margin: 1rem 0;
-    line-height: 1.8rem;
-}
-
-// article.sn > .article-body em {
-//     // text-align: center;
-//     margin: 0 auto;
-// }
-
-article.sn > .article-body strong {
-    font-weight: 700;
-    background: linear-gradient(transparent 60%, #ff99ff 60%);
-    border-radius: 6px;
-}
-
-article.sn > .article-body code,
-article.sn > .article-body pre {
-    font-family: Menlo, Consolas, monospace;
-    font-size: 0.9rem;
-    line-height: 1.3rem;
-    padding: 0.5rem;
-}
-
-
-article.sn > .article-body pre {
-    line-height: 1rem;
-    /*margin: 1.5rem -2rem;*/
-    margin: 1.5rem 0rem;
-    overflow: auto;
-}
-
-article.sn > .article-body .MJXc-display {
-    // text-align: left !important;
-    margin: 1.5rem 0 !important;
-    padding: 0.2rem !important;
-    overflow-x: auto !important;
-}
-
-/********************************************************************************************************************/
-/*    */
-/********************************************************************************************************************/
-
-@media (max-width: $max-width) {
-    article.sn > .article-body pre {
-        margin: 1.5rem -1rem;
-    }
-}
-
-article.sn > .article-body pre > code {
-    display: block;
-    padding: 0.5rem 1rem;
-}
-
-@media (max-width: $max-width) {
-    article.sn > .article-body pre > code {
-        padding: 1rem;
-    }
-}
-
-/* インラインコード */
-article.sn > .article-body p code {
-    background-color: #eceff1;
-    color: $gray;
-    border-radius: 4px;
-    margin: 0 .5rem;
-    padding: .375rem;
-    white-space: nowrap;
-}
-
-article.sn > .article-body blockquote {
-    position: relative;
-    border-left: .25rem solid $gray;
-    font-size: .8rem;
-    padding: .125rem 1rem;
-    margin: 1.5rem 0;
-}
-
-@media (max-width: $max-width) {
-    article.sn > .article-body blockquote {
-        font-size: 1rem;
-    }
-}
-
-article.sn > .article-body blockquote p {
-    margin: .5rem 0;
-    line-height: 1rem;
-}
-
-article.sn > .article-body figure {
-    margin: 1.5rem 0;
-}
-
-article.sn > .article-body img,
-article.sn > .article-body figure img,
-article.sn > .article-body figure amp-img {
-    // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    border: solid 1px #DDD;
-    display: table-cell;
-    max-width: 100%;
-    margin: 0 auto;
-
-}
-
-// figcaption
-img + em {
-    display: block;
-    font-size: .9rem;
-    color: $light-gray;
-    text-align: center;
-}
 
 /********************************************************************************************************************/
 /*    */

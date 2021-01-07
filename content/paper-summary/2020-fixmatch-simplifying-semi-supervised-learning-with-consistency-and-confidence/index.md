@@ -27,7 +27,7 @@ summary: "半教師あり学習において、ラベルなし画像に「弱い�
 ### 他手法との比較
 
 ![img](image-3-1024x265.png)
-*UDAとReMixMatchは本著者グループの先行研究。*
+*UDAとReMixMatchは本著者グループの先行研究です。*
 
 ### weakly augmentation
 
@@ -42,7 +42,7 @@ summary: "半教師あり学習において、ラベルなし画像に「弱い�
 強いデータ拡張をしたデータセットに対し、通常通り教師あり image classification を行い、cross-entropy loss を導出します。強いデータ拡張の一種として [Cutout](https://arxiv.org/abs/1708.04552) を用いました。ランダムに矩形で塗りつぶすようなデータ拡張手法です。
 
 ![img](image-4.png)
-*Cutout とほぼ同一の成果として Random Erasing があります。Random Erasing の方が名前がわかりやすい。*
+*Cutout とほぼ同一の成果として Random Erasing があります。Random Erasing の方が名前がわかりやすいですね。*
 
 ### Training
 
@@ -77,9 +77,12 @@ weak/strong dataaugmentation のそれぞれで出した loss を係数付きで
 ## 次に読むべき論文はあるか？
 
 -   D. Berthelot et al., "ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring", 2019 Nov.
+    -   [arxiv](https://arxiv.org/abs/1911.09785)
     -   先行研究その①：ReMixMatch（Google Research）
     -   CTAugment は ReMixMatch で追加された要素
 -   Q. Xie et al., "Unsupervised Data Augmentation for Consistency Training", 2019 Sep.
+    -   [arxiv](https://arxiv.org/abs/1904.12848)
     -   先行研究その②：UDA（Google Research）
--   [Ekin D. Cubuk et al., "RandAugment: Practical automated data augmentation with a reduced search space," 2019](https://arxiv.org/abs/1909.13719)
+-   Ekin D. Cubuk et al., "RandAugment: Practical automated data augmentation with a reduced search space," 2019
+    -   [arxiv](https://arxiv.org/abs/1909.13719)
 -   [CIFAR-10を疑似ラベル（Pseudo-Label）を使った半教師あり学習で分類する](https://qiita.com/koshian2/items/f4a458466b15bb91c7cb)

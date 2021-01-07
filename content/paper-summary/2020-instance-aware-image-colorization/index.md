@@ -41,29 +41,43 @@ summary: "学習済み物体検出モデル（今回はMask R-CNN）で検出し
 
 ### Object Detection
 
-今回はMask R-CNNを用いたようです。選定理由は明記されていませんが、今後instance segmentation方向で研究を発展させていくためでしょうか。
+今回はMask R-CNNを用いたようです。今後instance segmentation方向で研究を発展させていくためでしょうか。
 
-各オブジェクトのbounding box座標 $B_i$ を検出し、input imageからクロップします。なお、クロップされた画像は 256x256 に rescale されます。
+各オブジェクトの bounding box 座標 $B_i$ を検出します。座標を基に、入力画像 $X$ をクロップし、256x256 にリスケールした画像 $\{X_i\}_{i=1}^{N}$  を生成します。同様に、ラベル画像 $Y$ をクロップし、リスケールします。
 
-### Image Colorization & Full-image Colorization
+### Instance Colorization & Full-image Colorization
+
+着色を行うネットワークは２つあります。Instance Colorization では前記で検出したオブジェクト白黒画像 $\{X_i\}_{i=1}^{N}$  に対して着色を行います。一方、Full-image Colorization は入力画像 $X$ に対して着色処理を行います。
 
 後の処理で特徴マップをマージする必要があるため、2つは同じネットワーク構造をしています（もちろん重みは異なります）。backboneとして [Zhang et al., SIGGRAPH 2017](https://arxiv.org/abs/1705.02999) のアーキテクチャを採用しました。
 
-損失関数には Zhang et al., SIGGRAPH 2017 と同様、 smooth-L1 loss ($\delta=1$) を用いました。
-
-$$
-l_\delta(x, y) = \frac{1}{2}(x−y)^2\ L1_{\{|x−y|<δ\}} +δ(|x−y| − \frac{1}{2}δ) L1_{\{|x−y|>δ\}}
-$$
-
+![image-20210107202613109](image-20210107202613109.png)
+*Zhan et al., SIGGRAPH 2017 より引用。青色部分のネットワークが着色ネットワークです。*
 
 ### Fusion Module
 
+上記2つのネットワークにより、オブジェクトと画像全体とで別々に着色を行いました。Fusion Module はより良い着色を行うために、各着色結果をうまいこと混ぜて調和のとれた１枚の画像を生成するモジュールです。
 
-先ほどのネットワークのj番目のレイヤから特徴量を引っ張ってきます。３層ほどのCNNで特徴マップを生成しました。
 
+![image-20210107203854490](image-20210107203854490.png)
+
+先ほどのネットワークの $j$ 番目のレイヤから特徴量を引っ張ってきます。３層ほどのCNNで特徴マップを生成しました。$\circ$ はアダマール積を表します（多分）。
 $$
 f_j^{\bar{X}} = f_j^X \circ W_F + \sum_{i=1}^{N} f_j^{\bar{X_i}} \circ \bar{W_I^i}
 $$
+
+### Loss Function and Training
+
+損失関数には Zhang et al., SIGGRAPH 2017 と同様、 smooth-L1 loss ($\delta=1$) を用いました。ここで、$x$ は各ネットワークの入力画像、$y$ はラベル画像を表します。
+$$
+l_\delta(x, y) = \frac{1}{2}(x−y)^2\ \mathbb{1}_{\{|x−y|<δ\}} +δ(|x−y| − \frac{1}{2}δ) \mathbb{1}_{\{|x−y|>δ\}}
+$$
+
+学習は以下の順番で行いました。
+
+1. 入力画像全体の着色（Full-Image Colorization Network）を学習
+2. Instance Colorization Network を1.の学習済み重みで初期化し、学習
+3. 1., 2.のネットワークの重みを固定し、Fusion Module を学習
 
 ## どうやって有効だと検証した？
 
@@ -104,10 +118,6 @@ $$
 
 ## 議論はあるか？
 
-本手法の自然な発展として、以下が考えられます。特に Mask R-CNN をバックボーンに用いているあたり、お次は instance segmentation で発表してきそうです。
--   semantic/instance segmentation情報を用いる
--   class informationをinstance colorizationに用いる
-
 ### failure cases
 
 （a）物体検出がうまくいかないとき、（b）各オブジェクトの領域の重複が多いとき に失敗するようです。
@@ -116,7 +126,17 @@ $$
 
 ![image-20210107181726895](image-20210107181726895.png)
 
-## 6. 次に読むべき論文はあるか？
+## 次に読むべき論文はあるか？
 
--   [R. Chang et al., "Real-Time User-Guided Image Colorization with Learned Deep Priors, " SIGGRAPH 2017](https://arxiv.org/abs/1705.02999)
+-   R. Chang et al., "Real-Time User-Guided Image Colorization with Learned Deep Priors, " SIGGRAPH 2017
+    -   [arxiv](https://arxiv.org/abs/1705.02999)
     -   メインの引用＆比較論文
+
+## さいごに
+
+本手法の自然な発展として、以下が考えられます。特に Mask R-CNN をバックボーンに用いているあたり、お次は instance segmentation で発表してきそうと睨んでいます。
+
+-   semantic/instance segmentation情報を用いる
+-   class informationをinstance colorizationに用いる
+
+また、着色（Colorization）自体が不良設定問題であり、正解が1つではありません。そのため、着色したときにそれらの尤もらしさを定量評価する難しさは未だに残る結果となっています。今後の着色業界の発展が楽しみですね。

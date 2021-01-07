@@ -93,10 +93,13 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
 
         
-        <link rel="stylesheet" href="https://k-watanb.github.io/styles.min.aaad9ef7185530365928024edc24f2507fa4e644d26180132e5bddae092848ed.css">
+        <link rel="stylesheet" href="https://k-watanb.github.io/styles.min.04f0a4e24336bdf2d4edbfd44e11c97427ec877e3417d5a7067ce65aef6ce3cb.css">
 
         
         <link rel="stylesheet" href="https://k-watanb.github.io/author.min.f03ba4f685923b07b1fe06bcecc27e938752076607a04cb720357324f35b1c40.css">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/article.min.f4c6ffd3a664dc6ed3c292b18ee2975aaa8e6ed85e4e1110d8b3af2bf08bde8a.css">
 
         <style>
             .thumb {
@@ -319,19 +322,31 @@
 <li>fusion module を実行</li>
 </ol>
 <h3 id="object-detection">Object Detection</h3>
-<p>今回はMask R-CNNを用いたようです。選定理由は明記されていませんが、今後instance segmentation方向で研究を発展させていくためでしょうか。</p>
-<p>各オブジェクトのbounding box座標 $B_i$ を検出し、input imageからクロップします。なお、クロップされた画像は 256x256 に rescale されます。</p>
-<h3 id="image-colorization--full-image-colorization">Image Colorization &amp; Full-image Colorization</h3>
+<p>今回はMask R-CNNを用いたようです。今後instance segmentation方向で研究を発展させていくためでしょうか。</p>
+<p>各オブジェクトの bounding box 座標 $B_i$ を検出します。座標を基に、入力画像 $X$ をクロップし、256x256 にリスケールした画像 ${X_i}_{i=1}^{N}$  を生成します。同様に、ラベル画像 $Y$ をクロップし、リスケールします。</p>
+<h3 id="instance-colorization--full-image-colorization">Instance Colorization &amp; Full-image Colorization</h3>
+<p>着色を行うネットワークは２つあります。Instance Colorization では前記で検出したオブジェクト白黒画像 ${X_i}_{i=1}^{N}$  に対して着色を行います。一方、Full-image Colorization は入力画像 $X$ に対して着色処理を行います。</p>
 <p>後の処理で特徴マップをマージする必要があるため、2つは同じネットワーク構造をしています（もちろん重みは異なります）。backboneとして <a href="https://arxiv.org/abs/1705.02999">Zhang et al., SIGGRAPH 2017</a> のアーキテクチャを採用しました。</p>
-<p>損失関数には Zhang et al., SIGGRAPH 2017 と同様、 smooth-L1 loss ($\delta=1$) を用いました。</p>
-<p>$$
-l_\delta(x, y) = \frac{1}{2}(x−y)^2\ L1_{{|x−y|&lt;δ}} +δ(|x−y| − \frac{1}{2}δ) L1_{{|x−y|&gt;δ}}
-$$</p>
+<p><img src="image-20210107202613109.png" alt="image-20210107202613109">
+<em>Zhan et al., SIGGRAPH 2017 より引用。青色部分のネットワークが着色ネットワークです。</em></p>
 <h3 id="fusion-module">Fusion Module</h3>
-<p>先ほどのネットワークのj番目のレイヤから特徴量を引っ張ってきます。３層ほどのCNNで特徴マップを生成しました。</p>
-<p>$$
+<p>上記2つのネットワークにより、オブジェクトと画像全体とで別々に着色を行いました。Fusion Module はより良い着色を行うために、各着色結果をうまいこと混ぜて調和のとれた１枚の画像を生成するモジュールです。</p>
+<p><img src="image-20210107203854490.png" alt="image-20210107203854490"></p>
+<p>先ほどのネットワークの $j$ 番目のレイヤから特徴量を引っ張ってきます。３層ほどのCNNで特徴マップを生成しました。$\circ$ はアダマール積を表します（多分）。
+$$
 f_j^{\bar{X}} = f_j^X \circ W_F + \sum_{i=1}^{N} f_j^{\bar{X_i}} \circ \bar{W_I^i}
 $$</p>
+<h3 id="loss-function-and-training">Loss Function and Training</h3>
+<p>損失関数には Zhang et al., SIGGRAPH 2017 と同様、 smooth-L1 loss ($\delta=1$) を用いました。ここで、$x$ は各ネットワークの入力画像、$y$ はラベル画像を表します。
+$$
+l_\delta(x, y) = \frac{1}{2}(x−y)^2\ \mathbb{1}_{{|x−y|&lt;δ}} +δ(|x−y| − \frac{1}{2}δ) \mathbb{1}_{{|x−y|&gt;δ}}
+$$</p>
+<p>学習は以下の順番で行いました。</p>
+<ol>
+<li>入力画像全体の着色（Full-Image Colorization Network）を学習</li>
+<li>Instance Colorization Network を1.の学習済み重みで初期化し、学習</li>
+<li>1., 2.のネットワークの重みを固定し、Fusion Module を学習</li>
+</ol>
 <h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
 <h3 id="実験環境">実験環境</h3>
 <ul>
@@ -353,23 +368,26 @@ $$</p>
 <p>左列が入力画像、中央列がヒトによる着色結果、右列が本手法による着色結果です。人工的に生成した白黒画像だけではなく、古い劣化した写真でもほぼヒトに近い結果で着色できるようです。</p>
 <p><img src="image-20210107181659097.png" alt="image-20210107181659097"></p>
 <h2 id="議論はあるか">議論はあるか？</h2>
-<p>本手法の自然な発展として、以下が考えられます。特に Mask R-CNN をバックボーンに用いているあたり、お次は instance segmentation で発表してきそうです。</p>
-<ul>
-<li>semantic/instance segmentation情報を用いる</li>
-<li>class informationをinstance colorizationに用いる</li>
-</ul>
 <h3 id="failure-cases">failure cases</h3>
 <p>（a）物体検出がうまくいかないとき、（b）各オブジェクトの領域の重複が多いとき に失敗するようです。</p>
 <p>考えれば当然の話ですね。物体検出を組み込んだことで着色精度を向上させた研究で、物体検出ができなかったらそりゃ失敗するでしょう。また、物体が重複している場合もまた物体検出を行いにくい状況です。</p>
 <p><img src="image-20210107181726895.png" alt="image-20210107181726895"></p>
-<h2 id="6-次に読むべき論文はあるか">6. 次に読むべき論文はあるか？</h2>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
 <ul>
-<li><a href="https://arxiv.org/abs/1705.02999">R. Chang et al., &ldquo;Real-Time User-Guided Image Colorization with Learned Deep Priors, &quot; SIGGRAPH 2017</a>
+<li>R. Chang et al., &ldquo;Real-Time User-Guided Image Colorization with Learned Deep Priors, &quot; SIGGRAPH 2017
 <ul>
+<li><a href="https://arxiv.org/abs/1705.02999">arxiv</a></li>
 <li>メインの引用＆比較論文</li>
 </ul>
 </li>
 </ul>
+<h2 id="さいごに">さいごに</h2>
+<p>本手法の自然な発展として、以下が考えられます。特に Mask R-CNN をバックボーンに用いているあたり、お次は instance segmentation で発表してきそうと睨んでいます。</p>
+<ul>
+<li>semantic/instance segmentation情報を用いる</li>
+<li>class informationをinstance colorizationに用いる</li>
+</ul>
+<p>また、着色（Colorization）自体が不良設定問題であり、正解が1つではありません。そのため、着色したときにそれらの尤もらしさを定量評価する難しさは未だに残る結果となっています。今後の着色業界の発展が楽しみですね。</p>
 </div>
 
     <footer class="article-footer">
