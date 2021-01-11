@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html ⚡>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>[2020] Bringing Old Photos Back to Life - ML戦記</title>
+    <meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#263238">
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+<link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
+
+
+<link rel="canonical" type="text/html" href="https://k-watanb.github.io/paper-summary/2020-bringing-old-photos-back-to-life/" title="ML戦記">
+
+
+
+    
+<meta name="description" content="2つのVAEを学習させ、劣化した写真を修復する技術を提案。写真の折れ/傷/よれ/退色等、様々な修復に対応可能です。視覚的品質の面で従来手法よりSOTA.">
+
+<meta property="og:title" content="[2020] Bringing Old Photos Back to Life - ML戦記">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://k-watanb.github.io/amp/paper-summary/2020-bringing-old-photos-back-to-life/">
+<meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/2020-bringing-old-photos-back-to-life.png">
+<meta property="og:site_name" content="ML戦記">
+<meta property="og:description" content="2つのVAEを学習させ、劣化した写真を修復する技術を提案。写真の折れ/傷/よれ/退色等、様々な修復に対応可能です。視覚的品質の面で従来手法よりSOTA.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="ML戦記">
+<meta name="twitter:url" content="https://k-watanb.github.io/amp/paper-summary/2020-bringing-old-photos-back-to-life/">
+<meta name="twitter:title" content="[2020] Bringing Old Photos Back to Life - ML戦記">
+<meta name="twitter:description" content="2つのVAEを学習させ、劣化した写真を修復する技術を提案。写真の折れ/傷/よれ/退色等、様々な修復に対応可能です。視覚的品質の面で従来手法よりSOTA.">
+<meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/2020-bringing-old-photos-back-to-life.png">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$', '$$']], 
+            processEscapes: true,
+        },
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<link href="https://k-watanb.github.io/css/syntax.css" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/k-watanb.github.io\/"
+    },
+    "headline": "[2020] Bringing Old Photos Back to Life-ML戦記",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/2020-bringing-old-photos-back-to-life.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-01-11T00:00:00JST",
+    "dateModified": "2021-01-11T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "ML戦記"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ML戦記",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/k-watanb.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "2つのVAEを学習させ、劣化した写真を修復する技術を提案。写真の折れ\/傷\/よれ\/退色等、様々な修復に対応可能です。視覚的品質の面で従来手法よりSOTA."
+  }
+</script>
+
+
+
+    
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <meta name="amp-google-client-id-api" content="googleanalytics">
+    
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+
+  
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
+html, body, p, ul, ol, ul > li, ol > li {
+  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
+  font-weight: 400;
+  color: #454545; }
+
+html {
+  font-size: 16px;
+  background-color: rgba(236, 239, 241, 0.5); }
+
+body {
+  font-size: inherit;
+  line-height: 1rem;
+  margin: 0 !important; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1rem;
+  margin: 0; }
+
+hr {
+  border: 0;
+  border-top: 1px dashed #cfd8dc;
+  margin: 1rem 0; }
+
+p {
+  margin: 0;
+  line-height: 1rem; }
+
+a {
+  color: #2196f3;
+  text-decoration: none; }
+
+table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto; }
+
+th, td {
+  font-size: .8rem;
+  padding: .5rem; }
+
+tr {
+  border-bottom: 1px dashed #ddd; }
+
+/* Layouts */
+main, aside {
+  display: block; }
+
+main {
+  padding: 3rem 0 3rem 0; }
+
+.l-container {
+  position: relative;
+  max-width: 66rem;
+  margin: 0 auto;
+  padding: 0 1rem; }
+  .l-container.thin {
+    max-width: 44rem; }
+
+.l-header {
+  padding-top: 2rem;
+  height: 20rem;
+  background: url("/images/tobias-keller-73F4pKoUkM0-unsplash.jpg") no-repeat center;
+  background-size: cover;
+  position: relative; }
+  .l-header:before {
+    content: ' ';
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.title-logo-wrapper {
+  position: relative;
+  width: 30rem;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; }
+  .title-logo-wrapper .logo a img {
+    width: 30rem;
+    max-width: 100%; }
+  .title-logo-wrapper .topnav .topnav_menu_item {
+    display: inline-block;
+    margin: 0rem 0.3rem 2rem 0rem; }
+  .title-logo-wrapper .topnav a {
+    font-family: "Raleway", "Hiragino Kaku Gothic Pro", sans-serif;
+    color: #fff;
+    padding: 0.7rem 1.3rem;
+    border-radius: 2rem;
+    transition: all .3s; }
+    .title-logo-wrapper .topnav a:hover {
+      background-color: #2196f3; }
+
+.l-footer {
+  font-size: .9rem;
+  background-color: #fff;
+  text-align: center;
+  padding: 2rem 0; }
+
+.l-sidebar {
+  margin: -1rem 0; }
+
+@media (max-width: 66rem) {
+  .l-sidebar {
+    margin-top: 4rem; } }
+
+.mrow {
+  margin: 0 -1rem;
+  overflow: hidden; }
+
+.mcol {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 1rem; }
+
+.c6 {
+  width: 50%; }
+
+.c4 {
+  width: 33.26323833%; }
+
+.c8 {
+  width: 66.66666%; }
+
+@media (max-width: 66rem) {
+  .mcol {
+    width: 100%;
+    float: none; } }
+
+/********************************************************************************************************************/
+/* トップページ 左側記事矩形 */
+/********************************************************************************************************************/
+.articles {
+  margin: -1rem 0;
+  margin-bottom: 1rem; }
+
+.articles.sm {
+  margin: -.5rem 0;
+  margin-bottom: 0; }
+
+article {
+  border-radius: 4px;
+  overflow: hidden; }
+
+article.li {
+  background-color: #fff;
+  height: 26rem;
+  margin: 1rem 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+  article.li:hover {
+    border-color: #FFF;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: transparent;
+    outline-offset: 12px;
+    cursor: pointer;
+    background-color: #e8f4ff; }
+    article.li:hover .thumb {
+      opacity: 0.7; }
+
+/* 記事矩形内のリンク */
+article.li > a {
+  display: block;
+  color: #454545; }
+
+article.li .inner {
+  padding: 1rem; }
+
+article.li .thumb {
+  height: 10rem; }
+
+/* 記事タイトル */
+article.li .title {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  margin-bottom: .5rem;
+  transition: 0.1s; }
+  article.li .title:hover {
+    color: #2196f3; }
+
+article.li .summary {
+  font-size: .9rem;
+  height: 8rem;
+  overflow: hidden;
+  line-height: 1.3rem;
+  margin-top: 0.8rem; }
+
+/********************************************************************************************************************/
+/* トップページ 右側矩形 */
+/********************************************************************************************************************/
+article.lism {
+  background-color: #fff;
+  height: auto;
+  margin: .5rem 0;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px; }
+  article.lism:after {
+    content: '';
+    display: block;
+    clear: both; }
+  article.lism:hover {
+    transition: 0.3s; }
+    article.lism:hover .thumb {
+      opacity: 0.7; }
+
+/* Latestリンク全体 */
+article.lism > a {
+  display: block;
+  color: #454545;
+  transition: 0.1s; }
+  article.lism > a:hover {
+    background-color: #e8f4ff; }
+
+article.lism .inner {
+  display: table-cell;
+  vertical-align: middle;
+  height: 5rem;
+  padding: 0 .75rem; }
+
+article.lism .thumb {
+  width: 5rem !important;
+  height: 5rem !important;
+  float: left; }
+
+article.lism .title {
+  font-weight: 700;
+  font-size: .8rem;
+  margin-bottom: .25rem;
+  transition: 0.2s; }
+  article.lism .title:hover {
+    color: #2196f3; }
+
+/********************************************************************************************************************/
+/*    */
+/********************************************************************************************************************/
+/* 記事矩形内の日付・フォルダ */
+ul.facts, ul.facts_tags {
+  margin: 0;
+  padding: 0;
+  /*text-align: left;*/
+  /* アイコン */ }
+  ul.facts li, ul.facts_tags li {
+    display: inline;
+    /* 横に並べる */
+    font-size: .8rem; }
+  ul.facts i, ul.facts_tags i {
+    color: #cfd8dc;
+    margin-right: .5em; }
+  ul.facts.sm li, ul.facts_tags.sm li {
+    font-size: .7rem; }
+  ul.facts a, ul.facts_tags a {
+    position: relative;
+    display: inline-block;
+    transition: .3s; }
+    ul.facts a:after, ul.facts_tags a:after {
+      position: absolute;
+      bottom: -0.05rem;
+      left: 50%;
+      content: '';
+      width: 0;
+      height: 1px;
+      background-color: #2196f3;
+      transition: .3s;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
+    ul.facts a:hover::after, ul.facts_tags a:hover::after {
+      width: 100%; }
+
+ul.facts > li {
+  margin-right: 1rem; }
+
+ul.facts_tags {
+  margin: 0.5rem 0rem 1.3rem 0rem;
+  line-height: 1.3rem; }
+  ul.facts_tags li {
+    margin-right: .2rem; }
+
+/* トップページ categories & tag wrapper */
+section.sidebar {
+  margin: 2rem 0; }
+  section.sidebar > header {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 1.5rem 0; }
+
+section.footer {
+  margin: 1rem 0; }
+  section.footer > header {
+    font-size: .8rem;
+    margin: .5rem 0; }
+    section.footer > header::before {
+      content: "- "; }
+    section.footer > header a {
+      font-weight: 700;
+      color: #454545;
+      text-decoration: underline; }
+
+/* トップページ categories & tag リンク */
+.terms {
+  margin: -.25rem; }
+  .terms li {
+    display: inline-block; }
+  .terms a {
+    display: block;
+    color: #454545;
+    font-size: .9rem;
+    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
+    font-weight: 500;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: .3rem;
+    padding: 0.5rem 0.8rem;
+    transition: 0.3s; }
+    .terms a:hover {
+      background-color: #e8f4ff; }
+
+.paging {
+  text-align: center;
+  padding: 1rem 0; }
+  .paging a {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #454545;
+    padding: 0 3rem;
+    line-height: 3rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: #CCCCCC;
+    outline-offset: 0px;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+    .paging a:hover {
+      border-color: #FFF;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+      outline-color: transparent;
+      outline-offset: 12px;
+      cursor: pointer;
+      background-color: #e8f4ff;
+      color: #2196f3; }
+
+.page-title {
+  text-align: center;
+  margin: 1rem 0; }
+  .page-title::after {
+    content: '';
+    display: block;
+    border-bottom: 0.25rem solid #454545;
+    width: 3rem;
+    margin: 1.5rem auto; }
+  .page-title > .title {
+    font-size: 1.2rem;
+    line-height: 1.5rem; }
+
+.share {
+  padding: 0; }
+  .share a {
+    display: inline-block;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    color: #454545;
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: center;
+    padding: 0 .5rem; }
+
+.adj article.lism {
+  margin-bottom: 1rem; }
+
+.adj header {
+  font-weight: 700;
+  font-size: .8rem; }
+
+.toc {
+  padding: 0 2rem;
+  margin: 1rem 0; }
+  .toc nav > ul {
+    background-color: #eceff1;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    word-break: break-all;
+    list-style: none; }
+  .toc ul {
+    padding: 0; }
+    .toc ul ul {
+      padding-left: 1rem; }
+      .toc ul ul > li {
+        font-weight: 700;
+        margin: .5rem 0;
+        list-style-type: decimal; }
+      .toc ul ul ul {
+        padding-left: 1rem; }
+        .toc ul ul ul > li {
+          list-style-type: disc;
+          font-weight: 500; }
+  .toc li {
+    color: #90a4ae; }
+
+@media (max-width: 66rem) {
+  .toc {
+    padding: 0 1rem; } }
+
+
+
+.thumb {
+  background-image: url("https://k-watanb.github.io/images/default.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+  
+  .thumb-69ff5d48dbf7c16df278b62a86957fc4 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png");
+  }
+  
+
+  
+  .thumb-129492938da4a1f682d30eecc8a48a44 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-bringing-old-photos-back-to-life.png");
+  }
+  
+
+  
+  .thumb-c465b21de885ae7d2ea2b99cab0aaeb1 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks.png");
+  }
+  
+
+  
+  .thumb-79c1da4f79c07f8affdfaa8d56ed7e70 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png");
+  }
+  
+
+  
+  .thumb-8d6b14303020673bd7bfa2756380b69b {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-instance-aware-image-colorization.png");
+  }
+  
+
+  
+  .thumb-ccc524a040191d79e43b34b54ce37b4a {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/custom-theme.png");
+  }
+  
+
+  
+  .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/vim-monokai.png");
+  }
+  
+
+  
+  .thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+  }
+  
+
+  
+  .thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+  }
+  
+
+  
+  .thumb-e96a4abb7c5be237e2b68218276d70b2 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+  }
+  
+
+  
+  .thumb-888ace4333ea5d33626b5651ab4a5668 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+  }
+  
+
+  
+  .thumb-21e7dd78c5b80a7310284266edb2c89b {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+  }
+  
+
+  
+  .thumb-92bdee60ff963f675b658e9bda4fb314 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+  }
+  
+
+  
+  .thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+  }
+  
+
+  
+  .thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+  }
+  
+
+  
+
+  
+
+
+
+
+
+.l-container { max-width: 40rem; margin: 0 auto; }
+    </style>
+  </head>
+
+  <body>
+    
+    <amp-analytics type="googleanalytics" id="analytics1">
+      <script type="application/json"> { "vars": { "account": "G-Q8JBWP2QFH"}, "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } } }
+      </script>
+    </amp-analytics>
+    
+
+    <header class="l-header">
+        <h1 class="logo">
+          <a href="https://k-watanb.github.io/">ML戦記</a>
+        </h1>
+    </header>
+
+    <main>
+      <div class="l-container">
+        
+
+<article class="sn">
+
+    
+
+    <header class="article-header">
+        <h1 class="title">[2020] Bringing Old Photos Back to Life</h1>
+
+        <ul class="facts">
+
+            
+                <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2021-01-11T00:00:00JST">2021-01-11</time></li>
+
+            
+            
+
+            
+            
+                <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+
+            
+            
+        </ul>
+
+        
+        <ul class="facts_tags">
+
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/generative-model">Generative Model</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/vae">VAE</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-restoration">Image Restoration</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/domain-translation">Domain Translation</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/cvpr">CVPR</a> </li>
+            
+
+        </ul>
+
+        
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&title=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&text=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&t=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&title=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+    </header>
+
+    
+
+    <div class="article-body"><p><a href="https://arxiv.org/abs/2004.09484">arxiv</a>, <a href="https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life">github(official)</a>, <a href="http://raywzy.com/Old_Photo/">project</a></p>
+<p>タイトルが詩的でおしゃれですね。</p>
+<h2 id="どんなもの">どんなもの？</h2>
+<p>2つのVAEを学習させ、劣化した写真を修復する技術を提案。写真の折れ/傷/よれ/退色等、様々な修復に対応可能です。視覚的品質の面で従来手法よりSOTA.</p>
+<p><img src="image-20210111175655599.png" alt="image-20210111175655599">
+<em>修復結果の例。</em></p>
+<h2 id="先行研究と比べてどこがすごい">先行研究と比べてどこがすごい？</h2>
+<p>大規模な合成画像のペアと実際の写真とを活用した、<strong>triplet domain translation network</strong> を提案した点。実際の写真の劣化は多種多様であり、合成画像と実際の古い写真との間のドメインギャップにより、ネットワークの一般化に失敗するため。</p>
+<h2 id="技術や手法のキモはどこにある">技術や手法のキモはどこにある？</h2>
+<h3 id="old-photo-restoration-について">Old Photo Restoration について</h3>
+<p>Old Photo Restoration（古い写真修復）というタスクは、合成画像の修復タスクより高難易度です。</p>
+<p>1つ目の理由は、<strong>古い写真は多種多様な劣化具合があり、合成画像と古い写真とのドメイン間に隔たりがある</strong> ためです。ネットワークの一般化が困難になり、人工的な折れ/傷のデータセットでは、実際の写真修復は行えません。</p>
+<p>2つ目の理由は、<strong>古い写真には複数の劣化が組み合わせっており、各状態に応じた（文脈を考量した）修復が必要になるため</strong> です。フィルムノイズ、ぼやけ、色あせなどの非構造化欠陥は、ローカルパッチ内の周囲のピクセルを利用することにより、空間的に均一なフィルターで復元できます。 一方、引っかき傷や染みなどの構造化された欠陥は、構造的な一貫性を確保するために、グローバルな文脈を考慮して修復する必要があります。</p>
+<p>以下では、前述の一般化の問題と混合劣化の問題にそれぞれ対処するためのソリューションを提案します。</p>
+<h3 id="restoration-via-latent-space-translation">Restoration via latent space translation</h3>
+<p>本項では一般化の問題に対処します。</p>
+<p>写真の復元は画像変換の問題であり、きれいな画像と古い写真とを別個のドメインからの画像として扱い、その間のマッピングを学習したいと考えています。本提案では、従来の2つの異なるドメイン間をブリッジする画像変換方法とは異なり、</p>
+<ul>
+<li>実際の劣化写真ドメイン $\mathcal{R}$</li>
+<li>人為的に劣化させた合成画像ドメイン $\mathcal{X}$</li>
+<li>$x \in \mathcal{X}$ に対応する g.t.ドメイン $\mathcal{Y}$（劣化のない画像を含む）</li>
+</ul>
+<p>の3つのドメインにわたり画像を変換する <strong>triplet domain translation network</strong> を提唱します。triplet domain translation は、ラベルのない実際の写真と、g.t. に関連する大量の合成データを活用できる利点があります。</p>
+<p><img src="image-20210111175721946.png" alt="image-20210111175721946"></p>
+<p>3つのドメインからの画像をそれぞれ $r \in \mathcal{R}、x \in \mathcal{X}、y \in \mathcal{Y}$ で表します。ここで、$x$ と $y$ はデータ合成によってペアになります。つまり、$y$ を人為的に劣化させた画像が $x$ です。</p>
+<p>一般化の問題により、実際の写真 ${r}^N_{i=1}$ からきれいな画像 ${y}^N_{i = 1}$ へのマッピングを直接学習できないため、2段階変換を行います。最初に、</p>
+<p>$$
+E_\mathcal{R}：\mathcal{R} \mapsto \mathcal{Z}_\mathcal{R}
+$$</p>
+<p>$$
+E_\mathcal{X}: \mathcal{X} \mapsto \mathcal{Z}_\mathcal{X}
+$$</p>
+<p>$$
+E_\mathcal{Y}: \mathcal{Y} \mapsto \mathcal{Z}_\mathcal{Y}
+$$</p>
+<p>を介して $R, \mathcal{X}, \mathcal{Y}$ を対応する潜在空間にマッピングします。また、合成画像 $\mathcal{X}$ と実際の古い写真 $\mathcal{R}$ はどちらも破損しており、類似した外観を共有していると推測できます。したがって、</p>
+<p>$$
+Z_\mathcal{R}≈  Z_\mathcal{X}
+$$
+とみなせます。</p>
+<p>次に、潜在空間からの画像復元を学習します。具体的には、合成データペア ${x、y}^N_{i = 1}$ を利用することにより、マッピング
+$$
+T_{\mathcal{Z}}: \mathcal{Z}_{\mathcal{X}} \mapsto \mathcal{Z}_\mathcal{Y}
+$$</p>
+<p>$$
+G_\mathcal{Y} : \mathcal{Z}_\mathcal{Y} \mapsto \mathcal{Y}
+$$</p>
+<p>を介して、破損した画像の潜在空間 $\mathcal{Z_\mathcal{X}}$ から g.t. 潜在空間 $\mathcal{Z}_\mathcal{Y}$ への変換を学習します。</p>
+<p>以上の処理をまとめると、以下の式で表されます。潜在空間上のマッピングを学習することで、古い写真を復元できます。</p>
+<p>$$
+r_{\mathcal{R} \rightarrow \mathcal{Y}} = G_{\mathcal{Y}} \circ T_{\mathcal{Z}} \circ E_{\mathcal{R}}(r)
+$$</p>
+<h4 id="restoration-network">Restoration Network</h4>
+<p>$R$ と $X$ が同じ潜在空間にエンコードされているという仮定をしているため、2つのVAE で画像をエンコードすることを提案します（３つではない）。VAE1 と VAE2 との間は Adversarial Discriminator で結ばれます。それぞれ以下の役割があります。</p>
+<ul>
+<li>VAE1（図上部）：$E_\mathcal{R}, E_\mathcal{X}$ を学習します。</li>
+<li>Adversarial Discriminator（図中部）：$T_\mathcal{Z}$ を学習します。</li>
+<li>VAE2（図下部）：$G_\mathcal{Y}$ を学習します。</li>
+</ul>
+<p><img src="image-20210111175733102.png" alt="image-20210111175733102"></p>
+<p><em>上部が再構成を行うVAE1です。中央部は破損画像の潜在空間を、きれいに修復された画像の潜在空間へマッピングする役割があります。下部はきれいに修復された潜在空間から実際の画像へと戻すVAE2です。</em></p>
+<p>VAE1 では、破損した両方のドメインからの画像を共有潜在空間にマッピングします。敵対的な discriminator を共同でトレーニングすることでドメインギャップを閉じます。 VAE1 の目的関数は以下で定義されます。</p>
+<p><img src="image-20210111204212660.png" alt="image-20210111204212660"></p>
+<p>ここで、$z_r \in Z_{\mathcal{R}}$ は $r$ の潜在コードであり、$r_{R \rightarrow R}$ は生成出力です。</p>
+<ul>
+<li>第1項目｜潜在分布のガウス事前分布からの偏差にペナルティを課す KL-divergence</li>
+<li>第2項目｜再構成誤差</li>
+<li>第3項目｜LSGAN でも用いられている least-square loss であり、VAE が過度に平滑化することを防止する役割があります。要は高精細な画像が生成できるようになります。</li>
+</ul>
+<p>VAE2は対応する潜在表現 $z_y \in \mathcal{Y}$ を導出できるように、同様の損失で学習します。</p>
+<h3 id="multiple-degradation-restoration">Multiple degradation restoration</h3>
+<p>本項では混合劣化の問題について対処します。</p>
+<p>res-block を使用した潜在的な復元は、各層の受容野が限られているため、局所的な特徴にのみ集中します。しかし、より自然な修復のためには、画像の文脈を考慮して修復する必要があります。そこで、<strong>nonlocal block</strong> という機構を採用しました。nonlocal block は、マスク入力を明示的に利用し、破損領域のピクセルがそれらの領域を完成させるために利用されないようにする機構です。</p>
+<h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
+<h3 id="定量評価psnrssimlpipsfid">定量評価（PSNR/SSIM/LPIPS/FID）</h3>
+<p>いつもの評価指標です。突出して良い結果はありませんが、先行研究のSOTAレベルをすべての指標で備えた結果が得られています（いいとこ取り?）。</p>
+<p><img src="image-20210111175837027.png" alt="image-20210111175837027"></p>
+<h3 id="定量評価user-selection">定量評価（user selection）</h3>
+<p>ユーザによる主観評価結果を示します。先行研究より、主観的に良い復元品質であるという結果が得られました。テストセットから25枚の古い写真をランダムに選択し、22人のユーザーが復元品質に応じて結果を並べ替えさせました。</p>
+<p><img src="image-20210111175930754.png" alt="image-20210111175930754"></p>
+<h3 id="定性評価">定性評価</h3>
+<p>先行研究より生き生きとした画像が得られているように見えます。こう見ると pix2pix も奮戦している気がします。</p>
+<p><img src="image-20210111175903712.png" alt="image-20210111175903712"></p>
+<h2 id="議論はあるか">議論はあるか？</h2>
+<h3 id="limitation">Limitation</h3>
+<p>複雑な形状の折れ/傷には対応不可。</p>
+<p><img src="image-20210111180017046.png" alt="image-20210111180017046"></p>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
+</div>
+
+    <footer class="article-footer">
+
+        <ul class="facts_tags">
+
+            
+            
+            <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/generative-model">Generative Model</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/vae">VAE</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-restoration">Image Restoration</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/domain-translation">Domain Translation</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/cvpr">CVPR</a> </li>
+            
+
+        </ul>
+
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&title=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&text=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&t=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f&title=%5b2020%5d%20Bringing%20Old%20Photos%20Back%20to%20Life" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2020-bringing-old-photos-back-to-life%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+        
+
+<div class="see-also">
+<header><i class="fas fa-eye" aria-hidden="true"></i> See Also</header>
+<ul>
+    <div class="articles sm">
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks/">
+    <div class="thumb thumb-aa6fc3d59b20b400a6c29bf60042bfc1"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Anomaly Detection by Latent Regularized Dual Adversarial Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+    <div class="thumb thumb-79c1da4f79c07f8affdfaa8d56ed7e70"></div>
+
+    <div class="inner">
+      <div class="title">[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2017-densely-connected-convolutional-networks/">
+    <div class="thumb thumb-d6350ae9d3002a2b1c441067a8c46a23"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Densely Connected Convolutional Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/">
+    <div class="thumb thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Convolutional Neural Networks with Alternately Updated Clique</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+    </div>
+</ul>
+</div>
+
+
+    </footer>
+
+</article>
+
+
+<div class="adj mrow">
+    <div class="mcol c6">
+      <header>Next Article</header>
+    
+      <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/">
+    <div class="thumb thumb-69ff5d48dbf7c16df278b62a86957fc4"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Real-time user-guided image colorization with learned deep priors</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="11007-01-11T00:00:00JST">2021-01-11</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    </div>
+    <div class="mcol c6">
+      <header>Previous Article</header>
+    
+      <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/">
+    <div class="thumb thumb-c465b21de885ae7d2ea2b99cab0aaeb1"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="l-container">
+        <p><span class="h-logo">&copy; ML戦記</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_robust">Robust</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+  </body>
+</html>
+

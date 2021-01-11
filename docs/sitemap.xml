@@ -8,7 +8,17 @@
   </url>
   
   <url>
+    <loc>https://k-watanb.github.io/tags/2020/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2020-bringing-old-photos-back-to-life/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -18,7 +28,27 @@
   </url>
   
   <url>
+    <loc>https://k-watanb.github.io/tags/cvpr/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/domain-translation/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/generative-model/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://k-watanb.github.io/tags/image-colorization/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/image-restoration/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -58,12 +88,12 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/tags/2018/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
+    <loc>https://k-watanb.github.io/tags/vae/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/tags/2020/</loc>
+    <loc>https://k-watanb.github.io/tags/2018/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -79,11 +109,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/paper-summary/2020-instance-aware-image-colorization/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/cvpr/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -284,11 +309,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/tags/gan/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/generative-model/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
