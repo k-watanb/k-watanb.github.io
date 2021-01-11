@@ -3,6 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://k-watanb.github.io/tags/2017/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/image-colorization/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/paper-summary/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/siggraph/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/u-net/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/user-guided/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://k-watanb.github.io/tags/2018/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
@@ -28,11 +83,6 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/cvpr/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
@@ -53,22 +103,12 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/tags/image-colorization/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/instance-segmentation/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://k-watanb.github.io/tags/mask-r-cnn/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -88,22 +128,7 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/paper-summary/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/paper-summary/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/semi-supervised/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -175,11 +200,6 @@
   <url>
     <loc>https://k-watanb.github.io/wsl/vim-monokai/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/2017/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -329,11 +349,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/tags/transfer-learning/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/u-net/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   

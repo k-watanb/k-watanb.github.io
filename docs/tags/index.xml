@@ -5,7 +5,52 @@
     <link>https://k-watanb.github.io/tags/</link>
     <description>Recent content in Tags on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2017</title>
+      <link>https://k-watanb.github.io/tags/2017/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Colorization</title>
+      <link>https://k-watanb.github.io/tags/image-colorization/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-colorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SIGGRAPH</title>
+      <link>https://k-watanb.github.io/tags/siggraph/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/siggraph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>U-Net</title>
+      <link>https://k-watanb.github.io/tags/u-net/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/u-net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>User-guided</title>
+      <link>https://k-watanb.github.io/tags/user-guided/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/user-guided/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>2018</title>
       <link>https://k-watanb.github.io/tags/2018/</link>
@@ -57,15 +102,6 @@
       <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/image-classification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Colorization</title>
-      <link>https://k-watanb.github.io/tags/image-colorization/</link>
-      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/image-colorization/</guid>
       <description></description>
     </item>
     
@@ -192,15 +228,6 @@
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/wsl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2017</title>
-      <link>https://k-watanb.github.io/tags/2017/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/2017/</guid>
       <description></description>
     </item>
     
@@ -399,15 +426,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/transfer-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>U-Net</title>
-      <link>https://k-watanb.github.io/tags/u-net/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/u-net/</guid>
       <description></description>
     </item>
     

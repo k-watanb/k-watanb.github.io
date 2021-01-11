@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SIGGRAPH on ML戦記</title>
+    <link>https://k-watanb.github.io/tags/siggraph/</link>
+    <description>Recent content in SIGGRAPH on ML戦記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/siggraph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2017] Real-time user-guided image colorization with learned deep priors</title>
+      <link>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</guid>
+      <description>ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,16 @@
     <link>https://k-watanb.github.io/</link>
     <description>Recent content on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 07 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2017] Real-time user-guided image colorization with learned deep priors</title>
+      <link>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/</guid>
+      <description>ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。</description>
+    </item>
+    
     <item>
       <title>[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</title>
       <link>https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/</link>

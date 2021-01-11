@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html ⚡>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>[2017] Real-time user-guided image colorization with learned deep priors - ML戦記</title>
+    <meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#263238">
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+<link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
+
+
+<link rel="canonical" type="text/html" href="https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/" title="ML戦記">
+
+
+
+    
+<meta name="description" content="ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。">
+
+<meta property="og:title" content="[2017] Real-time user-guided image colorization with learned deep priors - ML戦記">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://k-watanb.github.io/amp/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/">
+<meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png">
+<meta property="og:site_name" content="ML戦記">
+<meta property="og:description" content="ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="ML戦記">
+<meta name="twitter:url" content="https://k-watanb.github.io/amp/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/">
+<meta name="twitter:title" content="[2017] Real-time user-guided image colorization with learned deep priors - ML戦記">
+<meta name="twitter:description" content="ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。">
+<meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$', '$$']], 
+            processEscapes: true,
+        },
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<link href="https://k-watanb.github.io/css/syntax.css" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/k-watanb.github.io\/"
+    },
+    "headline": "[2017] Real-time user-guided image colorization with learned deep priors-ML戦記",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-01-11T00:00:00JST",
+    "dateModified": "2021-01-11T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "ML戦記"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ML戦記",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/k-watanb.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。"
+  }
+</script>
+
+
+
+    
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <meta name="amp-google-client-id-api" content="googleanalytics">
+    
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+
+  
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap");
+html, body, p, ul, ol, ul > li, ol > li {
+  font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
+  font-weight: 400;
+  color: #454545; }
+
+html {
+  font-size: 16px;
+  background-color: rgba(236, 239, 241, 0.5); }
+
+body {
+  font-size: inherit;
+  line-height: 1rem;
+  margin: 0 !important; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1rem;
+  margin: 0; }
+
+hr {
+  border: 0;
+  border-top: 1px dashed #cfd8dc;
+  margin: 1rem 0; }
+
+p {
+  margin: 0;
+  line-height: 1rem; }
+
+a {
+  color: #2196f3;
+  text-decoration: none; }
+
+table {
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto; }
+
+th, td {
+  font-size: .8rem;
+  padding: .5rem; }
+
+tr {
+  border-bottom: 1px dashed #ddd; }
+
+/* Layouts */
+main, aside {
+  display: block; }
+
+main {
+  padding: 3rem 0 3rem 0; }
+
+.l-container {
+  position: relative;
+  max-width: 66rem;
+  margin: 0 auto;
+  padding: 0 1rem; }
+  .l-container.thin {
+    max-width: 44rem; }
+
+.l-header {
+  padding-top: 2rem;
+  height: 20rem;
+  background: url("/images/tobias-keller-73F4pKoUkM0-unsplash.jpg") no-repeat center;
+  background-size: cover;
+  position: relative; }
+  .l-header:before {
+    content: ' ';
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.title-logo-wrapper {
+  position: relative;
+  width: 30rem;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; }
+  .title-logo-wrapper .logo a img {
+    width: 30rem;
+    max-width: 100%; }
+  .title-logo-wrapper .topnav .topnav_menu_item {
+    display: inline-block;
+    margin: 0rem 0.3rem 2rem 0rem; }
+  .title-logo-wrapper .topnav a {
+    font-family: "Raleway", "Hiragino Kaku Gothic Pro", sans-serif;
+    color: #fff;
+    padding: 0.7rem 1.3rem;
+    border-radius: 2rem;
+    transition: all .3s; }
+    .title-logo-wrapper .topnav a:hover {
+      background-color: #2196f3; }
+
+.l-footer {
+  font-size: .9rem;
+  background-color: #fff;
+  text-align: center;
+  padding: 2rem 0; }
+
+.l-sidebar {
+  margin: -1rem 0; }
+
+@media (max-width: 66rem) {
+  .l-sidebar {
+    margin-top: 4rem; } }
+
+.mrow {
+  margin: 0 -1rem;
+  overflow: hidden; }
+
+.mcol {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 1rem; }
+
+.c6 {
+  width: 50%; }
+
+.c4 {
+  width: 33.26323833%; }
+
+.c8 {
+  width: 66.66666%; }
+
+@media (max-width: 66rem) {
+  .mcol {
+    width: 100%;
+    float: none; } }
+
+/********************************************************************************************************************/
+/* トップページ 左側記事矩形 */
+/********************************************************************************************************************/
+.articles {
+  margin: -1rem 0;
+  margin-bottom: 1rem; }
+
+.articles.sm {
+  margin: -.5rem 0;
+  margin-bottom: 0; }
+
+article {
+  border-radius: 4px;
+  overflow: hidden; }
+
+article.li {
+  background-color: #fff;
+  height: 26rem;
+  margin: 1rem 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+  article.li:hover {
+    border-color: #FFF;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    outline-color: transparent;
+    outline-offset: 12px;
+    cursor: pointer;
+    background-color: #e8f4ff; }
+    article.li:hover .thumb {
+      opacity: 0.7; }
+
+/* 記事矩形内のリンク */
+article.li > a {
+  display: block;
+  color: #454545; }
+
+article.li .inner {
+  padding: 1rem; }
+
+article.li .thumb {
+  height: 10rem; }
+
+/* 記事タイトル */
+article.li .title {
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  margin-bottom: .5rem;
+  transition: 0.1s; }
+  article.li .title:hover {
+    color: #2196f3; }
+
+article.li .summary {
+  font-size: .9rem;
+  height: 8rem;
+  overflow: hidden;
+  line-height: 1.3rem;
+  margin-top: 0.8rem; }
+
+/********************************************************************************************************************/
+/* トップページ 右側矩形 */
+/********************************************************************************************************************/
+article.lism {
+  background-color: #fff;
+  height: auto;
+  margin: .5rem 0;
+  outline: 1px solid;
+  outline-color: #ddd;
+  outline-offset: 0px; }
+  article.lism:after {
+    content: '';
+    display: block;
+    clear: both; }
+  article.lism:hover {
+    transition: 0.3s; }
+    article.lism:hover .thumb {
+      opacity: 0.7; }
+
+/* Latestリンク全体 */
+article.lism > a {
+  display: block;
+  color: #454545;
+  transition: 0.1s; }
+  article.lism > a:hover {
+    background-color: #e8f4ff; }
+
+article.lism .inner {
+  display: table-cell;
+  vertical-align: middle;
+  height: 5rem;
+  padding: 0 .75rem; }
+
+article.lism .thumb {
+  width: 5rem !important;
+  height: 5rem !important;
+  float: left; }
+
+article.lism .title {
+  font-weight: 700;
+  font-size: .8rem;
+  margin-bottom: .25rem;
+  transition: 0.2s; }
+  article.lism .title:hover {
+    color: #2196f3; }
+
+/********************************************************************************************************************/
+/*    */
+/********************************************************************************************************************/
+/* 記事矩形内の日付・フォルダ */
+ul.facts, ul.facts_tags {
+  margin: 0;
+  padding: 0;
+  /*text-align: left;*/
+  /* アイコン */ }
+  ul.facts li, ul.facts_tags li {
+    display: inline;
+    /* 横に並べる */
+    font-size: .8rem; }
+  ul.facts i, ul.facts_tags i {
+    color: #cfd8dc;
+    margin-right: .5em; }
+  ul.facts.sm li, ul.facts_tags.sm li {
+    font-size: .7rem; }
+  ul.facts a, ul.facts_tags a {
+    position: relative;
+    display: inline-block;
+    transition: .3s; }
+    ul.facts a:after, ul.facts_tags a:after {
+      position: absolute;
+      bottom: -0.05rem;
+      left: 50%;
+      content: '';
+      width: 0;
+      height: 1px;
+      background-color: #2196f3;
+      transition: .3s;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%); }
+    ul.facts a:hover::after, ul.facts_tags a:hover::after {
+      width: 100%; }
+
+ul.facts > li {
+  margin-right: 1rem; }
+
+ul.facts_tags {
+  margin: 0.5rem 0rem 1.3rem 0rem;
+  line-height: 1.3rem; }
+  ul.facts_tags li {
+    margin-right: .2rem; }
+
+/* トップページ categories & tag wrapper */
+section.sidebar {
+  margin: 2rem 0; }
+  section.sidebar > header {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 1.5rem 0; }
+
+section.footer {
+  margin: 1rem 0; }
+  section.footer > header {
+    font-size: .8rem;
+    margin: .5rem 0; }
+    section.footer > header::before {
+      content: "- "; }
+    section.footer > header a {
+      font-weight: 700;
+      color: #454545;
+      text-decoration: underline; }
+
+/* トップページ categories & tag リンク */
+.terms {
+  margin: -.25rem; }
+  .terms li {
+    display: inline-block; }
+  .terms a {
+    display: block;
+    color: #454545;
+    font-size: .9rem;
+    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "BIZ UDGothic", sans-serif !important;
+    font-weight: 500;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: .3rem;
+    padding: 0.5rem 0.8rem;
+    transition: 0.3s; }
+    .terms a:hover {
+      background-color: #e8f4ff; }
+
+.paging {
+  text-align: center;
+  padding: 1rem 0; }
+  .paging a {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #454545;
+    padding: 0 3rem;
+    line-height: 3rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    outline: 1px solid;
+    outline-color: #CCCCCC;
+    outline-offset: 0px;
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1); }
+    .paging a:hover {
+      border-color: #FFF;
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+      outline-color: transparent;
+      outline-offset: 12px;
+      cursor: pointer;
+      background-color: #e8f4ff;
+      color: #2196f3; }
+
+.page-title {
+  text-align: center;
+  margin: 1rem 0; }
+  .page-title::after {
+    content: '';
+    display: block;
+    border-bottom: 0.25rem solid #454545;
+    width: 3rem;
+    margin: 1.5rem auto; }
+  .page-title > .title {
+    font-size: 1.2rem;
+    line-height: 1.5rem; }
+
+.share {
+  padding: 0; }
+  .share a {
+    display: inline-block;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px rgba(63, 63, 68, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-width: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    color: #454545;
+    font-size: .8rem;
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: center;
+    padding: 0 .5rem; }
+
+.adj article.lism {
+  margin-bottom: 1rem; }
+
+.adj header {
+  font-weight: 700;
+  font-size: .8rem; }
+
+.toc {
+  padding: 0 2rem;
+  margin: 1rem 0; }
+  .toc nav > ul {
+    background-color: #eceff1;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    word-break: break-all;
+    list-style: none; }
+  .toc ul {
+    padding: 0; }
+    .toc ul ul {
+      padding-left: 1rem; }
+      .toc ul ul > li {
+        font-weight: 700;
+        margin: .5rem 0;
+        list-style-type: decimal; }
+      .toc ul ul ul {
+        padding-left: 1rem; }
+        .toc ul ul ul > li {
+          list-style-type: disc;
+          font-weight: 500; }
+  .toc li {
+    color: #90a4ae; }
+
+@media (max-width: 66rem) {
+  .toc {
+    padding: 0 1rem; } }
+
+
+
+.thumb {
+  background-image: url("https://k-watanb.github.io/images/default.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+  
+  .thumb-69ff5d48dbf7c16df278b62a86957fc4 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png");
+  }
+  
+
+  
+  .thumb-c465b21de885ae7d2ea2b99cab0aaeb1 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks.png");
+  }
+  
+
+  
+  .thumb-79c1da4f79c07f8affdfaa8d56ed7e70 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png");
+  }
+  
+
+  
+  .thumb-8d6b14303020673bd7bfa2756380b69b {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-instance-aware-image-colorization.png");
+  }
+  
+
+  
+  .thumb-ccc524a040191d79e43b34b54ce37b4a {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/custom-theme.png");
+  }
+  
+
+  
+  .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/vim-monokai.png");
+  }
+  
+
+  
+  .thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+  }
+  
+
+  
+  .thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+  }
+  
+
+  
+  .thumb-e96a4abb7c5be237e2b68218276d70b2 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+  }
+  
+
+  
+  .thumb-888ace4333ea5d33626b5651ab4a5668 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+  }
+  
+
+  
+  .thumb-21e7dd78c5b80a7310284266edb2c89b {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+  }
+  
+
+  
+  .thumb-92bdee60ff963f675b658e9bda4fb314 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+  }
+  
+
+  
+  .thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+  }
+  
+
+  
+  .thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+    background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+  }
+  
+
+  
+
+  
+
+
+
+
+
+.l-container { max-width: 40rem; margin: 0 auto; }
+    </style>
+  </head>
+
+  <body>
+    
+    <amp-analytics type="googleanalytics" id="analytics1">
+      <script type="application/json"> { "vars": { "account": "G-Q8JBWP2QFH"}, "triggers": { "trackPageview": { "on": "visible", "request": "pageview" } } }
+      </script>
+    </amp-analytics>
+    
+
+    <header class="l-header">
+        <h1 class="logo">
+          <a href="https://k-watanb.github.io/">ML戦記</a>
+        </h1>
+    </header>
+
+    <main>
+      <div class="l-container">
+        
+
+<article class="sn">
+
+    
+
+    <header class="article-header">
+        <h1 class="title">[2017] Real-time user-guided image colorization with learned deep priors</h1>
+
+        <ul class="facts">
+
+            
+                <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2021-01-11T00:00:00JST">2021-01-11</time></li>
+
+            
+            
+
+            
+            
+                <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+
+            
+            
+        </ul>
+
+        
+        <ul class="facts_tags">
+
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2017">2017</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/u-net">U-Net</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-colorization">Image Colorization</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/siggraph">SIGGRAPH</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/user-guided">User-guided</a> </li>
+            
+
+        </ul>
+
+        
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&title=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&text=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&t=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&title=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+    </header>
+
+    
+
+    <div class="article-body"><p><a href="https://arxiv.org/abs/1705.02999">arxiv</a>, <a href="https://github.com/junyanz/interactive-deep-colorization">github(official)</a>, <a href="https://richzhang.github.io/InteractiveColorization/">project</a></p>
+<h2 id="どんなもの">どんなもの？</h2>
+<p>ピクセルレベルの色ヒントであるlocal hintsと、画像全体の色ヒントであるglobal hintとを組み込んだインタラクティブな着色手法を提案。インタラクティブな着色を可能にしました。</p>
+<p><img src="image-20210111153832067.png" alt="image-20210111153832067"></p>
+<h2 id="先行研究と比べてどこがすごい">先行研究と比べてどこがすごい？</h2>
+<p>local hintsを組み込むことで、インタラクティブな着色を可能にしました。より自然で鮮やかな着色が可能になりました。</p>
+<h2 id="技術や手法のキモはどこにある">技術や手法のキモはどこにある？</h2>
+<h3 id="着色とは">着色とは？</h3>
+<p>まずは着色タスクにおける入出力を確認しておきましょう。</p>
+<p>入力は $\mathbf{X} \in \mathbb{R}^{H \times W \times 1}$ のグレースケール画像です。ここで、画像の高さが $H$, 幅が $W$ を表します。グレースケール画像とは、Lab 色空間の L 成分であり、明度を意味します。Lab色空間については <a href="https://ja.wikipedia.org/wiki/Lab%E8%89%B2%E7%A9%BA%E9%96%93#:~:text=Lab%E8%89%B2%E7%A9%BA%E9%96%93%EF%BC%88%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%A8%E3%83%BC,%E3%82%82%E3%81%AE%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82">Lab色空間 -wikipedia-</a> を参照してください。</p>
+<p>出力は  $\mathbf{\hat{Y}} \in \mathbb{R}^{H \times W \times 2}$ の画像です。Lab色空間の a* 座標 と b* 座標とを予測します。なぜ出力が2次元かというと、入力が L* 座標であるため、最終的に a* と b* を加算すれば Lab 画像（カラー画像）が表現できるためです。</p>
+<h3 id="network-architecture">Network Architecture</h3>
+<p><img src="image-20210111153901597.png" alt="image-20210111153901597"></p>
+<p>ネットワークは3つの構成から成ります。</p>
+<ul>
+<li><strong>Main Colorization Network</strong>｜L* のグレースケール画像から a* b* 画像を予測するネットワーク</li>
+<li><strong>Local Hints Network</strong>｜ユーザのローカルな色ヒントを加えるネットワーク</li>
+<li><strong>Global Hints Network</strong>｜画像全体の色ヒントを加えるネットワーク</li>
+</ul>
+<h3 id="main-colorization-network">Main Colorization Network</h3>
+<p>L* 画像 $\mathbf{X}$ から a* b* 画像 $\mathbf{\hat{Y}}$ を出力するネットワークです。skip connection を有する U-Net（Ronneberger et al. 2015）型の CNN を採用しています。</p>
+<p>構造の詳細は <a href="https://github.com/junyanz/interactive-deep-colorization/blob/master/models/pytorch/model.py">official github</a> を参照してください。</p>
+<h3 id="local-hints-network">Local Hints Network</h3>
+<p>本ネットワークは主に２つの役割があります。</p>
+<ul>
+<li>ユーザが指定したローカルな色ヒント local hints を、グレースケール画像に組み込みます</li>
+<li>ユーザにおすすめカラーパレットを提示できるように学習します</li>
+</ul>
+<p>1つ目は concat するだけなので省略し、2つ目の役割について以下で説明します。</p>
+<h4 id="data-drive-color-palette">Data-drive color palette</h4>
+<p>もっともらしい色を選ぶことは、現実的な色付けに向けた重要なステップです。適切なツールがないと、ユーザーが直感的に色を選択するのが難しい場合があります。</p>
+<p>すべてのピクセルについて、出力色 $\mathbf{Z} \in \mathcal{R}^{H \times W \times Q}$ の確率色分布（color distribution）を予測します。ここで、Qは量子化された色のビンの数であり、$Q=313$ を指定しています。</p>
+<p><img src="image-20210111153919892.png" alt="image-20210111153919892"></p>
+<p>color distribution $\mathbf{\hat{Z}}$ を予測するために、$\psi_l$ によってパラメーター化されたネットワーク $\mathcal{G}_l$ を用いて、入力グレースケール画像 $\mathbf{X}$ と local hints によるマッピングを学習します。ground truth 分布 $\mathbf{Z}$ は、ground truth colors $\mathbf{Y}$ からエンコードされます。全ピクセルに対し、cross-entropy loss を計算します。</p>
+<p>$$
+\mathcal{L_{cl}(\mathcal{G}_l(\mathbf{X}, \mathbf{U}_l; \psi_l), \mathbf{Z})} = \sum_{h,w} \sum_q \mathbf{Z}_{h, w, q} \log (\mathcal{G}_l (\mathbf{X}, \mathbf{U}_l; \psi_l)_{h, w, q})
+$$</p>
+<p>$$
+\psi_l^* = \arg \min_{\psi_l} \mathbb{E}_{\mathbf{X}, \mathbf{Y} \sim D} [\mathcal{L_{cl}(\mathcal{G}_l(\mathbf{X}, \mathbf{U}_l; \psi_l), \mathbf{Y})}]
+$$</p>
+<h3 id="global-hints-network">Global Hints Network</h3>
+<p><img src="image-20210111170049369.png" alt="image-20210111170049369">
+<em>Global Hintsによる着色の例。各画像右上の画像が Global Hints として与えられている。</em></p>
+<p>Global Hints には空間情報がないため、Main Colorization Network の中央付近に情報を concat します。</p>
+<h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
+<h3 id="定量評価">定量評価</h3>
+<p>評価指標は PSNR です。PSNRについては <a href="http://who7s.blog.shinobi.jp/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/%E7%94%BB%E8%B3%AA%E6%8C%87%E6%A8%99psnr%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">画質指標PSNRを求める</a> を参照してください。</p>
+<p><img src="image-20210111154010270.png" alt="image-20210111154010270"></p>
+<h3 id="定性評価">定性評価</h3>
+<p>インタラクティブな機構を導入することで、従来手法より鮮やかに、自然な着色が行えています。</p>
+<p><img src="image-20210111153940485.png" alt="image-20210111153940485"></p>
+<p><img src="image-20210111153953244.png" alt="image-20210111153953244"></p>
+<h2 id="議論はあるか">議論はあるか？</h2>
+<h3 id="ユーザが普通はありえない色に塗ったら">ユーザが普通はありえない色に塗ったら？</h3>
+<p>ヒトの顔を緑で塗ったとしても、その通りの着色結果が得られます。</p>
+<p><img src="image-20210111154039814.png" alt="image-20210111154039814">
+<em>(a) 意図しない local hints の入力。(b) 図(a)による着色結果。(c) 適切な肌色による着色結果。</em></p>
+<h3 id="古い白黒写真にも適用してみた">古い白黒写真にも適用してみた</h3>
+<p>古い白黒写真にもある程度有効に働くようです。しかし古い写真には折れ、破れなどがあるため、あくまで着色のみ行えるようです。</p>
+<p><img src="image-20210111172015984.png" alt="image-20210111172015984">
+<em>入力の local hints がかなりたくさん必要。使いこなすの大変そう。</em></p>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
+<ul>
+<li><a href="/paper-summary/2020-instance-aware-image-colorization/">Jehng-Wei Su et al., &ldquo;Instance-aware Image Colorization,&rdquo; CVPR 2020</a>
+<ul>
+<li>本研究をベースにしている</li>
+<li>Object Detection + Colorization で高精度な着色を実現</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    <footer class="article-footer">
+
+        <ul class="facts_tags">
+
+            
+            
+            <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2017">2017</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/u-net">U-Net</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/image-colorization">Image Colorization</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/siggraph">SIGGRAPH</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/user-guided">User-guided</a> </li>
+            
+
+        </ul>
+
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&title=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&text=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&t=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f&title=%5b2017%5d%20Real-time%20user-guided%20image%20colorization%20with%20learned%20deep%20priors" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2famp%2fpaper-summary%2f2017-real-time-user-guided-image-colorization-with-learned-deep-priors%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+        
+
+<div class="see-also">
+<header><i class="fas fa-eye" aria-hidden="true"></i> See Also</header>
+<ul>
+    <div class="articles sm">
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2017-densely-connected-convolutional-networks/">
+    <div class="thumb thumb-d6350ae9d3002a2b1c441067a8c46a23"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Densely Connected Convolutional Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2018-deep-layer-aggregation/">
+    <div class="thumb thumb-e96a4abb7c5be237e2b68218276d70b2"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Deep Layer Aggregation</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+    </div>
+</ul>
+</div>
+
+
+    </footer>
+
+</article>
+
+
+<div class="adj mrow">
+    <div class="mcol c6">
+      <header>Next Article</header>
+    
+    </div>
+    <div class="mcol c6">
+      <header>Previous Article</header>
+    
+      <article class="lism">
+  <a href="https://k-watanb.github.io/amp/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/">
+    <div class="thumb thumb-c465b21de885ae7d2ea2b99cab0aaeb1"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="l-container">
+        <p><span class="h-logo">&copy; ML戦記</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_robust">Robust</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
