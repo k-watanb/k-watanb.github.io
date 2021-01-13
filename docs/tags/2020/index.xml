@@ -5,7 +5,16 @@
     <link>https://k-watanb.github.io/tags/2020/</link>
     <description>Recent content in 2020 on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/2020/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2020] Mish: A Self Regularized Non-Monotonic Activation Function</title>
+      <link>https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/</link>
+      <pubDate>Tue, 12 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/</guid>
+      <description>活性化関数ReLU/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。</description>
+    </item>
+    
     <item>
       <title>[2020] Bringing Old Photos Back to Life</title>
       <link>https://k-watanb.github.io/paper-summary/2020-bringing-old-photos-back-to-life/</link>

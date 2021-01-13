@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>[2020] Mish: A Self Regularized Non-Monotonic Activation Function - ML戦記</title>
+
+        <meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com"  crossorigin>
+<link rel="dns-prefetch preconnect" href="https://use.fontawesome.com"  crossorigin>
+<meta name="theme-color" content="#263238">
+
+<meta name="generator" content="Hugo 0.79.1" />
+
+<link rel="apple-touch-icon" href="https://k-watanb.github.io/images/logo.png">
+
+
+<link rel="amphtml" type="text/html" href="https://k-watanb.github.io/amp/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/" title="ML戦記">
+
+
+
+        
+<meta name="description" content="活性化関数ReLU/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。">
+
+<meta property="og:title" content="[2020] Mish: A Self Regularized Non-Monotonic Activation Function - ML戦記">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/">
+<meta property="og:image" content="https://k-watanb.github.io/images/thumbnails/2020-mish-a-self-regularized-non-monotonic-activation-function.png">
+<meta property="og:site_name" content="ML戦記">
+<meta property="og:description" content="活性化関数ReLU/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="ML戦記">
+<meta name="twitter:url" content="https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/">
+<meta name="twitter:title" content="[2020] Mish: A Self Regularized Non-Monotonic Activation Function - ML戦記">
+<meta name="twitter:description" content="活性化関数ReLU/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。">
+<meta name="twitter:image" content="https://k-watanb.github.io/images/thumbnails/2020-mish-a-self-regularized-non-monotonic-activation-function.png">
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$', '$$']], 
+            processEscapes: true,
+        },
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<link href="https://k-watanb.github.io/css/syntax.css" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/k-watanb.github.io\/"
+    },
+    "headline": "[2020] Mish: A Self Regularized Non-Monotonic Activation Function-ML戦記",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/k-watanb.github.io\/images\/thumbnails\/2020-mish-a-self-regularized-non-monotonic-activation-function.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-01-12T00:00:00JST",
+    "dateModified": "2021-01-12T00:00:00JST",
+    "author": {
+      "@type": "Person",
+      "name": "ML戦記"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ML戦記",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/k-watanb.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "活性化関数ReLU\/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。"
+  }
+</script>
+
+
+
+        <link rel="canonical" href="https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/styles.min.9648000f41307b9105ee491f82fbcf0127266302d8c02be66017a5bfe2afc222.css">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/author.min.f03ba4f685923b07b1fe06bcecc27e938752076607a04cb720357324f35b1c40.css">
+
+        
+        <link rel="stylesheet" href="https://k-watanb.github.io/article.min.f342063477f15ae9037a97f32972210f0d08bee77d6416298cae57036d9efd13.css">
+
+        <style>
+            .thumb {
+                background-image: url("https://k-watanb.github.io/images/default.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+            
+                
+            .thumb-a714b8db9f02f12ac11a229627c84da2 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-mish-a-self-regularized-non-monotonic-activation-function.png");
+            }
+                
+            
+                
+            .thumb-69ff5d48dbf7c16df278b62a86957fc4 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2017-real-time-user-guided-image-colorization-with-learned-deep-priors.png");
+            }
+                
+            
+                
+            .thumb-129492938da4a1f682d30eecc8a48a44 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-bringing-old-photos-back-to-life.png");
+            }
+                
+            
+                
+            .thumb-c465b21de885ae7d2ea2b99cab0aaeb1 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks.png");
+            }
+                
+            
+                
+            .thumb-79c1da4f79c07f8affdfaa8d56ed7e70 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence.png");
+            }
+                
+            
+                
+            .thumb-8d6b14303020673bd7bfa2756380b69b {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-instance-aware-image-colorization.png");
+            }
+                
+            
+                
+            .thumb-ccc524a040191d79e43b34b54ce37b4a {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/custom-theme.png");
+            }
+                
+            
+                
+            .thumb-55624cbbfa83c65e44d0d43ae54bb6f0 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/vim-monokai.png");
+            }
+                
+            
+                
+            .thumb-d6350ae9d3002a2b1c441067a8c46a23 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2017-densely-connected-convolutional-networks.png");
+            }
+                
+            
+                
+            .thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-convolutional-neural-networks-with-alternately-udated-clique.png");
+            }
+                
+            
+                
+            .thumb-e96a4abb7c5be237e2b68218276d70b2 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-deep-layer-aggregation.png");
+            }
+                
+            
+                
+            .thumb-888ace4333ea5d33626b5651ab4a5668 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2018-embodies-question-answering.png");
+            }
+                
+            
+                
+            .thumb-21e7dd78c5b80a7310284266edb2c89b {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2019-ocgan-one-class-novelty-detection-using-gans-with-constrained-latent-representations.png");
+            }
+                
+            
+                
+            .thumb-92bdee60ff963f675b658e9bda4fb314 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2019-regularized-learning-for-domain-adaptation-under-label-shifts.png");
+            }
+                
+            
+                
+            .thumb-aa6fc3d59b20b400a6c29bf60042bfc1 {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks.png");
+            }
+                
+            
+                
+            .thumb-c7810337cbf82f29fd9bc45c958bdb0e {
+                background-image: url("https://k-watanb.github.io/images/thumbnails/2020-deep-semi-supervised-anomaly-detection.png");
+            }
+                
+            
+                
+            
+                
+            
+
+            
+        </style>
+
+        
+        
+        
+
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8JBWP2QFH"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-Q8JBWP2QFH');
+            </script>
+        
+        
+
+    </head>
+
+    <body>
+
+        <header class="l-header">
+            <div class="title-logo-wrapper">
+                <h1 class="logo">
+                    <a href="https://k-watanb.github.io/"><img src="/images/logo.png"></a>
+                </h1>
+                <nav class="topnav">
+                    <ul class="topnav_menu">
+
+                        <li class="topnav_menu_item"><a href="/">Home</a></li>
+                        <li class="topnav_menu_item"><a href="/categories">Categories</a></li>
+                        <li class="topnav_menu_item"><a href="/tags">Tags</a></li>
+                        <li class="topnav_menu_item"><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="l-container">
+                <div class="mrow">
+                <div class="mcol c8">
+                    
+
+<article class="sn">
+
+    
+
+    <header class="article-header">
+        <h1 class="title">[2020] Mish: A Self Regularized Non-Monotonic Activation Function</h1>
+
+        <ul class="facts">
+
+            
+                <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="2021-01-12T00:00:00JST">2021-01-12</time></li>
+
+            
+            
+
+            
+            
+                <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+
+            
+            
+        </ul>
+
+        
+        <ul class="facts_tags">
+
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/bmvc">BMVC</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/activation-function">Activation Function</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/relu">ReLU</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/landscape">Landscape</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/local-minima">Local Minima</a> </li>
+            
+
+        </ul>
+
+        
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&title=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&text=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&t=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&title=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+
+    </header>
+
+    
+
+    <div class="article-body"><p><a href="https://arxiv.org/abs/1908.08681">arxiv</a>, <a href="https://github.com/digantamisra98/Mish">github(official)</a></p>
+<h2 id="どんなもの">どんなもの？</h2>
+<p>活性化関数ReLU/Swishの後継であるMishを提案。下に有界、負の値も取る、無限微分可能、lossも滑らかになり最適化しやすいという特徴があります。</p>
+<h2 id="先行研究と比べてどこがすごい">先行研究と比べてどこがすごい？</h2>
+<p>多くのタスク、ネットワークにおいてReLU/Swishを上回っています。また、使用している活性化関数を Mish に置換するだけなので導入も簡単です。</p>
+<h2 id="技術や手法のキモはどこにある">技術や手法のキモはどこにある？</h2>
+<h3 id="mish関数の定義">Mish関数の定義</h3>
+<p>Mish関数は以下の式で定義されます。
+$$
+f(x) = x \tanh(softplus(x)) = x \tanh(\ln(1+e^x))
+$$</p>
+<p>$$
+f'(x)=\frac{e^x[4(x+1) + 4e^{2x}+e^{3x}+e^x(4x+6)]}{(2e^x+e^{2x}+2)^2}
+$$</p>
+<p><img src="image-20210112230703754.png" alt="image-20210112230703754"></p>
+<h3 id="mish関数の特徴">Mish関数の特徴</h3>
+<p>Mish関数には、1）負の値を保持、2）下に有界、3）無限回微分まで連続、4）output landscape が滑らか という特徴があります。1）~3）の特徴は Swish が有していましたが、4）が Mish 関数の強みですね。</p>
+<h4 id="負の値を保持">負の値を保持</h4>
+<p>Mish関数は $[≈-0.31, ∞)$ で定義されます。負の情報が若干保存されているため、<strong>dyling ReLU 現象が発生しにくい</strong> ようです。「関数設計的に dying ReLU の必要条件を排除した」とのことです。</p>
+<p>dying ReLU 現象とは、勾配がなくなるニューロンが発生する現象であり、ReLU の負領域では勾配がゼロになることが原因です。学習時に大きく負側に重みが更新された場合、ReLUで活性化しなくなります。この dying ReLU 現象が Mish 関数では起きにくいようです。</p>
+<p>また、負の値を保持することで、強い正則化の効果もあるようです。</p>
+<h4 id="下に有界">下に有界</h4>
+<p>上限がないため、sigmoid や tanh のような飽和がありません、これにより勾配がほぼゼロになることがなく、学習が促進されます。また、強い正則化効果をもたらします（？）。</p>
+<h4 id="無限回微分が可能">無限回微分が可能</h4>
+<p>Mish関数は無限回微分可能であり、特異点（local minimaのこと？）の回避に貢献します。</p>
+<h4 id="output-landscapeが滑らか">output landscapeが滑らか</h4>
+<p>Mish 関数により、モデルの output landscape, 引いては loss landscape も滑らかになり、最適化と一般化が容易になります。</p>
+<p><img src="image-20210113000833758.png" alt="image-20210113000833758">
+<em>5層 NN の output landscape です。ReLU（左）とMish（右）の output landscape の滑らかさの比較</em></p>
+<h2 id="どうやって有効だと検証した">どうやって有効だと検証した？</h2>
+<h3 id="ablation-study-on-cifar-10-and-mnist">Ablation Study on CIFAR-10 and MNIST</h3>
+<p>下図 (a) は <strong>層の深さに対する安定性</strong> を主張しています。MNIST に対して、赤実線の Swish は層が深くなっても accuracy が低下していませんね。一方、青実線の Swish や 黒実線の ReLU は急激に accuracy が低下していきます。</p>
+<p>下図 (b), (c)では <strong>Swish/ReLU よりロバストであること</strong> を主張しています。図 (b) はデータセットに加えたガウシアンノイズの標準偏差に対する test loss を表しています。もちろん loss は増加しますが、Mish は Swish/ReLU と比較して loss の増加が抑えられています。図 (c) から様々なノイズ付与方法に対しても、 Mish の accuracy の低下が抑えられていることがわかります。</p>
+<p><img src="image-20210113001951555.png" alt="image-20210113001951555"></p>
+<h3 id="statistical-analysis">Statistical Analysis</h3>
+<p>CIFAR-10 に対し、Squeeze Net を23回学習させたときの平均 accuracy, 平均 loss, accuracy の標準偏差の一覧です。Mish が最も平均 accuracy が高く（一応）、標準偏差も小さく学習が安定しています。</p>
+<p><img src="image-20210113002050000.png" alt="image-20210113002050000"></p>
+<h3 id="imagenet-1k">ImageNet-1k</h3>
+<p>ImageNet と様々なバックボーンで学習させました。Top-5 が得意な ReLU, Top-1 が得意な Swish のいいとこどりをしたような結果ですね。</p>
+<p><img src="image-20210113002214760.png" alt="image-20210113002214760"></p>
+<h3 id="ms-coco-object-detection">MS-COCO Object Detection</h3>
+<p>なんともいえないビミョーな結果です。</p>
+<p><img src="image-20210113002237792.png" alt="image-20210113002237792"></p>
+<p><img src="image-20210113002251592.png" alt="image-20210113002251592"></p>
+<h2 id="議論はあるか">議論はあるか？</h2>
+<h3 id="速度に難あり">速度に難あり</h3>
+<p>当たり前ですが、機構が単純な ReLU と比べると約 3 倍の forward/backward time がかかっています。どのタスクでも比較的良い性能を誇ってきた Mish の欠点ともいえます。</p>
+<p><img src="image-20210113002321624.png" alt="image-20210113002321624">
+<em>GPUはRTX2070を使用。ReLU-CUDA の結果も載せてほしいです。</em></p>
+<h2 id="次に読むべき論文はあるか">次に読むべき論文はあるか？</h2>
+<ul>
+<li>P. Ramachandran et al., &ldquo;Searching for Activation Functions, &quot; 2017
+<ul>
+<li><a href="https://arxiv.org/abs/1710.05941">arxiv</a></li>
+<li>目の敵にされていた Swish の元論文。</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    <footer class="article-footer">
+
+        <ul class="facts_tags">
+
+            
+            
+            <li><i class="fas fa-bookmark" aria-hidden="true"></i><a href="https://k-watanb.github.io/paper-summary/">PAPER-SUMMARY</a></li>
+            
+
+            
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/2020">2020</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/bmvc">BMVC</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/activation-function">Activation Function</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/relu">ReLU</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/landscape">Landscape</a> </li>
+            
+                <li><i class="fas fa-tags" aria-hidden="true"></i><a href="https://k-watanb.github.io/tags/local-minima">Local Minima</a> </li>
+            
+
+        </ul>
+
+        <aside class="share">
+  <a href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&title=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="はてなブックマーク" class="ht" target="_blank" rel="noopener nofollow">B!</a>
+  <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&text=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function&tw_p=tweetbutton" title="Twitterでシェア" class="tw" target="_blank" rel="noopener nofollow"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&t=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="Facebookでシェア" class="fb" target="_blank" rel="noopener nofollow"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a href="https://getpocket.com/edit?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f&title=%5b2020%5d%20Mish%3a%20A%20Self%20Regularized%20Non-Monotonic%20Activation%20Function" title="Pocketに保存" class="pk" target="_blank" rel="noopener nofollow"><i class="fab fa-get-pocket" aria-hidden="true"></i></a>
+  <a href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fk-watanb.github.io%2fpaper-summary%2f2020-mish-a-self-regularized-non-monotonic-activation-function%2f" title="LINEでシェア" class="ln" target="_blank" rel="noopener nofollow"><i class="fab fa-line" aria-hidden="true"></i></a>
+</aside>
+
+        
+
+<div class="see-also">
+<header><i class="fas fa-eye" aria-hidden="true"></i> See Also</header>
+<ul>
+    <div class="articles sm">
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-bringing-old-photos-back-to-life/">
+    <div class="thumb thumb-129492938da4a1f682d30eecc8a48a44"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Bringing Old Photos Back to Life</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="11007-01-11T00:00:00JST">2021-01-11</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+    <div class="thumb thumb-79c1da4f79c07f8affdfaa8d56ed7e70"></div>
+
+    <div class="inner">
+      <div class="title">[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-anomaly-detection-by-latent-regularized-dual-adversarial-networks/">
+    <div class="thumb thumb-aa6fc3d59b20b400a6c29bf60042bfc1"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Anomaly Detection by Latent Regularized Dual Adversarial Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+        <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-deep-semi-supervised-anomaly-detection/">
+    <div class="thumb thumb-c7810337cbf82f29fd9bc45c958bdb0e"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Deep Semi-Supervised Anomaly Detection</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+        
+    </div>
+</ul>
+</div>
+
+
+    </footer>
+
+</article>
+
+
+<div class="adj mrow">
+  <div class="mcol c6">
+    <header>Next Article</header>
+    
+  </div>
+  <div class="mcol c6">
+    <header>Previous Article</header>
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/">
+    <div class="thumb thumb-69ff5d48dbf7c16df278b62a86957fc4"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Real-time user-guided image colorization with learned deep priors</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="11007-01-11T00:00:00JST">2021-01-11</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "XYW" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+                <div class="mcol c4">
+                    <aside class="l-sidebar">
+                        
+<section class="sidebar">
+  <header>AUTHOR</header>
+  <div class="author">
+
+    
+    <div class="author-thumb" style="background-image: url(https://k-watanb.github.io/images/author.jpg);"></div>
+    
+
+    <div class="author-name"><a href ='/about/'>k-watanb</a></div>
+
+    <ul class="author-facts">
+
+      
+
+      
+
+      
+      <li><a href="https://github.com/k-watanb" rel="noopener nofollow" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+      
+
+    </ul>
+
+    <div class="author-description"><p>名古屋で機械学習エンジニアやっとります。<br>I'm a machine learning engineer in Nagoya, Japan.</p></div>
+
+  </div>
+</section>
+
+
+                        <section class="sidebar">
+  <header>LATESTS</header>
+  <div class="articles sm">
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-mish-a-self-regularized-non-monotonic-activation-function/">
+    <div class="thumb thumb-a714b8db9f02f12ac11a229627c84da2"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Mish: A Self Regularized Non-Monotonic Activation Function</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="12007-01-12T00:00:00JST">2021-01-12</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2017-real-time-user-guided-image-colorization-with-learned-deep-priors/">
+    <div class="thumb thumb-69ff5d48dbf7c16df278b62a86957fc4"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Real-time user-guided image colorization with learned deep priors</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="11007-01-11T00:00:00JST">2021-01-11</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-bringing-old-photos-back-to-life/">
+    <div class="thumb thumb-129492938da4a1f682d30eecc8a48a44"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Bringing Old Photos Back to Life</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="11007-01-11T00:00:00JST">2021-01-11</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-learning-confidence-for-out-of-distribution-detection-in-neural-networks/">
+    <div class="thumb thumb-c465b21de885ae7d2ea2b99cab0aaeb1"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Learning Confidence for Out-of-Distribution Detection in Neural Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-fixmatch-simplifying-semi-supervised-learning-with-consistency-and-confidence/">
+    <div class="thumb thumb-79c1da4f79c07f8affdfaa8d56ed7e70"></div>
+
+    <div class="inner">
+      <div class="title">[2020] FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2020-instance-aware-image-colorization/">
+    <div class="thumb thumb-8d6b14303020673bd7bfa2756380b69b"></div>
+
+    <div class="inner">
+      <div class="title">[2020] Instance-aware Image Colorization</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="7007-01-07T00:00:00JST">2021-01-07</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/hugo/custom-theme/">
+    <div class="thumb thumb-ccc524a040191d79e43b34b54ce37b4a"></div>
+
+    <div class="inner">
+      <div class="title">Hugoのテーマ「Robust」を今風にカスタム</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="31007-12-31T00:00:00JST">2020-12-31</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>HUGO</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/wsl/vim-monokai/">
+    <div class="thumb thumb-55624cbbfa83c65e44d0d43ae54bb6f0"></div>
+
+    <div class="inner">
+      <div class="title">WSLのカラースキーム設定</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="29007-12-29T00:00:00JST">2020-12-29</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>WSL</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/">
+    <div class="thumb thumb-d6350ae9d3002a2b1c441067a8c46a23"></div>
+
+    <div class="inner">
+      <div class="title">[2017] Densely Connected Convolutional Networks</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+    <article class="lism">
+  <a href="https://k-watanb.github.io/paper-summary/2018-convolutional-neural-networks-with-alternately-udated-clique/">
+    <div class="thumb thumb-ba0ab9c1e53f7d8fbe89bbf8d8b86c27"></div>
+
+    <div class="inner">
+      <div class="title">[2018] Convolutional Neural Networks with Alternately Updated Clique</div>
+
+      <ul class="facts sm">
+        <li><i class="fas fa-calendar" aria-hidden="true"></i><time datetime="28007-12-28T00:00:00JST">2020-12-28</time></li>
+        
+        <li><i class="fas fa-bookmark" aria-hidden="true"></i>PAPER-SUMMARY</li>
+        
+        
+        
+      </ul>
+
+    </div>
+  </a>
+</article>
+
+    
+  </div>
+</section>
+
+                        
+<section class="sidebar">
+    <header>CATEGORIES</header>
+    <ul class="terms">
+        
+        
+            <li><a href="https://k-watanb.github.io/categories/paper-summary"><i class="fas fa-bookmark" aria-hidden="true"></i> paper-summary <span class="count">(14)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/categories/hugo"><i class="fas fa-bookmark" aria-hidden="true"></i> hugo <span class="count">(2)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/categories/wsl"><i class="fas fa-bookmark" aria-hidden="true"></i> wsl <span class="count">(1)</span></a></li>
+        
+        
+
+        
+    </ul>
+</section>
+
+
+
+                        
+<section class="sidebar">
+    <header>TAGS</header>
+    <ul class="terms">
+        
+
+        
+        
+            <li><a href="https://k-watanb.github.io/tags/cvpr"><i class="fas fa-tags" aria-hidden="true"></i> cvpr <span class="count">(7)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/2020"><i class="fas fa-tags" aria-hidden="true"></i> 2020 <span class="count">(6)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/image-classification"><i class="fas fa-tags" aria-hidden="true"></i> image-classification <span class="count">(5)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/2018"><i class="fas fa-tags" aria-hidden="true"></i> 2018 <span class="count">(4)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/anomaly-detection"><i class="fas fa-tags" aria-hidden="true"></i> anomaly-detection <span class="count">(3)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/image-anomaly-detection"><i class="fas fa-tags" aria-hidden="true"></i> image-anomaly-detection <span class="count">(3)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/network-architecture"><i class="fas fa-tags" aria-hidden="true"></i> network-architecture <span class="count">(3)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/out-of-distribution"><i class="fas fa-tags" aria-hidden="true"></i> out-of-distribution <span class="count">(3)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/semi-supervised"><i class="fas fa-tags" aria-hidden="true"></i> semi-supervised <span class="count">(3)</span></a></li>
+        
+            <li><a href="https://k-watanb.github.io/tags/2017"><i class="fas fa-tags" aria-hidden="true"></i> 2017 <span class="count">(2)</span></a></li>
+        
+        
+    </ul>
+</section>
+
+
+
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <footer class="l-footer">
+            <p>&copy; 2020-2021 ML戦記 </p>
+        </footer>
+    </body>
+</html>
+
