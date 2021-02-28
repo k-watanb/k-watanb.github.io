@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://k-watanb.github.io/tags/2021/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2021-high-performance-large-scale-image-recognition-without-normalization/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/2021-revisiting-batch-normalization-for-improving-corruption-robustness/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/batch-normalization/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/image-classification/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/network-architecture/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/categories/paper-summary/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/paper-summary/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/robustness/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://k-watanb.github.io/tags/wacv/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://k-watanb.github.io/tags/2020/</loc>
     <lastmod>2021-01-12T00:00:00+00:00</lastmod>
   </url>
@@ -23,11 +88,6 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/categories/</loc>
-    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/landscape/</loc>
     <lastmod>2021-01-12T00:00:00+00:00</lastmod>
   </url>
@@ -38,27 +98,7 @@
   </url>
   
   <url>
-    <loc>https://k-watanb.github.io/</loc>
-    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/categories/paper-summary/</loc>
-    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/paper-summary/</loc>
-    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://k-watanb.github.io/tags/relu/</loc>
-    <lastmod>2021-01-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/</loc>
     <lastmod>2021-01-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -149,11 +189,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/tags/explanation/</loc>
-    <lastmod>2021-01-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/image-classification/</loc>
     <lastmod>2021-01-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -354,11 +389,6 @@
   
   <url>
     <loc>https://k-watanb.github.io/tags/latent-regularizer/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://k-watanb.github.io/tags/network-architecture/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url>
   

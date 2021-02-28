@@ -5,7 +5,61 @@
     <link>https://k-watanb.github.io/tags/</link>
     <description>Recent content in Tags on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 12 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021</title>
+      <link>https://k-watanb.github.io/tags/2021/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Batch Normalization</title>
+      <link>https://k-watanb.github.io/tags/batch-normalization/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/batch-normalization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Classification</title>
+      <link>https://k-watanb.github.io/tags/image-classification/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/image-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Architecture</title>
+      <link>https://k-watanb.github.io/tags/network-architecture/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/network-architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robustness</title>
+      <link>https://k-watanb.github.io/tags/robustness/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/robustness/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WACV</title>
+      <link>https://k-watanb.github.io/tags/wacv/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/tags/wacv/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>2020</title>
       <link>https://k-watanb.github.io/tags/2020/</link>
@@ -174,15 +228,6 @@
       <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/explanation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Classification</title>
-      <link>https://k-watanb.github.io/tags/image-classification/</link>
-      <pubDate>Thu, 07 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/image-classification/</guid>
       <description></description>
     </item>
     
@@ -417,15 +462,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://k-watanb.github.io/tags/latent-regularizer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Network Architecture</title>
-      <link>https://k-watanb.github.io/tags/network-architecture/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://k-watanb.github.io/tags/network-architecture/</guid>
       <description></description>
     </item>
     

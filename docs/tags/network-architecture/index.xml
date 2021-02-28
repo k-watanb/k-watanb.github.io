@@ -5,7 +5,16 @@
     <link>https://k-watanb.github.io/tags/network-architecture/</link>
     <description>Recent content in Network Architecture on ML戦記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/network-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://k-watanb.github.io/tags/network-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[2021] High-Performance Large-Scale Image Recognition Without Normalization</title>
+      <link>https://k-watanb.github.io/paper-summary/2021-high-performance-large-scale-image-recognition-without-normalization/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://k-watanb.github.io/paper-summary/2021-high-performance-large-scale-image-recognition-without-normalization/</guid>
+      <description>BNの主な３つの問題である「計算量が大きい」「学習時と推論時とでモデルの挙動が異なる」「ミニバッチ間の独立性を破壊する」を解決するNFNets; Normalize Free Netsを提唱しました。</description>
+    </item>
+    
     <item>
       <title>[2017] Densely Connected Convolutional Networks</title>
       <link>https://k-watanb.github.io/paper-summary/2017-densely-connected-convolutional-networks/</link>
